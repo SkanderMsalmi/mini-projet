@@ -12,7 +12,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    NotFoundComponent,
+    AsideComponent,
+    FooterComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
