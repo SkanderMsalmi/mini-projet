@@ -1,0 +1,87 @@
+<div class="container row mt-3">
+    <h1>Detail Equipe</h1>
+    <div class="col-7">
+     <!-- Info -->
+     <div class="card mb-4">
+        <div class="card-body">
+
+            <div class="user-heading round">
+                
+                <h2 style="margin-bottom:0">{{equipe.nomEquipe}}</h2>
+                <span style="margin-top: 0;" class="text-muted">{{equipe.niveau}}</span>
+            </div>
+
+          <hr>
+
+         
+
+          <h6 class="my-3">Details</h6>
+
+          <div class="row mb-2">
+            <div class="col-md-3 text-muted">Salle :</div>
+            <div class="col-md-9">
+              {{detailEquipe.salle}}
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-3 text-muted">Thematique:</div>
+            <div class="col-md-9">
+                {{detailEquipe.thematique}}
+            </div>
+            <div class="mb-0 mt-4 offset-6" >
+                <button class="btn btn-warning m-2" [routerLink]="['/equipes/editEquipe',equipe.idEquipe]">Modifier</button>
+                <button class="btn btn-danger m-2" (click)="deleteEquipe(equipe)">Supprimer</button>
+            </div>
+            
+          </div>
+
+          <!-- <h6 class="my-3">Les Options</h6>
+
+          <div class="row mb-2">
+            <div class="col-md-3 text-muted">Option:</div>
+            <div class="col-md-9">
+              <a href="javascript:void(0)" class="text-body">GAMIX</a>,
+              <a href="javascript:void(0)" class="text-body">SE</a>,
+             
+              <a href="javascript:void(0)" class="text-body">TWIN</a>,
+              <a href="javascript:void(0)" class="text-body">SIMS</a>
+            </div>
+          </div> -->
+
+         
+
+        </div>
+        <div class="card-footer text-center p-0">
+          <div class="row no-gutters row-bordered row-border-light">
+            <a href="javascript:void(0)" class="d-flex col flex-column text-body py-3">
+              <div class="font-weight-bold">5</div>
+              <div class="text-muted small">Membres</div>
+            </a>
+            <a href="javascript:void(0)" class="d-flex col flex-column text-body py-3">
+              <div class="font-weight-bold">8</div>
+              <div class="text-muted small">Contrats</div>
+            </a>
+           
+          </div>
+        </div>
+      </div>
+      <!-- / Info -->
+    </div>
+    <div class="row bootstrap snippets bootdeys col-4">
+        <div class="container-widget">
+            <div class="panel panel-info panel-widget">
+                <div class="panel-title text-center">
+                  Team Members
+                </div>
+                <div class="panel-body">
+                  <ul class="basic-list image-list">
+                    <li><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="img" class="img"><b>John Doe</b><span class="desc">Designer</span></li>
+                    <li><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="img" class="img"><b>Sarah Smith </b><span class="desc">Front-End Developer</span></li>
+                    <li><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="img" class="img"><b>Stephen Doe</b><span class="desc">Back-End Developer</span></li>
+                    <li><img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="img" class="img"><b>Kendra Hall</b><span class="desc">Marketing</span></li>
+                    <li><img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="img" class="img"><b>Mark Doe</b><span class="desc">iOS Developer</span></li>
+                  </ul>
+                </div>
+            </div>
+        </div>  
+</div>
