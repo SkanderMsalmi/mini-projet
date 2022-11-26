@@ -1,0 +1,12 @@
+{
+  "universites": [
+    {
+      "name": "esb",
+      "id": 3
+    },
+    {
+      "name": "esprit",
+      "id": 4
+    }
+  ]
+}
