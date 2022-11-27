@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Equip } from 'src/app/core/model/equipe';
 import { Niveau } from 'src/app/core/model/Niveau';
-import { EquipeService } from 'src/app/core/services/equipe.service';
+import { CrudService } from 'src/app/core/services/crud.service';
 
 @Component({
   selector: 'app-list-equipe',
@@ -14,12 +14,13 @@ export class ListEquipeComponent implements OnInit {
   public list : Equip[]=[];
   public niveau:Niveau;
   public filterText :string ="";
+  public controlleurUrl:string ="ControleurEquipe/";
  
 
-  constructor(private equipeService:EquipeService,private route:ActivatedRoute) { }
+  constructor(private equipeService:CrudService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.equipeService.getAllEquipes().subscribe(
+    this.equipeService.getAll(Equip,this.controlleurUrl+"displayEquipes").subscribe(
       (response:Equip[])=>{
         this.all = response;
         this.route.params.subscribe(
@@ -44,8 +45,9 @@ export class ListEquipeComponent implements OnInit {
   }
 
   deleteEquipe(e:Equip){
+    
       let i = this.list.indexOf(e);
-      this.equipeService.deleteEquip(e).subscribe(
+      this.equipeService.delete(e,this.controlleurUrl+"deleteEquipe/"+e.idEquipe).subscribe(
         ()=>{
           this.list.splice(i,1);
         }

@@ -96,3 +96,11 @@ ul, ol {
   opacity: 0.8;
   display: block;
 }
+
+.del{
+  &:hover{
+    color: red;
+    cursor: pointer;
+    scale: 1.2;
+  }
+}
