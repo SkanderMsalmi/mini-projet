@@ -1,0 +1,25 @@
+<div class="container" style="padding-top: 200px;">
+    <form (ngSubmit)="ajoutEquipe()" [formGroup]="form">
+        <div class="d-flex flex-column form-group">
+            <label for="nomEquipe">Nom</label>
+            <input formControlName="nom" type="text" >
+            <div class="text-danger" *ngIf="nom?.errors && form.get('nom')?.touched">
+                <p class="text-danger" *ngIf="nom?.errors?.['minLength']"> Vous devez entrer un nom au minimum 5 caracteres</p>
+
+            </div>
+        </div>
+        <div class="d-flex flex-column form-group">
+            <label for="niveau">Niveau</label>
+            <input formControlName="niveau" type="text" >
+        </div>
+        <div class="d-flex flex-column form-group">
+            <label for="salle">Salle</label>
+            <input formControlName="salle" type="number">
+        </div>
+        <div class="d-flex flex-column form-group">
+            <label for="thematique">Thematique</label>
+            <input formControlName="thematique" type="text" >
+        </div>
+        <button class="btn btn-primary" style="margin-top: 20px;">Ajouter</button>
+    </form>
+</div>
