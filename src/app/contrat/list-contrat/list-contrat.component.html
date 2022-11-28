@@ -1,0 +1,26 @@
+<h1>liste des contrats</h1> <br><br>
+<button class="btn btn-link" name="addnewContrat" [routerLink]="['/contrat/new']"> add new Contrat</button>
+<table class="table">
+    <thead>
+    <tr>
+      <th>id</th>
+      <th>date Debut</th>
+      <th>date Fin</th>
+      <th>specialité</th>  
+      <th>archive</th>
+      <th>montant Contrat</th>
+    </tr>
+</thead>  
+<tbody>
+  <tr *ngFor="let c of all">
+    <td>{{c.id}}</td>
+    <td>{{c.DateDebutContrat}}</td>
+    <td>{{c.DateFinContrat}}</td>
+    <td>{{c.specialite}}</td>
+    <td>{{c.archive}}</td>
+    <td>{{c.montantContrat}}</td>
+    <button class="btn btn-sm btn-danger" (click)="delete(c)"> delete</button>
+    <a class="btn btn-sm btn-warning" [routerLink]="['/contrat/update',c.id]" > update</a>
+      </tr>
+</tbody>
+  </table>
