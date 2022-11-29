@@ -10,7 +10,7 @@ export class DepartementService {
 
   constructor(private http: HttpClient) { }
   getAllDepartement(){
-    return this.http.get<Departement[]>(this.url+'DisplayDepartements/')
+    return this.http.get<Departement[]>(this.url+'DisplayDepartements')
   }
 
   addDeprement(d:Departement){
