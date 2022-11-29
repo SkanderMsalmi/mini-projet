@@ -40,8 +40,6 @@ export class FormEquipeComponent implements OnInit {
       this.equipService.updateEquip(this.equip).subscribe(
         ()=>{
           this.location.back();
-          
-      
       }
       )
     }
