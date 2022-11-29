@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl, Validators, AbstractControl } from '@angular/forms';
+import { Equip } from 'src/app/core/model/equipe';
+import { EquipeService } from 'src/app/core/services/equipe.service';
 @Component({
   selector: 'app-ajout-equipe',
   templateUrl: './ajout-equipe.component.html',
@@ -7,6 +9,7 @@ import { FormGroup,FormControl, Validators, AbstractControl } from '@angular/for
 })
 export class AjoutEquipeComponent implements OnInit {
   public form :FormGroup;
+  public equip : Equip;
   public niveaux : [
     {label:'Expert',value:"EXPERT"},
     {label:'Senior',value:"SENIOR"},
@@ -41,7 +44,7 @@ export class AjoutEquipeComponent implements OnInit {
   //   })
   // }
 
-  constructor() {
+  constructor(private equipeService:EquipeService) {
     this.form = new FormGroup({});
    }
 
@@ -56,7 +59,10 @@ export class AjoutEquipeComponent implements OnInit {
   }
 
   public ajoutEquipe():void{
-    console.log(this.form);
+    if(this.form.valid== true){
+    this.equip = new Equip(this.form.value);
+    }
+    console.log(this.equip);
     
   }
 

@@ -4,7 +4,10 @@ import { Niveau } from "./Niveau";
 
 
 export class Equip {
-    idEquipe:number;
+    constructor(init?: Partial<Equip>){
+        Object.assign(this, init);
+    }
+    idEquipe?:number;
     nomEquipe:string;
     niveau:Niveau;
     detailEquipe:DetailEquipe;
