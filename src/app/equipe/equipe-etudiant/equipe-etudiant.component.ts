@@ -27,4 +27,8 @@ export class EquipeEtudiantComponent implements OnInit {
     
   }
 
+  addMemberToTeam(){
+    
+  }
+
 }

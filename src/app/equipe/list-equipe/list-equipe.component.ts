@@ -30,7 +30,6 @@ export class ListEquipeComponent implements OnInit {
             
             if(this.niveau != null){
               this.list = this.all.filter((equipe)=>equipe.niveau == this.niveau);
-             
             }else{
               this.list = this.all;
             }

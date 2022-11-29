@@ -8,9 +8,6 @@ import { Router } from '@angular/router';
 })
 export class AppComponent  {
   title = 'mini-projet';
-  constructor(private router:Router){
+ 
 
-  }
-  ngOnInit(){
-  }
 }
