@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Equip } from 'src/app/core/model/equipe';
 import { Etudiant } from 'src/app/core/model/etudiant';
 import { EquipeService } from 'src/app/core/services/equipe.service';
+import { EtudiantService } from 'src/app/core/services/etudiant.service.tes';
 
 @Component({
   selector: 'app-equipe-etudiant',
@@ -12,7 +13,8 @@ import { EquipeService } from 'src/app/core/services/equipe.service';
 export class EquipeEtudiantComponent implements OnInit {
   public equipe : Equip;
   public listEtudiant : Etudiant[]=[];
-  constructor(private router:Router,private activatedRoute:ActivatedRoute,private serviceEquipe:EquipeService) {
+  public tousEtudiant : Etudiant[]=[];
+  constructor(private router:Router,private activatedRoute:ActivatedRoute,private serviceEquipe:EquipeService,private serviceEtudiant:EtudiantService) {
    }
 
   ngOnInit(): void {
@@ -24,11 +26,15 @@ export class EquipeEtudiantComponent implements OnInit {
         this.listEtudiant = this.equipe.etudiants;
       }
     )
-    
+    this.serviceEtudiant.getAllEtudiants().subscribe(
+      (reponse)=>{ this.tousEtudiant=reponse;
+        console.log(this.tousEtudiant);
+        
   }
+    )
 
+  }
   addMemberToTeam(){
-    
-  }
 
+  }
 }
