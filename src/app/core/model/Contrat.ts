@@ -1,7 +1,7 @@
 export class contrat{
-    id:number;
-    DateDebutContrat:Date;
-    DateFinContrat:Date;
+    idContrat:number;
+    dateDebutContrat:Date;
+    dateFinContrat:Date;
     specialite:String;
     archive:boolean;
     montantContrat:number;

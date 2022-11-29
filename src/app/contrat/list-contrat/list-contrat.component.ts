@@ -23,7 +23,7 @@ export class ListContratComponent implements OnInit {
   }
   delete(c:contrat){
     let i=this.all.indexOf(c);
-    this.contratservice.deleteContrat(c.id).subscribe(
+    this.contratservice.deleteContrat(c.idContrat).subscribe(
       ()=>{this.all.splice(i,1);}
   
     )
