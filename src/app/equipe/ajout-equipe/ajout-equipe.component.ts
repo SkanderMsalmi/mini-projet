@@ -7,6 +7,11 @@ import { FormGroup,FormControl, Validators, AbstractControl } from '@angular/for
 })
 export class AjoutEquipeComponent implements OnInit {
   public form :FormGroup;
+  public niveaux : [
+    {label:'Expert',value:"EXPERT"},
+    {label:'Senior',value:"SENIOR"},
+    {label:'Junior',value:"JUNIOR"}
+  ]
   get nom(){
     return this.form.get('nom')
   }
@@ -22,7 +27,7 @@ export class AjoutEquipeComponent implements OnInit {
 
   validatorNomEquipe(formControl:AbstractControl):{[s:string]:boolean} {
     if(formControl.value === 'Existe'){
-      return {notPaul:true}
+      return {existe:true}
     }else{
       return {};
     }
@@ -42,7 +47,7 @@ export class AjoutEquipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      nom: new FormControl('',[Validators.required,Validators.minLength(5)]),
+      nom: new FormControl('',[Validators.required,Validators.minLength(5),this.validatorNomEquipe]),
       niveau : new FormControl('',[Validators.required]),
       salle: new FormControl('',[Validators.required]),
       thematique : new FormControl('',[Validators.required])
@@ -51,7 +56,7 @@ export class AjoutEquipeComponent implements OnInit {
   }
 
   public ajoutEquipe():void{
-    console.log(this.form.valid);
+    console.log(this.form);
     
   }
 
