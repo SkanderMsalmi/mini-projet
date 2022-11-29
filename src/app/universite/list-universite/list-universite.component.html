@@ -32,31 +32,36 @@
                         <h6 class="mb-0">Universities</h6>
                     </div>
                     <div class="col-6 text-end">
-                        <a [routerLink]="['/universites/new']" class="btn bg-gradient-dark mb-0" ><i
+                        <a [routerLink]="['/universites/new']" class="btn bg-gradient-dark mb-0"><i
                                 class="material-icons text-sm">add</i>&nbsp;&nbsp;Add New University</a>
                     </div>
                 </div>
             </div>
             <div class="card-body p-3">
                 <div class="row">
-                    <div class="col-md-12 mb-md-0 mb-4"  *ngFor="let uni of list">
-                        <div
-                            class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+                    <div class="col-md-12 mb-md-0 mb-4" *ngFor="let uni of list">
+
+                        <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg cursor-pointer"
+                            routerLink="/departements">
                             <div class="d-flex flex-column">
-                                <!--<h6 class="mb-3 text-sm">Lucas Harper</h6> -->
-                                <span class="mb-2 text-xs">Company Name: <span
-                                        class="text-dark font-weight-bold ms-sm-2  text-sm me-2"><a href="">{{uni.nomUniv}}</a></span></span>
-                                      
+                                <h6 class="mb-3 text-sm">{{uni.nomUniv}}</h6>
+                                <span class="mb-2 text-xs">Email Address: <span
+                                        class="text-dark ms-sm-2 font-weight-bold">oliver@burrito.com</span></span>
+                                <span class="text-xs">VAT Number: <span
+                                        class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
                             </div>
                             <div class="ms-auto text-end">
-                                <a (click)="deleteUni(uni)" class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
-                                        class="material-icons text-sm me-2">delete</i>Delete</a>
-                                <a [routerLink]="['/universites/update',uni.idUniv]" class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                <a (click)="deleteUni(uni)" class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                    href="javascript:;"><i class="material-icons text-sm me-2">delete</i>Delete</a>
+                                <a [routerLink]="['/universites/update',uni.idUniv]"
+                                    class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
                                         class="material-icons text-sm me-2">edit</i>Edit</a>
                             </div>
-                        </div>
-                     
-                        
+                        </li>
+
+
+
+
                     </div>
 
                 </div>
