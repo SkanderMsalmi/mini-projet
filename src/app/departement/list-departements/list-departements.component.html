@@ -28,6 +28,8 @@
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Department Code</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Head of Department</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bloc</th>
+
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
                         </tr>
                       </thead>
@@ -50,6 +52,9 @@
                           </td>
                           <td class="align-middle text-center">
                             <span class="text-secondary text-xs font-weight-bold">{{dep.emailDepart}}</span>
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">{{dep.bloc}}</span>
                           </td>
                           <td class="align-middle">
                             <a (click)="deleteDep(dep)" class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i

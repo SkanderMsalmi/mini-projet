@@ -4,4 +4,5 @@ export class    Departement {
 	codeInterne:string; 
 	chefDepart:string;
 	emailDepart:string;  
+	bloc:string;
 }
