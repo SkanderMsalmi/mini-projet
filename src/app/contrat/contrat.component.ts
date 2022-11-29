@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
+import { contrat } from '../core/model/Contrat';
+import { ContaratService } from '../core/services/contrat.service';
 
 @Component({
   selector: 'app-contrat',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContratComponent implements OnInit {
 
+  
   constructor() { }
 
   ngOnInit(): void {
-  }
 
+  }
 }
+
