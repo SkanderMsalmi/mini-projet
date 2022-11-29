@@ -11,6 +11,7 @@ import {HttpClientModule} from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     AsideComponent,
     FooterComponent,
     NavbarComponent,
+   
   ],
   imports: [
     BrowserModule,
