@@ -28,11 +28,11 @@ export class FormContratComponent implements OnInit {
   saveContrat(){
     if(this.action=='add'){
     this.serviceContrat.addContrat(this.contrat).subscribe(
-      ()=>{this.router.navigate(['/contrat/list'])
+      ()=>{this.router.navigate(['/contrats/list'])
     })}
     else{
       this.serviceContrat.updateContrat(this.contrat).subscribe(
-        ()=> this.router.navigate(['/contrat/list']) )}   
+        ()=> this.router.navigate(['/contrats/list']) )}   
      
   
 

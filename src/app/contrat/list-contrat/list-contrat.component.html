@@ -1,5 +1,5 @@
 
-  <button class="btn btn-link" name="addnewContrat" [routerLink]="['/contrat/new']"> add new Contrat</button>
+  <button class="btn btn-link" name="addnewContrat" [routerLink]="['/contrats/new']"> add new Contrat</button>
   <div class="row">
     <div class="col-12">
       <div class="card my-4">
@@ -53,7 +53,7 @@
                      
                     </td>
                     <td class="align-middle text-center text-sm">
-                      <button class="btn btn-warning btn-sm m-auto" [routerLink]="['/contrat/update',contrat.idContrat]" > update</button>
+                      <button class="btn btn-warning btn-sm m-auto" [routerLink]="['/contrats/update',contrat.idContrat]" > update</button>
                     </td>
                     <td class="align-middle text-center">
                       <button class="btn btn-danger btn-sm m-auto" (click)="delete(contrat)"> delete</button>
