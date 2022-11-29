@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl, Validators, AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Equip } from 'src/app/core/model/equipe';
 import { EquipeService } from 'src/app/core/services/equipe.service';
 @Component({
@@ -44,7 +45,7 @@ export class AjoutEquipeComponent implements OnInit {
   //   })
   // }
 
-  constructor(private equipeService:EquipeService) {
+  constructor(private equipeService:EquipeService,private router:Router) {
     this.form = new FormGroup({});
    }
 
@@ -60,9 +61,19 @@ export class AjoutEquipeComponent implements OnInit {
 
   public ajoutEquipe():void{
     if(this.form.valid== true){
-    this.equip = new Equip(this.form.value);
+    this.equip = new Equip({
+      nomEquipe:this.form.get('nom')?.value,
+      niveau:this.form.get('niveau')?.value,
+      detailEquipe:{
+        salle:this.form.get('salle')?.value,
+        thematique:this.form.get('thematique')?.value
+      }
+
+    });
     }
-    console.log(this.equip);
+    this.equipeService.addEquip(this.equip).subscribe(
+      ()=>{this.router.navigate(['/equipes'])}
+    )
     
   }
 

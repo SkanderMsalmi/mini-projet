@@ -1,5 +1,5 @@
 export class DetailEquipe{
-    idDetailEquipe:number;
+    idDetailEquipe?:number;
     salle:number;
     thematique:String;
     }
