@@ -11,7 +11,9 @@ import { ContaratService } from 'src/app/core/services/contrat.service';
 export class FormContratComponent implements OnInit {
  public contrat:contrat;
  public action:string;
-  constructor(private currentRoute:ActivatedRoute,private serviceContrat:ContaratService,private router:Router) { }
+  constructor(private currentRoute:ActivatedRoute,private serviceContrat:ContaratService,private router:Router) { 
+    this.contrat = new contrat();
+  }
 
   ngOnInit(): void {
     let id=this.currentRoute.snapshot.params['id'];

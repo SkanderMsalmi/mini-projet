@@ -2,11 +2,11 @@
 <form  #f="ngForm">
     <div class="form-group col-md-6">
         <label for="name">Date de debut du contrat:</label>
-        <input type="date" class="form-control"  name="DateDebut"  [(ngModel)]="contrat.dateDebutContrat" required #n="ngModel">
+        <input type="date" class="form-control"  name="dateDebutContrat"  [(ngModel)]="contrat.dateDebutContrat" required #n="ngModel">
     </div>
     <div class="form-group col-md-6">
         <label for="name">Date de Fin du contrat:</label>
-        <input type="date" class="form-control" id="DateFin" name="DateFin-time"  [(ngModel)]="contrat.dateFinContrat">
+        <input type="date" class="form-control" id="DateFin" name="dateFinContrat"  [(ngModel)]="contrat.dateFinContrat" >
     </div>
 <div class="form-group col-md-6">
     <label for="specialite">specialité:</label>
@@ -18,7 +18,7 @@
  </select>
 </div>
 
-    <fieldset class="form-control" id="radio" [(ngModel)]="contrat.archive">
+    <fieldset class="form-control" id="radio"  >
         <legend>archive</legend>
         <div>
           <input type="radio" [value]="true" id="true" name="radio"   [(ngModel)]="contrat.archive">
