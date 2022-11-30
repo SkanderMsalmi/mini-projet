@@ -11,14 +11,12 @@
             <div class="row">
                 <div class="col-3 d-flex align-items-center" >
                   <!--listlength feha moshkla alekher mehish intialized need to change it with an if-->
-                    <h6 class="mb-0">({{listlength}})  Departements</h6>
+                    <h6 class="mb-0"> Enseignants</h6>
                 </div>
-                <div class="col-4">
-               <input type="text" name="c" [(ngModel)]="searchtext" class="form-control bg-gradient-light px-4" placeholder="Search">
-              </div>
-                <div class="col-5 text-end">
-                    <a [routerLink]="['/departements/new']" class="btn bg-gradient-dark mb-0" ><i
-                            class="material-icons text-sm">add</i>&nbsp;&nbsp;Ajouter Departement</a>
+               
+                <div class="col-8 text-end">
+                    <a [routerLink]="['/enseignants/new']" class="btn bg-gradient-dark mb-0" ><i
+                            class="material-icons text-sm">add</i>&nbsp;&nbsp;Ajouter Enseignant</a>
                 </div>
             </div>
         </div>
@@ -28,42 +26,39 @@
                     <table class="table align-items-center mb-0">
                       <thead>
                         <tr>
-                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Department Name</th>
-                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Department Code</th>
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Head of Department</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Professor</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Code</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bloc</th>
 
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
                         </tr>
                       </thead>
                       <tbody  >
-                        <tr *ngFor="let dep of list | filter:searchtext">
+                        <tr *ngFor="let ens of list">
                             
                           <td>
                             <div class="d-flex px-2 py-1">
 
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">{{dep.nomDepart}}</h6>
+                                <h6 class="mb-0 text-sm">{{ens.nom}} {{ens.prenom}}</h6>
                               </div>
                             </div>
                           </td>
                           <td>
-                            <p class="text-xs font-weight-bold mb-0">{{dep.codeInterne}}</p>
+                            <p class="text-xs font-weight-bold mb-0">{{ens.codeEns}}</p>
                           </td>
                           <td class="align-middle text-center text-sm">
-                            <p class="text-xs text-secondary mb-0">{{dep.chefDepart}}</p>
+                            <p class="text-xs text-secondary mb-0">{{ens.role}}</p>
                           </td>
                           <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{dep.emailDepart}}</span>
+                            <span class="text-secondary text-xs font-weight-bold">{{ens.email}}</span>
                           </td>
-                          <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{dep.bloc}}</span>
-                          </td>
+                          
                           <td class="align-middle">
-                            <a (click)="deleteDep(dep)" class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
+                            <a (click)="deleteEns(ens)" class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
                                 class="material-icons text-sm me-2">delete</i>Delete</a>
-                                <a [routerLink]="['/departements/update',dep.idDepartement]" class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                <a [routerLink]="['/enseignants/update',ens.idEnseignant]" class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
                                     class="material-icons text-sm me-2">edit</i>Edit</a>
                           </td>
                         </tr>

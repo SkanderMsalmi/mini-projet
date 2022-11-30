@@ -6,6 +6,8 @@ import { DepartementComponent } from './departement.component';
 import { ListDepartementsComponent } from './list-departements/list-departements.component';
 import { FormDepartementComponent } from './form-departement/form-departement.component';
 import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     DepartementRoutingModule, 
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule,
   ]
 })
 export class DepartementModule { }

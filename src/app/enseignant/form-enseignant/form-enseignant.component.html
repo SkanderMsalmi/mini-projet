@@ -1,0 +1,126 @@
+<div class="container-fluid px-2 px-md-4">
+    <div class="page-header min-height-300 border-radius-xl mt-4"
+        style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
+        <span class="mask  bg-gradient-primary  opacity-6"></span>
+    </div>
+    <div class="card card-body mx-3 mx-md-4 mt-n6">
+
+
+        <div class="card-header pb-0 p-3">
+            
+
+                <div class="col-6 d-flex align-items-center">
+                    <h4 class="mb-0">{{action}} Enseignant</h4>
+                </div>
+
+
+            <div class="p-4">
+                
+                <form role="form">
+                    <div class="row">
+                    <div class="col-md-3">
+                        <div class="mb-4">
+                          <label class="form-label">Last Name :</label>
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="input-group input-group-dynamic  mb-4">
+                          <input type="text" name="lastName"  [(ngModel)]="enseignant.nom" class="form-control"  placeholder="Name of Professor">
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+                    <div class="row">
+                      <div class="col-md-3">
+                          <div class="mb-4">
+                            <label class="form-label">First Name :</label>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <div class="input-group input-group-dynamic  mb-4">
+                              <input type="text" name="firstName" class="form-control"  [(ngModel)]="enseignant.prenom" placeholder="last name">
+                          </div>
+                      </div>
+                   </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-4">
+                              <label class="form-label">Internal Code :</label>
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="input-group input-group-dynamic  mb-4">
+                                <input type="text" name="codeEns" class="form-control"  [(ngModel)]="enseignant.codeEns" placeholder="Internal Code">
+                            </div>
+                        </div>
+                     </div>
+
+
+
+
+
+                     <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-4">
+                              <label class="form-label">Email :</label>
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="input-group input-group-dynamic  mb-4">
+                                <input type="text" name="email" class="form-control" [(ngModel)]="enseignant.email"  placeholder="mail">
+                            </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                      <div class="col-md-3">
+                          <div class="mb-4">
+                            <label class="form-label">Role :</label>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <div class="input-group input-group-static mb-4">
+                            <select  name="bloc" class="form-control" [(ngModel)]="enseignant.role" id="role">
+                              <option value="A">A</option>
+                              <option value="B">B</option>
+
+                              <!--this needs to be updated my love-->
+                            </select>
+                          </div>
+                      </div>
+                   </div>
+                     <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-4">
+                              <label class="form-label">Image :</label>
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="input-group input-group-dynamic  mb-4">
+                                <input type="text" name="image" class="form-control" [(ngModel)]="enseignant.image"  placeholder="place the link to img">
+                            </div>
+                        </div>
+                     </div>
+                     <div class="row">
+               
+                      <div class="text-center">
+                          <button (click)="saveEns()" type="button"
+                              class="btn btn-lg bg-gradient-primary btn-lg w-50 mt-4 mb-0">{{action}}</button>
+                      </div>  
+                   </div>
+                 
+                </form>
+              </div>
+              
+        </div>
+     
+
+
+
+</div>
+

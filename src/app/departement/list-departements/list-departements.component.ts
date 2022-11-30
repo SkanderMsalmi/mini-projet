@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Departement } from 'src/app/core/model/departement';
 import { DepartementService } from 'src/app/core/services/departement.service';
 
+
 @Component({
   selector: 'app-list-departements',
   templateUrl: './list-departements.component.html',
@@ -10,12 +11,14 @@ import { DepartementService } from 'src/app/core/services/departement.service';
 })
 export class ListDepartementsComponent implements OnInit {
 public list: Departement[];
+public listlength:number=0;
+searchtext:any;
   constructor(private depService:DepartementService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.depService.getAllDepartement().subscribe(
       (response:Departement[]) => { this.list = response ;
-      console.log(this.list)},
+      console.log(this.list), this.listlength=this.list.length},
       () => { console.log("error") },
       () => { console.log("complete") },
       
