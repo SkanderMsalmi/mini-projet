@@ -5,6 +5,7 @@ import { Equip } from 'src/app/core/model/equipe';
 import { Etudiant } from 'src/app/core/model/etudiant';
 import { DetailEquipeService } from 'src/app/core/services/detail-equipe.service';
 import { EquipeService } from 'src/app/core/services/equipe.service';
+import { EtudiantService } from 'src/app/core/services/etudiant.service.tes';
 
 @Component({
   selector: 'app-detail-equipe',
@@ -15,18 +16,20 @@ export class DetailEquipeComponent implements OnInit {
   public equipe : Equip ;
   public detailEquipe : DetailEquipe;
   public idDetail:number;
-  constructor(private serviceEquipe:EquipeService,private serviceDetailEquipe:DetailEquipeService,private activatedRoute:ActivatedRoute,private router : Router) {
+  public idEquipe:number=0;
+  constructor(private serviceEquipe:EquipeService,private serviceDetailEquipe:DetailEquipeService,private serviceEtudiant:EtudiantService,private activatedRoute:ActivatedRoute,private router : Router) {
     this.detailEquipe = new DetailEquipe();
     this.equipe = new Equip();
+    this.idEquipe = this.activatedRoute.snapshot.params['idEquipe'];
+
    }
 
   ngOnInit(): void {
     this.equipe= new Equip();
     this.equipe.etudiants = [];
-    let idEquipe = this.activatedRoute.snapshot.params['idEquipe'];
     let idDetailEquipe = this.activatedRoute.snapshot.params['idDetailEquipe'];
-    if(idEquipe != null){
-      this.serviceEquipe.getEquipeById(idEquipe).subscribe(
+    if(this.idEquipe != null){
+      this.serviceEquipe.getEquipeById(this.idEquipe).subscribe(
         (object:Equip)=>{ 
           this.equipe = object;
         }
@@ -59,5 +62,15 @@ export class DetailEquipeComponent implements OnInit {
       
   }
   
-
+  deleteEtudiantFromEquipe(e:Etudiant,idEtudiant:number,idEquipe:number){
+    
+    let i = this.equipe.etudiants.indexOf(e);
+    this.serviceEtudiant.unassignEtudiantFromoEquipe(idEtudiant,idEquipe).subscribe(
+      ()=>{
+        this.equipe.etudiants.splice(i,1);
+      }
+    )
+   
+  }
+  
 }

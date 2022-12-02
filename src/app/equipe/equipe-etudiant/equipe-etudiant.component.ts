@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Equip } from 'src/app/core/model/equipe';
 import { Etudiant } from 'src/app/core/model/etudiant';
@@ -12,15 +12,22 @@ import { EtudiantService } from 'src/app/core/services/etudiant.service.tes';
 })
 export class EquipeEtudiantComponent implements OnInit {
   public equipe : Equip;
+  public etudiant : Etudiant;
+  
   public listEtudiant : Etudiant[]=[];
   public tousEtudiant : Etudiant[]=[];
+  public idEquipe:number;
   constructor(private router:Router,private activatedRoute:ActivatedRoute,private serviceEquipe:EquipeService,private serviceEtudiant:EtudiantService) {
+    this.etudiant = new Etudiant();
+    this.equipe= new Equip();
+this.equipe.etudiants =[];
    }
 
+
   ngOnInit(): void {
-    this.equipe= new Equip();
-    let idEquipe = this.activatedRoute.snapshot.params['id'];
-    this.serviceEquipe.getEquipeById(idEquipe).subscribe(
+   this.idEquipe = this.activatedRoute.snapshot.params['id'];
+
+    this.serviceEquipe.getEquipeById(this.idEquipe).subscribe(
       (response)=>{
         this.equipe=response;
         this.listEtudiant = this.equipe.etudiants;
@@ -28,13 +35,39 @@ export class EquipeEtudiantComponent implements OnInit {
     )
     this.serviceEtudiant.getAllEtudiants().subscribe(
       (reponse)=>{ this.tousEtudiant=reponse;
-        console.log(this.tousEtudiant);
         
   }
     )
 
   }
-  addMemberToTeam(){
-
+  addMemberToTeam(idEtudiant:number){
+    this.serviceEtudiant.assignEtudiantToEquipe(this.equipe,idEtudiant,this.idEquipe).subscribe(
+     ()=>{
+      this.ngOnInit();
+      
+     } 
+    );
+  
   }
+  public checkiFInEquipe(idEtudiant:number):boolean{
+    
+    if(this.equipe.etudiants.find((e)=>e.idEtudiant==idEtudiant)){
+      
+      return true;
+    }else {
+      
+      return false;
+  }}
+
+  deleteEtudiantFromEquipe(e:Etudiant,idEtudiant:number,idEquipe:number){
+    
+    let i = this.equipe.etudiants.indexOf(e);
+    this.serviceEtudiant.unassignEtudiantFromoEquipe(idEtudiant,idEquipe).subscribe(
+      ()=>{
+        this.equipe.etudiants.splice(i,1);
+      }
+    )
+   
+  }
+
 }

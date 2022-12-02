@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Etudiant } from '../model/etudiant';
 import { environment } from 'src/environments/environment';
+import { Equip } from '../model/equipe';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +37,11 @@ export class EtudiantService {
   }
   addAndAssignEtudiantToEquipeAndContract(e:Etudiant,idDepartement:number,idContrat:number){
     return this.http.put<Etudiant>(this.url+"addAndAssignEtudiantToEquipeAndContract/"+e.idEtudiant+"/"+idContrat,e)
+  }
+  assignEtudiantToEquipe( e:Equip,idEtudiant:number,idEquipe:number){
+    return this.http.post<Etudiant>(this.url+"assignEtudiantToEquipe/"+idEtudiant+"/"+idEquipe,e)
+  }
+  unassignEtudiantFromoEquipe(idEtudiant:number,idEquipe:number){
+    return this.http.delete(this.url+"unassignEtudiantFromoEquipe/"+idEtudiant+"/"+idEquipe)
   }
 }
