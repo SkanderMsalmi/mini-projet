@@ -3,6 +3,5 @@ export class    Departement {
 	nomDepart:string;
 	codeInterne:string; 
 	chefDepart:string;
-	emailDepart:string;  
 	bloc:string;
 }

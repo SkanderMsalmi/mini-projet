@@ -16,16 +16,31 @@
 
             <div class="p-4">
                 
-                <form role="form">
+                <form #f="ngForm">
                     <div class="row">
                     <div class="col-md-3">
                         <div class="mb-4">
-                          <label class="form-label">Last Name :</label>
+                          <label class="form-label">Last Name : *</label>
                         </div>
-                      </div>
+                    
+                    </div>
                       <div class="col-md-8">
                         <div class="input-group input-group-dynamic  mb-4">
-                          <input type="text" name="lastName"  [(ngModel)]="enseignant.nom" class="form-control"  placeholder="Name of Professor">
+                          <input type="text" name="lastName"  [(ngModel)]="enseignant.nom" class="form-control"  placeholder="Name of Professor" required minlength="3"  pattern="[A-Za-z]{3,12}$" #n="ngModel">
+                         <div class="alert alert-danger alert-dismissible text-white" *ngIf="n.invalid && n.touched">
+      
+                          <div *ngIf="n.hasError('required')">
+                            <span class="text-sm">this field is required</span>  
+                              
+                               </div>
+                             <div *ngIf="n.hasError('minlength')">
+                              <span class="text-sm"> minlength = 3 !</span> 
+                               
+                             </div>
+                             <div *ngIf="n.hasError('pattern')">
+                              <span class="text-sm">error pattern</span> 
+                            </div>
+                         </div>
                         </div>
                       </div>
                     </div>
@@ -36,13 +51,27 @@
                     <div class="row">
                       <div class="col-md-3">
                           <div class="mb-4">
-                            <label class="form-label">First Name :</label>
+                            <label class="form-label">First Name: *</label>
                           </div>
                         </div>
                         <div class="col-md-8">
                           <div class="input-group input-group-dynamic  mb-4">
-                              <input type="text" name="firstName" class="form-control"  [(ngModel)]="enseignant.prenom" placeholder="last name">
-                          </div>
+                              <input type="text" name="firstName" class="form-control"  [(ngModel)]="enseignant.prenom" placeholder="last name" required minlength="3"  pattern="[A-Za-z]{3,12}$" #p="ngModel">
+                              <div class="alert alert-danger alert-dismissible text-white" *ngIf="p.invalid && p.touched">
+      
+                                <div *ngIf="p.hasError('required')">
+                                  <span class="text-sm">this field is required</span>  
+                                    
+                                     </div>
+                                   <div *ngIf="p.hasError('minlength')">
+                                    <span class="text-sm"> minlength = 3 !</span> 
+                                     
+                                   </div>
+                                   <div *ngIf="p.hasError('pattern')">
+                                    <span class="text-sm">error pattern</span> 
+                                  </div>
+                               </div>
+                            </div>
                       </div>
                    </div>
 
@@ -56,7 +85,18 @@
                           </div>
                           <div class="col-md-8">
                             <div class="input-group input-group-dynamic  mb-4">
-                                <input type="text" name="codeEns" class="form-control"  [(ngModel)]="enseignant.codeEns" placeholder="Internal Code">
+                                <input type="text" name="codeEns" class="form-control"  [(ngModel)]="enseignant.codeEns" placeholder="Internal Code"  required  pattern="[A-Za-z0-9]{5,10}" #c="ngModel" >
+                                <div class="alert alert-danger alert-dismissible text-white" *ngIf="c.invalid && c.touched">
+      
+                                  <div *ngIf="c.hasError('required')">
+                                    <span class="text-sm">this field is required</span>  
+                                      
+                                       </div>
+
+                                     <div *ngIf="c.hasError('pattern')">
+                                      <span class="text-sm">error pattern</span> 
+                                    </div>
+                                 </div>
                             </div>
                         </div>
                      </div>
@@ -73,7 +113,18 @@
                           </div>
                           <div class="col-md-8">
                             <div class="input-group input-group-dynamic  mb-4">
-                                <input type="text" name="email" class="form-control" [(ngModel)]="enseignant.email"  placeholder="mail">
+                                <input type="text" name="email" class="form-control" [(ngModel)]="enseignant.email"  placeholder="mail"  required  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #m="ngModel" >
+                                <div class="alert alert-danger alert-dismissible text-white" *ngIf="m.invalid && m.touched">
+      
+                                  <div *ngIf="m.hasError('required')">
+                                    <span class="text-sm">this field is required</span>  
+                                      
+                                       </div>
+
+                                     <div *ngIf="m.hasError('pattern')">
+                                      <span class="text-sm">error pattern</span> 
+                                    </div>
+                                 </div>
                             </div>
                         </div>
                      </div>
@@ -85,15 +136,33 @@
                         </div>
                         <div class="col-md-8">
                           <div class="input-group input-group-static mb-4">
-                            <select  name="bloc" class="form-control" [(ngModel)]="enseignant.role" id="role">
-                              <option value="A">A</option>
-                              <option value="B">B</option>
+                            <select  name="role" class="form-control" [(ngModel)]="enseignant.role" id="role" required #r="ngModel">
+                              
+                              
+            
+            
+                              <option value="Responsable">Responsable</option>
+                              <option value="Enseignant">Enseignant</option>
+                              <option value="Chef">Chef departement</option>
+
 
                               <!--this needs to be updated my love-->
                             </select>
+                            
                           </div>
+                          <div class="alert alert-danger alert-dismissible text-white" *ngIf="r.invalid && r.touched">
+      
+                            <div *ngIf="r.hasError('required')">
+                              <span class="text-sm">this field is required</span>  
+                                
+                                 </div>
+                                 </div>
                       </div>
                    </div>
+
+
+                  
+
                      <div class="row">
                         <div class="col-md-3">
                             <div class="mb-4">
@@ -102,7 +171,16 @@
                           </div>
                           <div class="col-md-8">
                             <div class="input-group input-group-dynamic  mb-4">
-                                <input type="text" name="image" class="form-control" [(ngModel)]="enseignant.image"  placeholder="place the link to img">
+                                <input type="text" name="image" class="form-control" [(ngModel)]="enseignant.image"  placeholder="place the link to img"  required   #im="ngModel" >
+                                <div class="alert alert-danger alert-dismissible text-white" *ngIf="im.invalid && im.touched">
+      
+                                  <div *ngIf="im.hasError('required')">
+                                    <span class="text-sm">this field is required</span>  
+                                      
+                                       </div>
+
+                                     
+                                 </div>
                             </div>
                         </div>
                      </div>
@@ -110,7 +188,7 @@
                
                       <div class="text-center">
                           <button (click)="saveEns()" type="button"
-                              class="btn btn-lg bg-gradient-primary btn-lg w-50 mt-4 mb-0">{{action}}</button>
+                              class="btn btn-lg bg-gradient-primary btn-lg w-50 mt-4 mb-0" [disabled]="f.invalid">{{action}}</button>
                       </div>  
                    </div>
                  

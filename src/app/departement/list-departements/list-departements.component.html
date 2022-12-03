@@ -31,7 +31,6 @@
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Department Name</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Department Code</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Head of Department</th>
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bloc</th>
 
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
@@ -44,7 +43,7 @@
                             <div class="d-flex px-2 py-1">
 
                               <div class="d-flex flex-column justify-content-center">
-                                <h6 class="mb-0 text-sm">{{dep.nomDepart}}</h6>
+                                <a  [routerLink]="['/departements/detail',dep.idDepartement]"> <h6 class="mb-0 text-sm">{{dep.nomDepart}}</h6> </a>
                               </div>
                             </div>
                           </td>
@@ -54,9 +53,7 @@
                           <td class="align-middle text-center text-sm">
                             <p class="text-xs text-secondary mb-0">{{dep.chefDepart}}</p>
                           </td>
-                          <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold">{{dep.emailDepart}}</span>
-                          </td>
+                         
                           <td class="align-middle text-center">
                             <span class="text-secondary text-xs font-weight-bold">{{dep.bloc}}</span>
                           </td>

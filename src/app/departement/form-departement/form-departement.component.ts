@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { Departement } from 'src/app/core/model/departement';
 import { DepartementService } from 'src/app/core/services/departement.service';
@@ -11,10 +13,23 @@ import { DepartementService } from 'src/app/core/services/departement.service';
 export class FormDepartementComponent implements OnInit {
   public departement:Departement;
   public  action:string  ;
+  public formDE: FormGroup;
+  pattern="^[ a-zA-Z][a-zA-Z ]*$";
+
+//[ Validators.required,Validators.pattern(this.pattern),Validators.minLength(3)]
 
   constructor(private depService:DepartementService,private router:Router,private currentRoute: ActivatedRoute) { }
-
+ 
   ngOnInit(): void {
+    this.formDE = new FormGroup({
+      'nomDepart': new FormControl('',[ Validators.required,Validators.pattern(this.pattern),Validators.minLength(3)]),
+      'codeInterne': new FormControl('', [ Validators.required,Validators.minLength(3)]),
+      'bloc': new FormControl('', Validators.required),
+      'chefDepart': new FormControl('', [ Validators.required,Validators.pattern(this.pattern)]),
+
+    })
+
+
     let id=this.currentRoute.snapshot.params['id']; 
     if(id!=null){
       this.action="Update";
@@ -29,9 +44,12 @@ export class FormDepartementComponent implements OnInit {
       this.action="Add";
       this.departement = new Departement();
     }
+
+
+    
   }
   saveDep(){
-    console.log("saveisdone");
+    
     if(this.action=='Add')
 
     {     console.log("action is add");
@@ -41,7 +59,7 @@ export class FormDepartementComponent implements OnInit {
       )
     }
     else {
-      console.log("we havent started yet");
+      console.log("action is edit");
 
       this.depService.updateDepartement(this.departement).subscribe(
         
