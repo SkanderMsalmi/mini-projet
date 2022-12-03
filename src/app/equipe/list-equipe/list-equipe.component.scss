@@ -31,3 +31,14 @@
       
       
 }
+
+.navbar-nav{
+  i{
+     font-size: 1.4rem;
+      &:hover{
+         scale: 1.5;
+         cursor: pointer;
+         font-weight: 700;
+      }
+  }
+}

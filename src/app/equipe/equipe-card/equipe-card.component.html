@@ -1,0 +1,17 @@
+<div class="card-box bg-blue" style="padding: 0px 10px 40px;">
+    <div class="inner">
+  <div >
+    <i class="fa-solid fa-trash" style="color: red;float: right;font-size: 20px;padding: 5px;" (click)="deleteEquipe()"></i>
+    <h3 style="margin-bottom: 0;"> {{equipe.nomEquipe}} </h3>
+  </div>
+        <p> {{equipe.niveau}} </p>
+    </div>
+    <div class="icon">
+        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+    </div>
+    <div>
+      <button class="btn btn-warning " [routerLink]="['/equipes/editEquipe',equipe.idEquipe]">Modifier</button>
+
+    </div>
+    <a [routerLink]="[equipe.idEquipe,equipe.detailEquipe.idDetailEquipe]" class="card-box-footer ">  View More <i class="fa fa-arrow-circle-right"></i></a>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { debounceTime, tap } from 'rxjs';
 import { Equip } from 'src/app/core/model/equipe';
 import { EquipeService } from 'src/app/core/services/equipe.service';
 @Component({
@@ -11,6 +12,8 @@ import { EquipeService } from 'src/app/core/services/equipe.service';
 export class AjoutEquipeComponent implements OnInit {
   public form :FormGroup;
   public equip : Equip;
+  public nameExist:boolean;
+  public listAllEquipes: Equip[]=[];
   public niveaux : [
     {label:'Expert',value:"EXPERT"},
     {label:'Senior',value:"SENIOR"},
@@ -29,13 +32,7 @@ export class AjoutEquipeComponent implements OnInit {
     return this.form.get('thematique')
   }
 
-  validatorNomEquipe(formControl:AbstractControl):{[s:string]:boolean} {
-    if(formControl.value === 'Existe'){
-      return {existe:true}
-    }else{
-      return {};
-    }
-  }
+
 
   // validatorAsync(formControl:AbstractControl):Promise<{[s:string]:boolean}>{
   //   return new Promise((resolve,reject)=>{
@@ -47,16 +44,19 @@ export class AjoutEquipeComponent implements OnInit {
 
   constructor(private equipeService:EquipeService,private router:Router) {
     this.form = new FormGroup({});
+    
    }
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      nom: new FormControl('',[Validators.required,Validators.minLength(5),this.validatorNomEquipe]),
+      nom: new FormControl('',[Validators.required,Validators.minLength(5)]),
       niveau : new FormControl('',[Validators.required]),
       salle: new FormControl('',[Validators.required]),
       thematique : new FormControl('',[Validators.required])
     });
     this.form.setErrors(null);
+    this.checkName();
+
   }
 
   public ajoutEquipe():void{
@@ -75,6 +75,41 @@ export class AjoutEquipeComponent implements OnInit {
       ()=>{this.router.navigate(['/equipes'])}
     )
     
+  }
+   validatorNomEquipe(formControl:AbstractControl):{[s:string]:boolean} {
+     if(this.equipeService.checkName(formControl.value)){
+      return {exists:true}
+     }else{
+      return {};
+     }
+  }
+
+
+  public checkName(){
+    this.nom?.valueChanges.pipe(
+      debounceTime(500),
+      tap(name => {
+        if(name.length != 0 && this.nom?.invalid){
+          this.nom.markAsPending();
+        }else{
+          this.nom?.setErrors({'invalid':true});
+        }
+      })
+    ).subscribe(name =>{
+      this.equipeService.checkName(name).subscribe((response)=>{
+        if(response == true){
+          this.nom?.markAsPending({onlySelf:false});
+          this.nom?.setErrors({notUnique:true});
+         
+          
+                    
+        }else{
+          this.nom?.markAsPending({onlySelf:false});
+          this.nom?.setErrors(null);
+          this.nameExist=false;
+        }
+      })
+    })
   }
 
 }

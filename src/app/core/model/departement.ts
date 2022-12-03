@@ -1,5 +1,5 @@
 export class    Departement {
-   idDepartement:  number; 
+   idDepartement:number; 
 	nomDepart:string;
 	codeInterne:string; 
 	chefDepart:string;

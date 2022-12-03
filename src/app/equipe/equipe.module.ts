@@ -9,9 +9,12 @@ import { ListEquipeComponent } from './list-equipe/list-equipe.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterEquipPipe } from '../pipes/filter-equip.pipe';
+import { FilterEtudiantPipe } from '../pipes/filter-etudiant.pipe';
+
 import { EquipeRowComponent } from './equipe-row/equipe-row.component';
 import { EquipeEtudiantComponent } from './equipe-etudiant/equipe-etudiant.component';
 import { AjoutEquipeComponent } from './ajout-equipe/ajout-equipe.component';
+import { EquipeCardComponent } from './equipe-card/equipe-card.component';
 
 
 @NgModule({
@@ -21,9 +24,11 @@ import { AjoutEquipeComponent } from './ajout-equipe/ajout-equipe.component';
     FormEquipeComponent,
     ListEquipeComponent,
     FilterEquipPipe,
+    FilterEtudiantPipe,
     EquipeRowComponent,
     EquipeEtudiantComponent,
-    AjoutEquipeComponent
+    AjoutEquipeComponent,
+    EquipeCardComponent
   ],
   imports: [
     CommonModule,

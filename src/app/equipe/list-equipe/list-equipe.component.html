@@ -8,11 +8,40 @@
         </div>
         <div class="card-body px-0 pb-2">
           <div class="table-responsive p-0">
-            <div class="d-flex  input-search" >
-              <input class="form-control border p-2 " [(ngModel)]="filterText"  placeholder="Entrer Nom d'equipe" aria-label="Search">
-              
+            
+            <div class="d-flex   input-search" >
+
+                <input class="form-control border p-2 " [(ngModel)]="filterText"  placeholder="Entrer Nom d'equipe" aria-label="Search">
+              <nav class="navbar navbar-expand ">
+                <div class="container px-2">
+                   
+                      
+                      <ul class="navbar-nav" >
+                        <i class="fa-solid fa-list m-2" (click)="view = 'list'"></i>
+                        <i class="fa-solid fa-table-cells-large m-2 " (click)="view = 'card'"></i>
+                      </ul>
+                     
+                    
+                  </div>
+              </nav>
             </div>
-            <table class="table align-items-center mb-0">
+            <div class="col-12 d-flex" style="flex-wrap:wrap;" *ngIf="view == 'card'">
+              <div class="col-lg-4 col-md-6 col-12 mb-3 " *ngFor="let e of list | filterEquip:filterText" >
+                <div class="container">
+                  <div class="row">
+                      <div class="col-lg-12 col-sm-12">
+                        <app-equipe-card [equipe]="e" (deleteE)="deleteEquipe($event)" ></app-equipe-card>
+
+                      </div>
+              
+                  
+                    
+                  </div>
+               
+              </div>
+                </div>
+           </div>
+            <table class="table align-items-center mb-0" *ngIf="view == 'list'">
               <thead>
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Equipe</th>
@@ -59,7 +88,7 @@
             <div *ngIf="list.length < 1" class="d-flex flex-column justify-content-center align-items-center">
                
                 <img src="/assets/img/nodata.png" alt="">
-           <a class="btn btn-primary" routerLink="/equipes/new">Ajouter</a> 
+           <a class="btn btn-primary" routerLink="/equipes/ajout">Ajouter</a> 
 
             </div>
           </div>

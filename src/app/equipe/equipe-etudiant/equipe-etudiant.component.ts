@@ -13,7 +13,8 @@ import { EtudiantService } from 'src/app/core/services/etudiant.service.tes';
 export class EquipeEtudiantComponent implements OnInit {
   public equipe : Equip;
   public etudiant : Etudiant;
-  
+  public filterText :string ="";
+  public view :string ="";
   public listEtudiant : Etudiant[]=[];
   public tousEtudiant : Etudiant[]=[];
   public idEquipe:number;

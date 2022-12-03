@@ -13,11 +13,14 @@ export class ListEquipeComponent implements OnInit {
   public all : Equip[]=[];
   public list : Equip[]=[];
   public niveau:Niveau;
+  public view :string ="";
   public filterText :string ="";
   public controlleurUrl:string ="ControleurEquipe/";
  
 
-  constructor(private equipeService:CrudService,private route:ActivatedRoute) { }
+  constructor(private equipeService:CrudService,private route:ActivatedRoute) { 
+    this.view = "card"
+  }
 
   ngOnInit(): void {
     this.equipeService.getAll(Equip,this.controlleurUrl+"displayEquipes").subscribe(
