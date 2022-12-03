@@ -15,6 +15,7 @@ export class ListEquipeComponent implements OnInit {
   public niveau:Niveau;
   public view :string ="";
   public filterText :string ="";
+  public showModal :boolean =false;
   public controlleurUrl:string ="ControleurEquipe/";
  
 

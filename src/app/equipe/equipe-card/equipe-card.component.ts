@@ -8,6 +8,7 @@ import { Equip } from 'src/app/core/model/equipe';
 })
 export class EquipeCardComponent implements OnInit {
   @Input() equipe: Equip;
+  public showModal:boolean=false;
   @Output() private deleteE:EventEmitter<Equip> = new EventEmitter();
   constructor() { }
 

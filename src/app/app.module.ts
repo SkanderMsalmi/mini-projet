@@ -11,6 +11,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AsideComponent } from './shared/aside/aside.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { ModalDeleteComponent } from './shared/modal-delete/modal-delete.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     NotFoundComponent,
     AsideComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ModalDeleteComponent
   ],
   imports: [
     CommonModule,
