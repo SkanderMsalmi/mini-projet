@@ -74,6 +74,10 @@ export class DetailEnseignantComponent implements OnInit {
 
 
     }
+    back(){
+      
+    }
+
   }
 
 
