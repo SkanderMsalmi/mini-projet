@@ -26,11 +26,14 @@
                         </div>
                       </div>
                       <div class="col-md-8">
-                        <div class="input-group input-group-dynamic  mb-4">
-                          <input type="text" name="nom"   class="form-control"  placeholder="Nom" formControlName="nom" >
+                        <div class="input-group input-group-outline  mb-4">
+                          <label class="form-label">Nom</label>
+
+                          <input type="text" name="nom"   class="form-control"   formControlName="nom" >
                           
                         
                         </div>
+                        
                         <div class="text-danger" *ngIf="nom?.errors && form.get('nom')?.touched ">
                             <p class="text-danger" *ngIf="nom?.hasError('minlength')"> Vous devez entrer un nom au minimum 5 caracteres</p>
                             <p class="text-danger" *ngIf="nom?.hasError('required')"> Vous devez entrer un nom </p>
@@ -56,8 +59,10 @@
                             </div>
                           </div>
                           <div class="col-md-8">
-                            <div class="input-group input-group-static mb-4">
-                              <select  name="niveau" class="form-select"  id="niveau" formControlName="niveau" >
+                            <div class="input-group input-group-outline mb-4">
+                          <label class="form-label">Niveau</label>
+
+                              <select  name="niveau" class="form-select "  id="niveau" formControlName="niveau" >
                                     <option value="EXPERT">Expert</option>
                                     <option value="SENIOR">Senior</option>
                                     <option value="JUNIOR">Junior</option>
@@ -80,8 +85,10 @@
                             </div>
                           </div>
                           <div class="col-md-8">
-                            <div class="input-group input-group-dynamic  mb-4">
-                                <input type="number" name="salle" class="form-control " formControlName="salle"  placeholder="Salle">
+                            <div class="input-group input-group-outline  mb-4">
+                          <label class="form-label">Salle</label>
+
+                                <input type="number" name="salle" class="form-control " formControlName="salle"  >
                                 
                             </div>
                             <div class="text-danger mt-0" *ngIf="salle?.errors && salle?.touched">
@@ -96,8 +103,10 @@
                             </div>
                           </div>
                           <div class="col-md-8">
-                            <div class="input-group input-group-dynamic  mb-4">
-                                <input type="text" name="thematique" class="form-control" formControlName="thematique"  placeholder="Thematique">
+                            <div class="input-group input-group-outline  mb-4">
+                          <label class="form-label">Thematique</label>
+                               
+                              <input type="text" name="thematique" class="form-control" formControlName="thematique"  >
                                
                             </div>
                             <div class="text-danger" *ngIf="thematique?.errors && thematique?.touched">
