@@ -1,5 +1,5 @@
-<h1>add a new Contrat</h1>
-<form  #f="ngForm">
+
+<form class="container" #f="ngForm">
     <div class="form-group col-md-6">
         <label for="name">Date de debut du contrat:</label>
         <input type="date" class="form-control"  name="dateDebutContrat"  [(ngModel)]="contrat.dateDebutContrat" required #n="ngModel">
@@ -10,7 +10,8 @@
     </div>
 <div class="form-group col-md-6">
     <label for="specialite">specialité:</label>
- <select name="specialite" id="specialite"  [(ngModel)]="contrat.specialite" class="form-control">
+ <select name="specialite" id="specialite"  [(ngModel)]="contrat.specialite" class="form-select" required #q1="ngModel">
+    <div class="alert alert-danger" *ngIf="q1.invalid && q1.touched">this filed is required</div>
   <option value="IA">IA</option>
   <option value="RESEAUX">RESEAUX</option>
   <option value="CLOUD">CLOUD</option>
@@ -18,11 +19,10 @@
  </select>
 </div>
 
-    <fieldset class="form-control" id="radio"  >
-        <legend>archive</legend>
+    <fieldset class="form-control" id="radio" >
+        <label>archive</label>
         <div>
           <input type="radio" [value]="true" id="true" name="radio"   [(ngModel)]="contrat.archive">
-          
           <label for="name">Oui</label>
         </div>
         <div>
@@ -30,15 +30,22 @@
           
           <label for="name">Non</label>
         </div>
-        
-    </fieldset>
+        </fieldset>
     
+    <div class="form-group col-md-6">
+        <label for="numEtudiant">numero Etudiant</label>
+     <select name="idEtudiant" id="idEtudiant"  [(ngModel)]="contrat.idEtudiant" class="form-control" required #d2="ngModel" >
+        <div class="alert alert-danger" *ngIf="d2.invalid && d2.touched">this filed is required</div>
+
+      <option *ngFor="let etudiant of all" Value="etudiant.idEtudiant">{{etudiant.idEtudiant}} {{etudiant.nomE}} {{etudiant.prenomE}}</option>
+      </select>
+    </div>
     
    
     <div class="form-group col-md-6">
         <label for="description">montant du Contrat</label>
-        <input type="text"  name="montantContrat" [(ngModel)]="contrat.montantContrat" class="form-control" >
-        
+        <input type="text"  name="montantContrat" [(ngModel)]="contrat.montantContrat" class="form-control" required #d="ngModel" >
+        <div class="alert alert-danger" *ngIf="d.invalid && d.touched">this filed is required</div>
     </div>
-    <button class="btn btn-sm btn-success" (click)="saveContrat()">save</button>
+    <button type="submit" class="btn btn-sm btn-success" (click)="saveContrat()">save</button>
 </form>

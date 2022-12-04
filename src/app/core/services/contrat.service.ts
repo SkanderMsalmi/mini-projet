@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { contrat } from '../model/Contrat';
 import { HttpClient } from '@angular/common/http';
+import { Etudiant } from '../model/etudiant';
 
 @Injectable({
   providedIn:'root'
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class ContaratService {
   List:contrat[];
   public url=environment.url+'ControleurContrat/';
-
+public url2=environment.url+'ControleurEtudiant/';
   constructor(private http:HttpClient){}
   getAllContrat(){
     return this.http.get<contrat[]>(this.url+"displayContrats");
@@ -25,5 +26,8 @@ export class ContaratService {
    }
   getContratByID(id:number){
      return this.http.get<contrat>(this.url+"displayContrat/"+id)
+   }
+   getidNomPrenomEtudiant(){
+    return this.http.get<Etudiant[]>(this.url2+"displayStudents")
    }
 }

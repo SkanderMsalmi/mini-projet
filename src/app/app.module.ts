@@ -12,6 +12,10 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ModalDeleteComponent } from './shared/modal-delete/modal-delete.component';
 import { FormsModule } from '@angular/forms';
 import {  HttpClientModule } from '@angular/common/http';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import jsPDF from 'jspdf';
+
+
 
 
 @NgModule({
@@ -28,10 +32,11 @@ import {  HttpClientModule } from '@angular/common/http';
     
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClientModule
+    FormsModule, 
+    Ng2SearchPipeModule,
+    
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
