@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Departement } from 'src/app/core/model/departement';
+import { Enseignant } from 'src/app/core/model/Enseignant';
 import { DepartementService } from 'src/app/core/services/departement.service';
+import { EnseignantService } from 'src/app/core/services/enseignant.service';
 
 
 @Component({
@@ -13,7 +15,7 @@ export class ListDepartementsComponent implements OnInit {
 public list: Departement[];
 public listlength:number=0;
 searchtext:any;
-  constructor(private depService:DepartementService, private route: ActivatedRoute) { }
+  constructor(private depService:DepartementService, private ensService:EnseignantService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.depService.getAllDepartement().subscribe(
@@ -27,27 +29,28 @@ searchtext:any;
 deleteDep(d:Departement){
   let i=this.list.indexOf(d);
   this.depService.deleteDepartement(d.idDepartement).subscribe(
-    ()=>{this.list.splice(i,1)}
+    ()=>{this.list.splice(i,1), this.listlength=this.list.length},
+    ()=>{console.log("error while deleting department")}
   )
 }
-getColor(departement: Departement) { (2)
+  getColor(departement: Departement) { 
   switch (departement.bloc) {
     case 'A':
-      return 'primary';
+      return '#EF8490';
     case 'B':
-      return 'blue';
+      return '#EFD384';
     case 'C':
-      return 'red';
+      return '#AFEF84';
       case 'D':
-        return 'primary';
+        return '#84EFB5';
       case 'E':
-        return '#7E191B';
+        return '#84CEEF';
       case 'F':
-        return 'yellow';
+        return '#9684EF';
         case 'G':
-        return 'purple';
+        return 'EF84EC';
         default: 
-        return 'primary'
+        return '#180D0E'
   }
 
   } 

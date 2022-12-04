@@ -29,11 +29,12 @@
                       <thead>
                         <tr>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Department Name</th>
-                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Department Code</th>
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Head of Department</th>
+                          <th class=" text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Department Code</th>
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bloc</th>
 
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Details</th>
+
                         </tr>
                       </thead>
                       <tbody  >
@@ -49,19 +50,21 @@
                           </td>
                           <td>
                             <p class="text-xs font-weight-bold mb-0">{{dep.codeInterne}}</p>
-                          </td>
-                          <td class="align-middle text-center text-sm">
-                            <p class="text-xs text-secondary mb-0">{{dep.chefDepart}}</p>
-                          </td>
-                         
-                          <td class="align-middle text-center"  [ngStyle]="{'color':getColor(dep)}">
-                            <span class="text-secondary text-xs font-weight-bold">{{dep.bloc}}</span>
+                        
+                          <td class="align-middle text-center" >
+                            <p  [ngStyle]="{'color':getColor(dep)}">{{dep.bloc}}</p>
                           </td>
                           <td class="align-middle">
                             <a (click)="deleteDep(dep)" class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
-                                class="material-icons text-sm me-2">delete</i>Delete</a>
+                                class="material-icons text-sm me-2">delete</i></a>
                                 <a [routerLink]="['/departements/update',dep.idDepartement]" class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                    class="material-icons text-sm me-2">edit</i>Edit</a>
+                                    class="material-icons text-sm me-2">edit</i></a>
+                                
+                          </td>
+                          <td class="align-middle">
+                            
+                                    <a [routerLink]="['/departements/detail',dep.idDepartement]" class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                      class="material-icons text-sm me-2">more_horiz</i></a>
                           </td>
                         </tr>
                       </tbody>

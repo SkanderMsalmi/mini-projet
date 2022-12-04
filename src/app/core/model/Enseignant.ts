@@ -7,4 +7,5 @@ export class Enseignant{
 	image:string;
 	role:string;
 	email:string;
+	//departement_id_depart:number
 }

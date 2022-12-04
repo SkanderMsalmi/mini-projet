@@ -11,10 +11,13 @@ import { EnseignantService } from 'src/app/core/services/enseignant.service';
   styleUrls: ['./detail-departement.component.scss']
 })
 export class DetailDepartementComponent implements OnInit { 
-  public listEns: Enseignant[]; 
+  public listEns: Enseignant[];
   public enseignant:Enseignant;
+ 
+  public selectedeEnseignant:Enseignant;
   public departement:Departement; 
   public listlength:number; 
+  
 
 
 
@@ -55,4 +58,17 @@ export class DetailDepartementComponent implements OnInit {
 
 
 }
+
+
+
+//affectChefToProf(enseignant: Enseignant,department:Departement){
+ // enseignant.role='Chef'; 
+ // this.ensService.updateEnseignant(enseignant).subscribe(
+   // ()=>{console.log("updated successfully")},
+ //   ()=>{console.log("error while updating")}
+ // ) 
+ // department.chefDepart=enseignant.nom+ ' '+enseignant.prenom;
+ // this.depService.updateDepartement(department).subscribe()
+
+//}
 }

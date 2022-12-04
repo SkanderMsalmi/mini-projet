@@ -40,14 +40,13 @@
 
 
 
-
-                          <td>
-                              <!-- <div>     
-                                <img src=" {{ens.image}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                              </div> -->
+         
+                         
+                              <!--   <app-info-enseignant [enseignant]="enseignant"></app-info-enseignant>
+ -->
                              
 
-
+ <td>
                               <div class="d-flex px-2 py-1">
                                 <div>
                                   <img src="{{ens.image}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
@@ -76,12 +75,15 @@
                           <td class="align-middle text-center">
                             <span class="text-secondary text-xs font-weight-bold">{{ens.email}}</span>
                           </td>
-                          
+                            
+                            
                           <td class="align-middle">
                             <a (click)="deleteEns(ens)" class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
                                 class="material-icons text-sm me-2">delete</i>Delete</a>
                                 <a [routerLink]="['/enseignants/update',ens.idEnseignant]" class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
                                     class="material-icons text-sm me-2">edit</i>Edit</a>
+                                    <a [routerLink]="['/enseignants/detail',ens.idEnseignant]" class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                      class="material-icons text-sm me-2">more_horiz</i></a>
                           </td>                                                
                         </tr>
                       </tbody>

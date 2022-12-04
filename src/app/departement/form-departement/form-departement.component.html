@@ -95,7 +95,7 @@
 
 
 
-
+<!--
 
                      <div class="row">
                         <div class="col-md-3">
@@ -119,7 +119,7 @@
                                        </div>
                                    </div>
                         </div>
-                     </div>
+                     </div> -->
                      <div class="row">
                       <div class="col-md-3">
                           <div class="mb-4">
@@ -152,10 +152,20 @@
                      
                      <div class="row">
                
-                      <div class="text-center">
-                          <button type="submit"  [disabled]="formDE.invalid"
-                              class="btn btn-lg bg-gradient-primary btn-lg w-50 mt-4 mb-0">{{action}}</button>
-                      </div>  
+                      <div class="col-3">
+                                                   <a [routerLink]="['/departements/list']" class="btn bg-gradient-dark mb-0" >back</a>
+
+                             
+                             
+                            </div>  
+                            <div class="col-9 flex align-items-end">
+                              <button type="submit"  [disabled]="formDE.invalid"
+                                  class="btn btn-lg bg-gradient-primary btn-lg w-50 mt-4 mb-0">{{action}}</button>
+                                  
+                                 
+                                </div>  
+    
+
                    </div>
                  
                 </form>

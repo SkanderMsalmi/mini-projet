@@ -25,7 +25,7 @@ export class FormDepartementComponent implements OnInit {
       'nomDepart': new FormControl('',[ Validators.required,Validators.pattern(this.pattern),Validators.minLength(3)]),
       'codeInterne': new FormControl('', [ Validators.required,Validators.minLength(3)]),
       'bloc': new FormControl('', Validators.required),
-      'chefDepart': new FormControl('', [ Validators.required,Validators.pattern(this.pattern)]),
+      //'chefDepart': new FormControl('', [ Validators.required,Validators.pattern(this.pattern)]),
 
     })
 

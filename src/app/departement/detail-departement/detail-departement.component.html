@@ -12,8 +12,8 @@
             </h5>
         </div>
         <div class=" col-8 text-end">
-          <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="material-icons text-lg position-relative me-1">picture_as_pdf</i> PDF</button>        </div>
-      </div>
+          <a [routerLink]="['/departements/list']" class="btn bg-gradient-dark mb-0" >back</a>
+        </div>
 
       <!-- this is where the department name ends bbbbbbbbbbbbbbbbbbbbbbb-->
       <br> 
@@ -40,7 +40,6 @@
                   <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Name:</strong> &nbsp; {{departement.nomDepart}}</li>
                   <li class="list-group-item border-0 ps-0 text-sm" ><strong class="text-dark">Code: </strong> &nbsp;{{departement.codeInterne}}</li>
                   <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Bloc:</strong> &nbsp; {{departement.bloc}}</li>
-                  <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Head of Department:</strong> &nbsp; {{departement.chefDepart}}</li>
                 </ul>
               </div>
             </div>
@@ -69,6 +68,10 @@
               </li>
               
             </ul>
+            <div *ngIf="listEns.length < 1" class="d-flex flex-column justify-content-center align-items-center">
+               
+              <img src="/assets/img/emptylist.png" alt="pic" style="width: 70%">
+
         </div>
 
           <!-- inofmation about depatment-->
