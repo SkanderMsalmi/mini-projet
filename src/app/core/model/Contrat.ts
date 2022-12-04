@@ -5,4 +5,5 @@ export class contrat{
     specialite:String;
     archive:boolean;
     montantContrat:number;
+    idEtudiant:number;
 }
