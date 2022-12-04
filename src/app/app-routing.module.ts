@@ -5,7 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContratComponent } from './contrat/contrat.component';
 import { FormsModule } from '@angular/forms';
 
-const routes: Routes = [{ path: 'universites', loadChildren: () => import('./universite/universite.module').then(m => m.UniversiteModule) },
+const routes: Routes = [
+ { path: 'universites', loadChildren: () => import('./universite/universite.module').then(m => m.UniversiteModule) },
  { path: 'etudiants', loadChildren: () => import('./etudiant/etudiant.module').then(m => m.EtudiantModule) },
   { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) }, 
   { path: 'contrats', loadChildren: () => import('./contrat/contrat.module').then(m => m.ContratModule) }, 
