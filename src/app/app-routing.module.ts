@@ -10,7 +10,8 @@ const routes: Routes = [{ path: 'universites', loadChildren: () => import('./uni
   { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) }, 
   { path: 'contrats', loadChildren: () => import('./contrat/contrat.module').then(m => m.ContratModule) }, 
   { path: 'departements', loadChildren: () => import('./departement/departement.module').then(m => m.DepartementModule) }, 
-  { path: 'equipes', loadChildren: () => import('./equipe/equipe.module').then(m => m.EquipeModule) }];
+  { path: 'equipes', loadChildren: () => import('./equipe/equipe.module').then(m => m.EquipeModule) },
+ { path: 'enseignants', loadChildren: () => import('./enseignant/enseignant.module').then(m => m.EnseignantModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes),
