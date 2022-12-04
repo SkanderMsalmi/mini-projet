@@ -9,6 +9,8 @@ import { AsideComponent } from './shared/aside/aside.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ModalDeleteComponent } from './shared/modal-delete/modal-delete.component';
+import { FormsModule } from '@angular/forms';
+import {  HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,9 +24,11 @@ import { ModalDeleteComponent } from './shared/modal-delete/modal-delete.compone
     ModalDeleteComponent
   ],
   imports: [
-    CommonModule,
+    
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

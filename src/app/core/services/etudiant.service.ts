@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class EtudiantService {
-  public url=environment.url+'/ControleurEtudiant/'
+  public url=environment.url+'ControleurEtudiant/'
   public list: Etudiant[] =  []
   constructor(private http:HttpClient) { }
 
