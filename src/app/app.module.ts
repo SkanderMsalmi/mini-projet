@@ -40,3 +40,5 @@ import jsPDF from 'jspdf';
   providers: [],
   bootstrap: [AppComponent]
 })
+
+export class AppModule {}
