@@ -7,7 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./aside.component.scss']
 })
 export class AsideComponent implements OnInit {
- 
+  
+public asideMenu:boolean=false;
+
   constructor(private router:ActivatedRoute) { }
 
   ngOnInit(): void {

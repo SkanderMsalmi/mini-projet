@@ -32,5 +32,5 @@
       <button class="btn btn-warning " [routerLink]="['/equipes/editEquipe',equipe.idEquipe]">Modifier</button>
 
     </div>
-    <a [routerLink]="[equipe.idEquipe,equipe.detailEquipe.idDetailEquipe]" class="card-box-footer ">  View More <i class="fa fa-arrow-circle-right"></i></a>
+    <a [routerLink]="['/equipes/',equipe.idEquipe,equipe.detailEquipe.idDetailEquipe]" class="card-box-footer ">  View More <i class="fa fa-arrow-circle-right"></i></a>
 </div>
