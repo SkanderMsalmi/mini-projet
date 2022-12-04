@@ -30,4 +30,30 @@ deleteDep(d:Departement){
     ()=>{this.list.splice(i,1)}
   )
 }
+getColor(departement: Departement) { (2)
+  switch (departement.bloc) {
+    case 'A':
+      return 'primary';
+    case 'B':
+      return 'blue';
+    case 'C':
+      return 'red';
+      case 'D':
+        return 'primary';
+      case 'E':
+        return '#7E191B';
+      case 'F':
+        return 'yellow';
+        case 'G':
+        return 'purple';
+        default: 
+        return 'primary'
+  }
+
+  } 
+
+
+
+
+
 }

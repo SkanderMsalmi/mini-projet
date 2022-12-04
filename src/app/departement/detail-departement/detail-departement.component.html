@@ -63,7 +63,7 @@
                   <span class="text-xs">Role: <span class="text-dark ms-sm-2 font-weight-bold">{{ens.role}}</span></span>
                 </div>
                 <div class="col-8 text-end">
-                  <button class="btn btn-outline-primary btn-sm mb-0" > <i class="material-icons text-lg position-relative me-1">remove_circle_outline</i>
+                  <button class="btn btn-outline-primary btn-sm mb-0" (click)="removeEnsFromDepartement(departement,enseignant)" > <i class="material-icons text-lg position-relative me-1">remove_circle_outline</i>
                     remove from Dep</button>
                 </div>
               </li>

@@ -54,7 +54,7 @@
                             <p class="text-xs text-secondary mb-0">{{dep.chefDepart}}</p>
                           </td>
                          
-                          <td class="align-middle text-center">
+                          <td class="align-middle text-center"  [ngStyle]="{'color':getColor(dep)}">
                             <span class="text-secondary text-xs font-weight-bold">{{dep.bloc}}</span>
                           </td>
                           <td class="align-middle">

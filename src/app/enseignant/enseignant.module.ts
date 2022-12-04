@@ -7,6 +7,7 @@ import { FormEnseignantComponent } from './form-enseignant/form-enseignant.compo
 import { ListEnseignantComponent } from './list-enseignant/list-enseignant.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailEnseignantComponent } from './detail-enseignant/detail-enseignant.component';
+import { InfoEnseignantComponent } from './info-enseignant/info-enseignant.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { DetailEnseignantComponent } from './detail-enseignant/detail-enseignant
     EnseignantComponent,
     FormEnseignantComponent,
     ListEnseignantComponent,
-    DetailEnseignantComponent
+    DetailEnseignantComponent,
+    InfoEnseignantComponent
   ],
   imports: [
     CommonModule,

@@ -26,38 +26,52 @@
                     <table class="table align-items-center mb-0">
                       <thead>
                         <tr>
-                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"(click)="sortName('nom')"  >Professor</th>
-                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" (click)="sortCode('codeEns')" >Code</th>
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" (click)="sortRole('role')">Role</th>
-                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" (click)="sortEmail('email')">Email</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"(click)="sortName('nom')"  >   <i class="material-icons text-sm me-2">sort_by_alpha</i>Professor </th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" (click)="sortCode('codeEns')" >   <i class="material-icons text-sm me-2">sort_by_alpha</i>Code</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" (click)="sortRole('role')">   <i class="material-icons text-sm me-2">sort_by_alpha</i>Role</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" (click)="sortEmail('email')">   <i class="material-icons text-sm me-2">sort_by_alpha</i>Email</th>
 
                           <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
                         </tr>
                       </thead>
                       <tbody  >
-                        <tr *ngFor="let ens of list">
+                        <tr *ngFor="let ens of list"> 
+
+
+
+
 
                           <td>
-                            <div class="d-flex px-2 py-1">
                               <!-- <div>     
                                 <img src=" {{ens.image}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                               </div> -->
-                              <div class="d-flex px-2 py-1">
+                             
 
+
+                              <div class="d-flex px-2 py-1">
+                                <div>
+                                  <img src="{{ens.image}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                </div>
                                 <div class="d-flex flex-column justify-content-center">
                                   <a  [routerLink]="['/enseignants/detail',ens.idEnseignant]"><h6 class="mb-0 text-sm">{{ens.nom}} {{ens.prenom}}</h6></a>
                                 </div>
                               </div>
-                            </div>
+
+
+
                           </td> 
 
 
           
                           <td>
                             <p class="text-xs font-weight-bold mb-0">{{ens.codeEns}}</p>
-                          </td>
+                            
+                          </td>  
+                          
                           <td class="align-middle text-center text-sm">
-                            <p class="text-xs text-secondary mb-0">{{ens.role}}</p>
+                            <span class="badge" [ngClass]="{'bg-gradient-success':ens.role == 'Responsable',
+                            'bg-gradient-primary':ens.role == 'Chef',
+                            'bg-gradient-warning':ens.role == 'Enseignant'}">{{ens.role}}</span>
                           </td>
                           <td class="align-middle text-center">
                             <span class="text-secondary text-xs font-weight-bold">{{ens.email}}</span>
@@ -68,11 +82,11 @@
                                 class="material-icons text-sm me-2">delete</i>Delete</a>
                                 <a [routerLink]="['/enseignants/update',ens.idEnseignant]" class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
                                     class="material-icons text-sm me-2">edit</i>Edit</a>
-                          </td>
+                          </td>                                                
                         </tr>
                       </tbody>
                     </table>
-                  </div>
+                  </div>  
                  
                     
              </div>

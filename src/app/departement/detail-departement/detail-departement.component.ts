@@ -45,12 +45,14 @@ export class DetailDepartementComponent implements OnInit {
     }
   }
 
- // removeEnsFromDep(enseignant:Enseignant,int:number){
 
-  //    this.ensService.assingEnseignantToDepartement(enseignant,int);
+  removeEnsFromDepartement( departement:Departement,enseignant: Enseignant) {
+    let i = departement.enseignants.indexOf(enseignant);
+    departement.enseignants.splice(i,-1);
+    this.depService.updateDepartement(departement).subscribe(
+      () => {}
+    );
 
 
-
-  //}
-
+}
 }

@@ -1,4 +1,3 @@
-fluid px-2 px-md-4">
     <div class="page-header min-height-300 border-radius-xl mt-4"
     style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
     <span class="mask  bg-gradient-primary  opacity-6"></span>
@@ -20,35 +19,9 @@ fluid px-2 px-md-4">
       
       <div class="row">
         <div class="row">
-
-          <div class="col-12 col-xl-4">
-            <div class="card card-plain h-100 ">
-              <div class="card-header pb-0 p-3">
-                <div class="row">
-                  <div class="col-md-8 d-flex align-items-center">
-                    <h6 class="mb-0 text-sm">Professor's Information</h6>
+          <app-info-enseignant [enseignant]="enseignant"></app-info-enseignant>
 
 
-
-
-                  </div>
-                  <div class="col-md-4 text-end">
-                    <a a [routerLink]="['/enseignants/update',enseignant.idEnseignant]">
-                      <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" aria-hidden="true" aria-label="Edit Profile" data-bs-original-title="Edit Profile"></i><span class="sr-only">Edit Profile</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body p-3">
-                <ul class="list-group">
-                  <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">FullName:</strong> &nbsp; {{enseignant.nom}}   {{enseignant.prenom}}</li>
-                  <li class="list-group-item border-0 ps-0 text-sm" ><strong class="text-dark">Code: </strong> &nbsp;{{enseignant.codeEns}}</li>
-                  <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Role:</strong> &nbsp; {{enseignant.role}}</li>
-                  <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{enseignant.email}}</li>
-                </ul>
-              </div>
-            </div>
-          </div> 
           <div class="col-12 col-xl-8"> 
               <div class="card-header pb-0 p-3">
                 <div class="row">

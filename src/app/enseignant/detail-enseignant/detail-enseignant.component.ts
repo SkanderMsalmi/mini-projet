@@ -67,7 +67,7 @@ export class DetailEnseignantComponent implements OnInit {
       console.log(this.selectedOption); 
       console.log(this.enseignant.idEnseignant);
       //assingEnseignantToDepartement(e:Enseignant,idens:number,iddep:number)
-      this.ensService.assingEnseignantToDepartement(this.enseignant,this.printedOption); 
+      this.ensService.assingEnseignantToDepartement(this.enseignant,this.printedOption).subscribe();
 
             console.log("please work"); 
 
