@@ -51,7 +51,7 @@ export class FormUniversiteComponent implements OnInit {
     if (id != null) {
 
 
-      this.action = "Update";
+      this.action = "Modifier";
       this.itsupdate = true;
 
       /////////////////// departs of this uni 
@@ -92,7 +92,7 @@ export class FormUniversiteComponent implements OnInit {
 
 
     } else {
-      this.action = "Add";
+      this.action = "Ajouter";
       this.universite = new Universite();
     }
 
@@ -100,7 +100,7 @@ export class FormUniversiteComponent implements OnInit {
 
 
   saveUni() {
-    if (this.action == 'Add') {
+    if (this.action == 'Ajouter') {
 
 
       this.universiteService.addUniversite(this.universite).subscribe(

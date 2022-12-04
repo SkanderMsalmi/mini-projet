@@ -29,7 +29,7 @@
 
 
             <div class="col-6 d-flex align-items-center">
-                <h5 class="mb-0">{{action}} University</h5>
+                <h5 class="mb-0">{{action}} Universite</h5>
             </div>
             <!--<div class="col-md-6 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">-->
 
@@ -42,7 +42,7 @@
                         <div class="col-md-6  ">
                             <div>
                                 <div class="input-group input-group-dynamic mt-4 mb-4  ">
-                                    <input type="text" name="name" placeholder="Name of University"
+                                    <input type="text" name="name" placeholder="Nom"
                                         [(ngModel)]="universite.nomUniv" class="form-control" required
                                         pattern="[A-z0-9À-ž\s]{1,300}$" #n="ngModel">
                                 </div>
@@ -62,7 +62,7 @@
 
                             <div>
                                 <div class="input-group input-group-dynamic mt-4 mb-4  ">
-                                    <input type="text" name="mail" placeholder="E-mail of University"
+                                    <input type="text" name="mail" placeholder="E-mail "
                                         [(ngModel)]="universite.mailUniv" class="form-control" required
                                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #m="ngModel">
                                 </div>
@@ -79,7 +79,7 @@
 
                             <div>
                                 <div class="input-group input-group-dynamic mt-4 mb-4  ">
-                                    <input type="text" name="address" placeholder="Address of University"
+                                    <input type="text" name="address" placeholder="Adresse"
                                         [(ngModel)]="universite.addressUniv" class="form-control" required #a="ngModel">
                                 </div>
                                 <div class="alert alert-danger alert-dismissible text-white"
@@ -97,7 +97,7 @@
                             
                             <div *ngIf="itsupdate==true">
                                 <div class="col-md-4">
-                                    <label for="">Departments :</label>
+                                    <label for="">Departements :</label>
                                 </div>
                               
                                 <div class="col-md-8  mx-5">
@@ -121,7 +121,7 @@
                                 [disabled]="f.invalid">{{action}}</button>
                             &nbsp;&nbsp;
                             <button type="button" routerLink="/universites"
-                                class="btn btn-outline-primary    col-md-2">Cancel</button>
+                                class="btn btn-outline-primary    col-md-2">Annuler</button>
                         </div>
                     </div>
 
