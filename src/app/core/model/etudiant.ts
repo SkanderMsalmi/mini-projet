@@ -1,4 +1,5 @@
 import { Departement } from "./departement"
+import { fileHandler } from "./file"
 
 export class Etudiant{
     idEtudiant: number
@@ -6,4 +7,6 @@ export class Etudiant{
     nomE: String
     opt: "GAMIX"|"SE"|"SIM"|"NIDS"
     departement: Departement
+    image: fileHandler
+    profileImage: String
   }

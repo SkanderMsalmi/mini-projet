@@ -15,7 +15,7 @@ export class EtudiantService {
     console.log(this.url+'displayStudents');
     return this.http.get<Etudiant[]>(this.url+'displayStudents');
   }
-  addEtudiant(p:Etudiant){
+  addEtudiant(p:FormData){
     return this.http.post(this.url+'addStudent',p);
   }
   public delete(id: number){
