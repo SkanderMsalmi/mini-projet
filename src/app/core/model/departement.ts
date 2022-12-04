@@ -5,4 +5,5 @@ export class    Departement {
 	chefDepart:string;
 	emailDepart:string;  
 	bloc:string;
+	isselected : boolean;
 }

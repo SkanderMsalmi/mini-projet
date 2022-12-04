@@ -11,6 +11,7 @@ import { UniversiteService } from 'src/app/core/services/universite.service';
 export class ListUniversiteComponent implements OnInit {
   searchUni : string ='';
   public list: Universite[];
+  
  // public all: Universite[];
   constructor(private universiteService: UniversiteService,
     private route: ActivatedRoute) { }
@@ -26,7 +27,8 @@ export class ListUniversiteComponent implements OnInit {
       () => { console.log("error") },
       () => { console.log("complete") },
     );
-  }
+  
+     }
   deleteUni(u:Universite){
     let i = this.list.indexOf(u);
     this.universiteService.delete(u.idUniv).subscribe(

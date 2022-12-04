@@ -7,6 +7,9 @@ import { ListUniversiteComponent } from './list-universite/list-universite.compo
 import { FormUniversiteComponent } from './form-universite/form-universite.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from './list-universite/search.pipe';
+import { FormUniDepartsComponent } from './form-uni-departs/form-uni-departs.component';
+import { ListDepartementsComponent } from './list-departements/list-departements.component';
+import { DepartementComponent } from './departement/departement.component';
  
 
 
@@ -15,7 +18,11 @@ import { SearchPipe } from './list-universite/search.pipe';
     UniversiteComponent,
     ListUniversiteComponent,
     FormUniversiteComponent,
-    SearchPipe
+    SearchPipe,
+    FormUniDepartsComponent,
+ 
+    ListDepartementsComponent,
+    DepartementComponent
  
   ],
   imports: [

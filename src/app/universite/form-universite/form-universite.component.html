@@ -29,43 +29,109 @@
 
 
             <div class="col-6 d-flex align-items-center">
-                <h4 class="mb-0">{{action}} University</h4>
+                <h5 class="mb-0">{{action}} University</h5>
             </div>
-        <!--<div class="col-md-6 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">-->
-            
-            <div class="p-4">
+            <!--<div class="col-md-6 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">-->
 
-                <form role="form">
+
+
+            <form role="form" #f="ngForm">
+
+                <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="mb-4">
-                                <label class="form-label">Name of University :</label>
-                            </div>
-                        </div>
                         <div class="col-md-6  ">
-                            <div class="input-group input-group-dynamic  mb-4">
-                                <input type="text" name="name" [(ngModel)]="universite.nomUniv" class="form-control"
-                                    placeholder="Name of University">
+                            <div>
+                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                    <input type="text" name="name" placeholder="Name of University"
+                                        [(ngModel)]="universite.nomUniv" class="form-control" required
+                                        pattern="[A-z0-9À-ž\s]{1,300}$" #n="ngModel">
+                                </div>
+                                <div class="alert alert-danger alert-dismissible text-white"
+                                    *ngIf="n.invalid && n.touched">
+                                    <div *ngIf="n.hasError('required')">
+                                        Name is required
+                                    </div>
+
+                                    <div *ngIf="n.hasError('pattern')">
+                                        error pattern
+                                    </div>
+                                </div>
                             </div>
-                         <!---<div *ngFor="let dep of deplist" >
-                                <div><input type="checktype" name={{dep.nom_depart}} id=""></div>  
-                            </div> --> 
+
+
+
+                            <div>
+                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                    <input type="text" name="mail" placeholder="E-mail of University"
+                                        [(ngModel)]="universite.mailUniv" class="form-control" required
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #m="ngModel">
+                                </div>
+                                <div class="alert alert-danger alert-dismissible text-white"
+                                    *ngIf="m.invalid && m.touched">
+                                    <div *ngIf="m.hasError('required')">
+                                        E-mail is required
+                                    </div>
+                                    <div *ngIf="m.hasError('pattern')">
+                                        error pattern
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                    <input type="text" name="address" placeholder="Address of University"
+                                        [(ngModel)]="universite.addressUniv" class="form-control" required #a="ngModel">
+                                </div>
+                                <div class="alert alert-danger alert-dismissible text-white"
+                                    *ngIf="a.invalid && a.touched">
+                                    <div *ngIf="a.hasError('required')">
+                                        Address is required
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
+
+                        <div class="col-md-6">
+                            
+                            <div *ngIf="itsupdate==true">
+                                <div class="col-md-4">
+                                    <label for="">Departments :</label>
+                                </div>
+                              
+                                <div class="col-md-8  mx-5">
+                                    <div *ngFor="let dep of deplist">
+                                        <div><input type="checkbox" name="dep.idDepartement" value="dep.idDepartement"
+                                                (change)="onchange()" [(ngModel)]="dep.isselected"> <label
+                                                for="">{{dep.nomDepart}}</label></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                          
+                        </div>
+
+
                     </div>
-
-
-                   
-  
                     <div class="row">
-
-                        <div class="text-center">
-                            <button (click)="saveUni()" type="button"
-                                class="btn btn-lg bg-gradient-primary btn-lg col-md-6 mt-4 mb-0">{{action}}</button>
+                        <div class="  d-flex   justify-content-end">
+                            <button (click)="saveUni()" type="button" class="btn  bg-gradient-primary  col-md-2 "
+                                [disabled]="f.invalid">{{action}}</button>
+                            &nbsp;&nbsp;
+                            <button type="button" routerLink="/universites"
+                                class="btn btn-outline-primary    col-md-2">Cancel</button>
                         </div>
                     </div>
 
-                </form>
-            </div>
+
+                </div>
+
+            </form>
+
+
+
 
         </div>
 
