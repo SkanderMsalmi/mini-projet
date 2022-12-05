@@ -35,7 +35,7 @@
 
 
 
-            <form role="form" #f="ngForm">
+            <form role="form"  [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
 
                 <div class="col-md-12">
                     <div class="row">
@@ -43,19 +43,14 @@
                             <div>
                                 <div class="input-group input-group-dynamic mt-4 mb-4  ">
                                     <input type="text" name="name" placeholder="Nom"
-                                        [(ngModel)]="universite.nomUniv" class="form-control" required
-                                        pattern="[A-z0-9À-ž\s]{1,300}$" #n="ngModel">
+                                        [(ngModel)]="universite.nomUniv" class="form-control" 
+                                        formControlName="uniname" >
+                                        
                                 </div>
-                                <div class="alert alert-danger alert-dismissible text-white"
-                                    *ngIf="n.invalid && n.touched">
-                                    <div *ngIf="n.hasError('required')">
-                                        Name is required
-                                    </div>
-
-                                    <div *ngIf="n.hasError('pattern')">
-                                        error pattern
-                                    </div>
-                                </div>
+                                <div *ngIf="submitted || f['uniname'].touched && f['uniname'].invalid" >
+                                    <div *ngIf="f['uniname'].errors && f['uniname'].errors['required']">Name is required</div>
+                                  </div>
+                                 
                             </div>
 
 
@@ -63,32 +58,28 @@
                             <div>
                                 <div class="input-group input-group-dynamic mt-4 mb-4  ">
                                     <input type="text" name="mail" placeholder="E-mail "
-                                        [(ngModel)]="universite.mailUniv" class="form-control" required
-                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #m="ngModel">
+                                        [(ngModel)]="universite.mailUniv" class="form-control" 
+                                         formControlName="mail" >
+                                         
                                 </div>
-                                <div class="alert alert-danger alert-dismissible text-white"
-                                    *ngIf="m.invalid && m.touched">
-                                    <div *ngIf="m.hasError('required')">
-                                        E-mail is required
-                                    </div>
-                                    <div *ngIf="m.hasError('pattern')">
-                                        error pattern
-                                    </div>
-                                </div>
+                                <div *ngIf="submitted || f['mail'].touched && f['mail'].invalid" >
+                                    <div *ngIf="f['mail'].errors && f['mail'].errors['required']">E-mail is required</div>
+                                    <div *ngIf="f['mail'].errors && f['mail'].errors['pattern']">error pattern </div>
+                                  </div>
+                                 
                             </div>
 
                             <div>
                                 <div class="input-group input-group-dynamic mt-4 mb-4  ">
                                     <input type="text" name="address" placeholder="Adresse"
-                                        [(ngModel)]="universite.addressUniv" class="form-control" required #a="ngModel">
+                                        [(ngModel)]="universite.addressUniv" class="form-control"
+                                         formControlName="address"   >
+                                         
                                 </div>
-                                <div class="alert alert-danger alert-dismissible text-white"
-                                    *ngIf="a.invalid && a.touched">
-                                    <div *ngIf="a.hasError('required')">
-                                        Address is required
-                                    </div>
-
-                                </div>
+                                <div *ngIf="submitted || f['address'].touched && f['address'].invalid" >
+                                    <div *ngIf="f['address'].errors && f['address'].errors['required']">Address is required</div>
+                                  </div>
+                                
                             </div>
 
                         </div>
@@ -99,8 +90,8 @@
                     </div>
                     <div class="row">
                         <div class="  d-flex   justify-content-end">
-                            <button (click)="saveUni()" type="button" class="btn  bg-gradient-primary  col-md-2 "
-                                [disabled]="f.invalid">Enregistrer</button>
+                            <button  type="submit" class="btn  bg-gradient-primary  col-md-2 "
+                               [disabled]="reactiveForm.invalid" >Enregistrer</button>
                             &nbsp;&nbsp;
                             <button type="button" routerLink="/universites"
                                 class="btn btn-outline-primary    col-md-2">Annuler</button>

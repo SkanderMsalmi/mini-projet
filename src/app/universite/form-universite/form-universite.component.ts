@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Departement } from 'src/app/core/model/departement';
 import { Universite } from 'src/app/core/model/universite';
@@ -11,6 +12,8 @@ import { UniversiteService } from 'src/app/core/services/universite.service';
 })
 export class FormUniversiteComponent implements OnInit {
 
+  public submitted = false;
+
   public universite: Universite;
   public action: string;
   public deplist: Departement[];
@@ -19,58 +22,65 @@ export class FormUniversiteComponent implements OnInit {
   public itsupdate: boolean;
   public unideplist: Departement[];
   public checkedlistname: Departement[];
-  public newlist :  Departement[] ;
-  public filtered1 :  Departement[] ;
-  public filtered2 :  Departement[] ;
+  public newlist: Departement[];
+  public filtered1: Departement[];
+  public filtered2: Departement[];
   //public newlist : (Departement[] | Departement[]) [];
 
   // public list: Universite[];
-
-
+  reactiveForm: FormGroup ;
+  emailPattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$";
 
   constructor(private universiteService: UniversiteService, private depService: DepartementService,
-    private router: Router, private currentRoute: ActivatedRoute) { }
+    private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
-    this.universiteService.getAllUniversite().subscribe(
-      (response: Universite[]) => {
-        this.list = response;
-        //filter
-        console.log(this.list)
+
+    this.reactiveForm = this.formBuilder.group({
+      "uniname": ['', Validators.required],
+      "mail": ['', 
+      [
+        Validators.required, 
+        Validators.pattern(this.emailPattern),
+      ]
+    ],
+      "address": [ '', Validators.required ],
 
 
-      },
-      () => { console.log("error") },
-      () => { console.log("complete") },
-    );
+    });
+
+
+    this.universite = new Universite();
 
 
 
-    let id = this.currentRoute.snapshot.params['id'];
-    
-      this.universite = new Universite();
-    
-
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.reactiveForm.controls;
   }
 
 
-  saveUni() {
-    
-
-
-      this.universiteService.addUniversite(this.universite).subscribe(
-        () => { this.router.navigate(['/universites/adddeparts']) }
-      )
-     
-  }
-
+   
 
 
   onchange() {
     console.log(this.deplist)
   }
+
+
+  onSubmit() {
+    this.submitted = true
+    if (this.reactiveForm.invalid) {
+      return;
+    }else{
+      this.universiteService.addUniversite(this.universite).subscribe(
+        () => { this.router.navigate(['/universites/adddeparts']) }
+      )
   
+    }
+   
+  }
 
 
 
