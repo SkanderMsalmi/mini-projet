@@ -14,6 +14,9 @@ import { ModalDeleteComponent } from './shared/modal-delete/modal-delete.compone
 import {  HttpClientModule } from '@angular/common/http';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import jsPDF from 'jspdf';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -37,10 +40,14 @@ import jsPDF from 'jspdf';
     Ng2SearchPipeModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3500,
+      positionClass: 'toast-top-left',
+      preventDuplicates: true,
+    }), 
     
-  
   ],
   providers: [],
   bootstrap: [AppComponent]

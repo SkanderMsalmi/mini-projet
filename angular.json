@@ -23,6 +23,8 @@
           "options": {
             "outputPath": "dist/mini-projet",
             "index": "src/index.html",
+            "allowedCommonJsDependencies": [
+              "rxjs-compat"],
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
@@ -32,8 +34,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
-          
+              "src/styles.scss",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
           
