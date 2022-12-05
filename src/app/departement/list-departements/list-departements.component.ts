@@ -31,7 +31,8 @@ deleteDep(d:Departement){
   let i=this.list.indexOf(d);
   this.depService.deleteDepartement(d.idDepartement).subscribe(
     ()=>{this.list.splice(i,1), this.listlength=this.list.length},
-    ()=>{console.log("error while deleting department")}
+    ()=>{console.log("error while deleting department"),
+    this.toastr.error('something went wrong !','Error');}
   )
   this.toastr.success(d.nomDepart+' has been deleted successfully','Success');
 }

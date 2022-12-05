@@ -2,6 +2,7 @@ import { NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Departement } from 'src/app/core/model/departement';
 import { Enseignant } from 'src/app/core/model/Enseignant';
 import { DepartementService } from 'src/app/core/services/departement.service';
@@ -24,7 +25,7 @@ export class DetailEnseignantComponent implements OnInit {
   printedOption: number;
 
 
-  constructor(private ensService:EnseignantService,private depService:DepartementService,private router:Router,private currentRoute: ActivatedRoute) { }
+  constructor(private ensService:EnseignantService,private depService:DepartementService,private router:Router,private currentRoute: ActivatedRoute,private route: ActivatedRoute,private toastr: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -67,9 +68,9 @@ export class DetailEnseignantComponent implements OnInit {
       console.log(this.selectedOption); 
       console.log(this.enseignant.idEnseignant);
       //assingEnseignantToDepartement(e:Enseignant,idens:number,iddep:number)
-      this.ensService.assingEnseignantToDepartement(this.enseignant,this.printedOption).subscribe();
-
-            console.log("please work"); 
+      this.ensService.assingEnseignantToDepartement(this.enseignant,this.printedOption).subscribe(
+        ()=> (this.toastr.success('enseignant has been assigned !','Success'))
+      )
 
 
 
