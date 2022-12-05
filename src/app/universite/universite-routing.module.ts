@@ -5,6 +5,7 @@ import { FormUniversiteComponent } from './form-universite/form-universite.compo
 import { ListDepartementsComponent } from './list-departements/list-departements.component';
 import { ListUniversiteComponent } from './list-universite/list-universite.component';
 import { UniversiteComponent } from './universite.component';
+import { UpdateFormComponent } from './update-form/update-form.component';
 
 
 
@@ -14,7 +15,7 @@ const routes: Routes =  [
   {path:'list', component: ListUniversiteComponent},  
   {path:'new', component: FormUniversiteComponent},
   {path:'adddeparts', component: FormUniDepartsComponent},  
-  {path:'update/:id', component: FormUniversiteComponent}, 
+  {path:'update/:id', component: UpdateFormComponent}, 
   {path:'updateDeparts', component: FormUniDepartsComponent},   
   {path:'departements/:id', component: ListDepartementsComponent},
   

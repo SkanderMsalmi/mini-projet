@@ -48,81 +48,21 @@ export class FormUniversiteComponent implements OnInit {
 
 
     let id = this.currentRoute.snapshot.params['id'];
-    if (id != null) {
-
-
-      this.action = "Modifier";
-      this.itsupdate = true;
-
-      /////////////////// departs of this uni 
-      this.universiteService.getDeparts(id).subscribe(
-        (response: Departement[]) => {
-          this.unideplist = response;
-
-        },
-
-      );
-      ///////////////////////////////////////         
-
-
-      this.depService.getAllDepartement().subscribe(
-
-        (data: Departement[]) => {
-          this.deplist = data;
- 
-       for (let j=0; j<this.unideplist.length; j++) {
-           
-       
-        this.deplist.filter(x => x.idDepartement == Number(this.unideplist[j].idDepartement)).map(x=>x.isselected = true)
-        
-   
-         }
-          console.log(this.deplist)
-        }
-
-      );
-
-      this.universiteService.getUniversiteByID(id).subscribe(
-        (object: Universite) => this.universite = object
-      )
-
-      console.log(this.universite)
-      console.log(id)
-
-
-
-    } else {
-      this.action = "Ajouter";
+    
       this.universite = new Universite();
-    }
+    
 
   }
 
 
   saveUni() {
-    if (this.action == 'Ajouter') {
+    
 
 
       this.universiteService.addUniversite(this.universite).subscribe(
         () => { this.router.navigate(['/universites/adddeparts']) }
       )
-    }
-    else {
-      
-        let id = this.currentRoute.snapshot.params['id'];
-        this.checkedlist = this.deplist.filter(x => x.isselected == true).map(x => x.idDepartement)
-        for (let i in this.checkedlist) {
-          let checked = this.checkedlist[i];
-          this.universiteService.assignUniToDep(id, checked, this.universite).subscribe()
-    
-        }
-      
-      this.universiteService.update(this.universite).subscribe(
-        () => this.router.navigate(['/universites/'])
-      )
-
-      
-    }
+     
   }
 
 

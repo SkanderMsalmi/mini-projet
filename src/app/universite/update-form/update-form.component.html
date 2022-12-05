@@ -29,7 +29,7 @@
 
 
             <div class="col-6 d-flex align-items-center">
-                <h5 class="mb-0">Ajouter Universite</h5>
+                <h5 class="mb-0">Modifier Universite</h5>
             </div>
             <!--<div class="col-md-6 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">-->
 
@@ -93,7 +93,25 @@
 
                         </div>
 
-                       
+                        <div class="col-md-6">
+                            
+                            <div >
+                                <div class="col-md-4">
+                                    <label for="">Departements :</label>
+                                </div>
+                              
+                                <div class="col-md-8  mx-5">
+                                    <div *ngFor="let dep of deplist">
+                                        <div><input type="checkbox" name="dep.idDepartement" value="dep.idDepartement"
+                                                (change)="onchange()" [(ngModel)]="dep.isselected"> <label
+                                                for="">{{dep.nomDepart}}</label></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                          
+                        </div>
 
 
                     </div>

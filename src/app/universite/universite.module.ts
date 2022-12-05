@@ -10,6 +10,7 @@ import { SearchPipe } from './list-universite/search.pipe';
 import { FormUniDepartsComponent } from './form-uni-departs/form-uni-departs.component';
 import { ListDepartementsComponent } from './list-departements/list-departements.component';
 import { DepartementComponent } from './departement/departement.component';
+import { UpdateFormComponent } from './update-form/update-form.component';
  
 
 
@@ -22,7 +23,8 @@ import { DepartementComponent } from './departement/departement.component';
     FormUniDepartsComponent,
  
     ListDepartementsComponent,
-    DepartementComponent
+    DepartementComponent,
+    UpdateFormComponent
  
   ],
   imports: [
