@@ -14,6 +14,7 @@ import { ModalDeleteComponent } from './shared/modal-delete/modal-delete.compone
 import {  HttpClientModule } from '@angular/common/http';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import jsPDF from 'jspdf';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 
 
@@ -27,7 +28,8 @@ import jsPDF from 'jspdf';
     AsideComponent,
     FooterComponent,
     NavbarComponent,
-    ModalDeleteComponent
+    ModalDeleteComponent,
+    ContactFormComponent
   ],
   imports: [
     

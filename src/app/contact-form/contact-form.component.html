@@ -1,0 +1,24 @@
+
+<div class="d-flex flex-column m-auto justify-content align-items mt-5 " >
+    <h2 class="text-center mb-5"> Demande </h2>
+    <div class="row">
+    <div class="col-md-6 offset-md-3">
+    <form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)"><div class="form-group">
+    <label  class="form-label" for="Email">Email</label>
+    <input type="email" class="form-control border p-2" name="Email" aria-describedby="emailHelp" placeholder="Enter email"formControlName="Email">
+    
+    </div>
+    <div class="form-group">
+    <label  class="form-label" for="fullname">Full Name</label>
+    <input type="text" class="form-control border p-2" name="Fullname" placeholder="Full Name" formControlName="Fullname">
+    </div>
+    <div class="form-group">
+    <label  class="form-label" for="comment">Demande </label>
+    <textarea class="form-control border p-2" formControlName="Comment" name="Comment">
+    </textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!FormData.valid">Submit</button>
+    </form>
+    </div>
+    </div>
+    </div>
