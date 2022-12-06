@@ -37,7 +37,6 @@ export class EnseignantService {
     return this.http.get<Enseignant>(this.url+'DisplayEnseignantById/'+id)
   } 
 
-  //a tiny bit advanced but we love it
 
   
 
@@ -48,11 +47,6 @@ export class EnseignantService {
 
   }
 
-//  methode to assign to use in service departement <3
-//@PutMapping("assignEnseignantDepartement/{iddep}/{idEns}")
-//public void assignEnseignantDepartement(@PathVariable("iddep") Integer idDepratement, @PathVariable("idEns") Integer idEnseignant) {
-//  ensDep.assignEnseignantToDepartement(idEnseignant, idDepratement);
-//} 
 
 
 
@@ -63,7 +57,10 @@ assingEnseignantToDepartement(e:Enseignant,iddep:number){
   return this.http.put(this.url+'assignEnseignantDepartement/'+iddep+'/'+e.idEnseignant,e)
 }
 
-//deleteEnseignantFromDeprtement (still mabditesh fiha jimla :( ))
+unassingEnseignantToDepartement(idens:number,iddep:number){ 
+  return this.http.delete(this.url+'unassignEnseignantFromDepartement/'+iddep+'/'+idens)
+}
+
 
 
 sortString(list:Enseignant[],property: any){ 

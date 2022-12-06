@@ -15,7 +15,8 @@ import{Ng2SearchPipeModule}from 'ng2-search-filter';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import jsPDF from 'jspdf';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -35,14 +36,17 @@ import jsPDF from 'jspdf';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    
     ReactiveFormsModule,
-
     FormsModule, 
     Ng2SearchPipeModule,
     Ng2OrderModule,
     NgxPaginationModule,
-    
+BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3500,
+      positionClass: 'toast-top-left',
+      preventDuplicates: true,
+    }),
   
   ],
   providers: [],

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Departement } from 'src/app/core/model/departement';
 import { DepartementService } from 'src/app/core/services/departement.service';
 
@@ -18,9 +19,7 @@ export class FormDepartementComponent implements OnInit {
 
 //[ Validators.required,Validators.pattern(this.pattern),Validators.minLength(3)]
 
-  constructor(private depService:DepartementService,private router:Router,private currentRoute: ActivatedRoute) {
-    this.departement = new Departement();
-   }
+  constructor(private depService:DepartementService,private router:Router,private currentRoute: ActivatedRoute,private toastr: ToastrService) { }
  
   ngOnInit(): void {
     this.formDE = new FormGroup({
@@ -57,7 +56,8 @@ export class FormDepartementComponent implements OnInit {
     {     console.log("action is add");
 
       this.depService.addDeprement(this.departement).subscribe(
-        ()=>{this.router.navigate(['/departements/list'])}
+        ()=>{  this.toastr.success('Departement has been added !','Success')
+          this.router.navigate(['/departements/list'])}
       )
     }
     else {
@@ -65,10 +65,17 @@ export class FormDepartementComponent implements OnInit {
 
       this.depService.updateDepartement(this.departement).subscribe(
         
-        ()=> this.router.navigate(['/departements/list'])
+        ()=> {        this.toastr.success('Departement has been updated !','Success')
+
+          this.router.navigate(['/departements/list'])
+      }
         
       )
     }
+  }
+  back(){
+    this.router.navigate(['/departments/list'])
+
   }
 
 }

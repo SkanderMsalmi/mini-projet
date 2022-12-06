@@ -49,12 +49,17 @@ export class DetailDepartementComponent implements OnInit {
   }
 
 
-  removeEnsFromDepartement( departement:Departement,enseignant: Enseignant) {
-    let i = departement.enseignants.indexOf(enseignant);
-    departement.enseignants.splice(i,-1);
-    this.depService.updateDepartement(departement).subscribe(
-      () => {}
-    );
+ 
+removeEnsFromDepartement( departement:Departement,enseignant: Enseignant) {
+    let i = this.listEns.indexOf(enseignant);
+    this.ensService.unassingEnseignantToDepartement(enseignant.idEnseignant,departement.idDepartement).subscribe(
+      ()=>{
+        this.listEns.splice(i,1);
+      }
+    )
+
+
+}
 
 
 }
@@ -71,4 +76,3 @@ export class DetailDepartementComponent implements OnInit {
  // this.depService.updateDepartement(department).subscribe()
 
 //}
-}
