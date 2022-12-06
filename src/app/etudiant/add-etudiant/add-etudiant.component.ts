@@ -13,7 +13,7 @@ import { EtudiantService } from 'src/app/core/services/etudiant.service';
 })
 export class AddEtudiantComponent implements OnInit {
   public etudiant:Etudiant=new Etudiant();
-  public listDep:Departement[]=[{idDepart:1,nomDepart:"Info"},{idDepart:2,nomDepart:"Business"}];
+  // public listDep:Departement[]=[{idDepartement:1,nomDepart:"Info"},{idDepartement:2,nomDepart:"Business"}];
   public action:String;
 
   constructor(private es: EtudiantService,private router: Router, private route: ActivatedRoute,private s: DomSanitizer) { }
@@ -25,7 +25,7 @@ export class AddEtudiantComponent implements OnInit {
     }
     else{
     this.etudiant.opt="GAMIX"
-    this.etudiant.departement=this.listDep[0]
+    // this.etudiant.departement=this.listDep[0]
     this.action="Create"
     }
   }
