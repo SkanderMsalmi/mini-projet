@@ -22,7 +22,7 @@
         style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
         <span class="mask  bg-gradient-primary  opacity-6"></span>
     </div>
-    <div class="card card-body mx-3 mx-md-4 mt-n6">
+    <div class="card card-body mx-3 mx-md-4 mt-n10">
 
 
         <div class="card-header pb-0 p-3">
@@ -41,15 +41,15 @@
                     <div class="row">
                         <div class="col-md-6  ">
                             <div>
-                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                <div class="input-group input-group-dynamic mt-4 mb-0 ">
                                     <input type="text" name="name" placeholder="Nom"
                                         [(ngModel)]="universite.nomUniv" class="form-control" required
                                         pattern="[A-z0-9À-ž\s]{1,300}$" #n="ngModel">
                                 </div>
-                                <div class="alert alert-danger alert-dismissible text-white"
+                                <div class=" text-danger"
                                     *ngIf="n.invalid && n.touched">
                                     <div *ngIf="n.hasError('required')">
-                                        Name is required
+                                        Veuillez entrer un nom
                                     </div>
 
                                     <div *ngIf="n.hasError('pattern')">
@@ -61,31 +61,31 @@
 
 
                             <div>
-                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                <div class="input-group input-group-dynamic mt-4 mb-0  ">
                                     <input type="text" name="mail" placeholder="E-mail "
                                         [(ngModel)]="universite.mailUniv" class="form-control" required
                                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" #m="ngModel">
                                 </div>
-                                <div class="alert alert-danger alert-dismissible text-white"
+                                <div class=" text-danger"
                                     *ngIf="m.invalid && m.touched">
                                     <div *ngIf="m.hasError('required')">
-                                        E-mail is required
+                                        Veuillez entrer une adresse e-mail
                                     </div>
                                     <div *ngIf="m.hasError('pattern')">
-                                        error pattern
+                                        Cette adresse email est invalide
                                     </div>
                                 </div>
                             </div>
 
                             <div>
-                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                <div class="input-group input-group-dynamic mt-4 mb-0  ">
                                     <input type="text" name="address" placeholder="Adresse"
                                         [(ngModel)]="universite.addressUniv" class="form-control" required #a="ngModel">
                                 </div>
-                                <div class="alert alert-danger alert-dismissible text-white"
+                                <div class="text-danger"
                                     *ngIf="a.invalid && a.touched">
                                     <div *ngIf="a.hasError('required')">
-                                        Address is required
+                                        Veuillez entrer une adresse
                                     </div>
 
                                 </div>
@@ -115,7 +115,7 @@
 
 
                     </div>
-                    <div class="row">
+                    <div class="row  mt-4">
                         <div class="  d-flex   justify-content-end">
                             <button (click)="saveUni()" type="button" class="btn  bg-gradient-primary  col-md-2 "
                                 [disabled]="f.invalid">Enregistrer</button>
