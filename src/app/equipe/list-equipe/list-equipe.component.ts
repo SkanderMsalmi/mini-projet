@@ -3,7 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Equip } from 'src/app/core/model/equipe';
 import { Niveau } from 'src/app/core/model/Niveau';
 import { CrudService } from 'src/app/core/services/crud.service';
-
+import 'jspdf-autotable'
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 @Component({
   selector: 'app-list-equipe',
   templateUrl: './list-equipe.component.html',
@@ -58,6 +60,24 @@ export class ListEquipeComponent implements OnInit {
       this.showModal=false;
   }
 
+  generatePdf() {
 
+    let pdf = new jsPDF();
+    pdf.text("Equipe List", 25, 25);
+
+    pdf.setFontSize(10);
+    (pdf as any).autoTable({
+      theme: "grid",
+      tableWidth: 120,
+      styles: { halign: "left" },
+      margin: { left: 50, right: 50, top: 50 },
+      body: this.list
+
+
+    })
+    console.log("list:",this.list);
+    pdf.output('dataurlnewwindow');
+    pdf.save('contrat' + '.pdf')
+  }
 
 }

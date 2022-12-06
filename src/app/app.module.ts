@@ -17,6 +17,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import jsPDF from 'jspdf';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 
 
@@ -28,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NotFoundComponent,
     AsideComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    ContactFormComponent
    
   ],
   imports: [
