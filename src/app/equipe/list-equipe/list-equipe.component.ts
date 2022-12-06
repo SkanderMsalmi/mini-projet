@@ -20,7 +20,11 @@ export class ListEquipeComponent implements OnInit {
   public controlleurUrl:string ="ControleurEquipe/";
   public showModal:boolean=false;
  
-
+  public niveaux : [
+    {label:'Expert',value:"EXPERT"},
+    {label:'Senior',value:"SENIOR"},
+    {label:'Junior',value:"JUNIOR"}
+  ]
   constructor(private equipeService:CrudService,private route:ActivatedRoute) { 
     this.view = "list"
   }

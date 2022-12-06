@@ -47,14 +47,14 @@ export class AjoutEquipeComponent implements OnInit {
     
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void { //reactiveform
     this.form = new FormGroup({
       nom: new FormControl('',[Validators.required]),
       niveau : new FormControl('',[Validators.required]),
       salle: new FormControl('',[Validators.required]),
       thematique : new FormControl('',[Validators.required])
     });
-      this.checkName();
+      this.checkName(); 
 
 
   }

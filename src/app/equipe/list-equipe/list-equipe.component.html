@@ -47,7 +47,7 @@
               </div>
                 </div>
            </div>
-            <table class="table align-items-center mb-0" *ngIf="view == 'list'">
+            <table  class="table align-items-center mb-0" *ngIf="view == 'list'">
               <thead>
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Equipe</th>
@@ -60,7 +60,7 @@
               <tbody>
                
           
-                <tr *ngFor="let e of list | filterEquip:filterText">
+                <tr  *ngFor="let e of list | filterEquip:filterText">
                     <td>
                       <div class="d-flex px-2 py-1">
                         
@@ -70,7 +70,9 @@
                         </div>
                       </div>
                     </td>
-                    <td>
+                    <td [ngStyle]="{'color': 
+                    e.niveau.toString() === 'EXPERT'  ? 'red' : 
+                    e.niveau.toString() === 'JUNIOR'  ? 'blue' : 'green' }">
                       <p class="text-xs font-weight-bold mb-0">{{e.niveau}}</p>
                     </td>
                     <td class="align-middle text-center text-sm">
