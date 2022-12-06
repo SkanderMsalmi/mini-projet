@@ -1,7 +1,7 @@
 import {CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +23,16 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     AsideComponent,
     FooterComponent,
     NavbarComponent
+   
   ],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
+
     
   ],
   providers: [],

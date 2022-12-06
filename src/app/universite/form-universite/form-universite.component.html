@@ -29,40 +29,82 @@
 
 
             <div class="col-6 d-flex align-items-center">
-                <h4 class="mb-0">{{action}} University</h4>
+                <h5 class="mb-0">Ajouter Universite</h5>
             </div>
-        <!--<div class="col-md-6 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">-->
-            
-            <div class="p-4">
+            <!--<div class="col-md-6 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">-->
 
-                <form role="form">
+
+
+            <form role="form"  [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+
+                <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="mb-4">
-                                <label class="form-label">Name of University :</label>
-                            </div>
-                        </div>
                         <div class="col-md-6  ">
-                            <div class="input-group input-group-dynamic  mb-4">
-                                <input type="text" name="name" [(ngModel)]="universite.nomUniv" class="form-control"
-                                    placeholder="Name of University">
+                            <div>
+                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                    <input type="text" name="name" placeholder="Nom"
+                                        [(ngModel)]="universite.nomUniv" class="form-control" 
+                                        formControlName="uniname" >
+                                        
+                                </div>
+                                <div *ngIf="submitted || f['uniname'].touched && f['uniname'].invalid" >
+                                    <div *ngIf="f['uniname'].errors && f['uniname'].errors['required']">Name is required</div>
+                                  </div>
+                                 
                             </div>
+
+
+
+                            <div>
+                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                    <input type="text" name="mail" placeholder="E-mail "
+                                        [(ngModel)]="universite.mailUniv" class="form-control" 
+                                         formControlName="mail" >
+                                         
+                                </div>
+                                <div *ngIf="submitted || f['mail'].touched && f['mail'].invalid" >
+                                    <div *ngIf="f['mail'].errors && f['mail'].errors['required']">E-mail is required</div>
+                                    <div *ngIf="f['mail'].errors && f['mail'].errors['pattern']">error pattern </div>
+                                  </div>
+                                 
+                            </div>
+
+                            <div>
+                                <div class="input-group input-group-dynamic mt-4 mb-4  ">
+                                    <input type="text" name="address" placeholder="Adresse"
+                                        [(ngModel)]="universite.addressUniv" class="form-control"
+                                         formControlName="address"   >
+                                         
+                                </div>
+                                <div *ngIf="submitted || f['address'].touched && f['address'].invalid" >
+                                    <div *ngIf="f['address'].errors && f['address'].errors['required']">Address is required</div>
+                                  </div>
+                                
+                            </div>
+
                         </div>
+
+                       
+
+
                     </div>
-
-
-                   
-  
                     <div class="row">
-
-                        <div class="text-center">
-                            <button (click)="saveUni()" type="button"
-                                class="btn btn-lg bg-gradient-primary btn-lg col-md-6 mt-4 mb-0">{{action}}</button>
+                        <div class="  d-flex   justify-content-end">
+                            <button  type="submit" class="btn  bg-gradient-primary  col-md-2 "
+                               [disabled]="reactiveForm.invalid" >Enregistrer</button>
+                            &nbsp;&nbsp;
+                            <button type="button" routerLink="/universites"
+                                class="btn btn-outline-primary    col-md-2">Annuler</button>
                         </div>
                     </div>
 
-                </form>
-            </div>
+
+                </div>
+
+            </form>
+
+
+
 
         </div>
 

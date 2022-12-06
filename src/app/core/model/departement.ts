@@ -8,4 +8,6 @@ export class    Departement {
 	enseignants:Enseignant[];
 
 
+
+	isselected : boolean;
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Departement } from 'src/app/core/model/departement';
 import { Universite } from 'src/app/core/model/universite';
+import { DepartementService } from 'src/app/core/services/departement.service';
 import { UniversiteService } from 'src/app/core/services/universite.service';
 @Component({
   selector: 'app-form-universite',
@@ -9,46 +12,76 @@ import { UniversiteService } from 'src/app/core/services/universite.service';
 })
 export class FormUniversiteComponent implements OnInit {
 
+  public submitted = false;
+
   public universite: Universite;
   public action: string;
+  public deplist: Departement[];
+  public list: Universite[];
+  public checkedlist: number[];
+  public itsupdate: boolean;
+  public unideplist: Departement[];
+  public checkedlistname: Departement[];
+  public newlist: Departement[];
+  public filtered1: Departement[];
+  public filtered2: Departement[];
+  //public newlist : (Departement[] | Departement[]) [];
 
-  constructor(private universiteService: UniversiteService,
-    private router:Router, private currentRoute: ActivatedRoute) { }
+  // public list: Universite[];
+  reactiveForm: FormGroup ;
+  emailPattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$";
+
+  constructor(private universiteService: UniversiteService, private depService: DepartementService,
+    private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    
-    
-   
-    let id= this.currentRoute.snapshot.params['id'];
-    if(id!=null){
-      //update
-      this.action="Update";
-      //this.uni= this.uniService.getuniByID(id);
-      this.universiteService.getUniversiteByID(id).subscribe(
-        (object: Universite)=> this.universite=object
-      )
-      console.log(this.universite)
-      console.log(id)
-    }else
-    { this.action="Add";
-      this.universite = new Universite();}
-     
+
+
+    this.reactiveForm = this.formBuilder.group({
+      "uniname": ['', Validators.required],
+      "mail": ['', 
+      [
+        Validators.required, 
+        Validators.pattern(this.emailPattern),
+      ]
+    ],
+      "address": [ '', Validators.required ],
+
+
+    });
+
+
+    this.universite = new Universite();
+
+
+
   }
-  saveUni(){
-    if(this.action=='Add')
-    {
-    //this.universiteService.list.push(this.universite);
-    this.universiteService.addUniversite(this.universite).subscribe(
-      ()=>{ this.router.navigate(['/universites/list'])}
-    )
-   }
-    else {
-      this.universiteService.update(this.universite).subscribe(
-        ()=> this.router.navigate(['/universites/list'])
-      )
-    }
+  get f(): { [key: string]: AbstractControl } {
+    return this.reactiveForm.controls;
   }
 
- 
+
+   
+
+
+  onchange() {
+    console.log(this.deplist)
+  }
+
+
+  onSubmit() {
+    this.submitted = true
+    if (this.reactiveForm.invalid) {
+      return;
+    }else{
+      this.universiteService.addUniversite(this.universite).subscribe(
+        () => { this.router.navigate(['/universites/adddeparts']) }
+      )
+  
+    }
+   
+  }
+
+
 
 }
