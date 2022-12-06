@@ -41,7 +41,7 @@ export class EtudiantService {
   assignEtudiantToEquipe( e:Equip,idEtudiant:number,idEquipe:number){
     return this.http.post<Etudiant>(this.url+"assignEtudiantToEquipe/"+idEtudiant+"/"+idEquipe,e)
   }
-  unassignEtudiantFromoEquipe(idEtudiant:number,idEquipe:number){
-    return this.http.delete(this.url+"unassignEtudiantFromoEquipe/"+idEtudiant+"/"+idEquipe)
+  unassignEtudiantFromEquipe(idEtudiant:number,idEquipe:number){
+    return this.http.delete(this.url+"unassignEtudiantFromEquipe/"+idEtudiant+"/"+idEquipe)
   }
 }

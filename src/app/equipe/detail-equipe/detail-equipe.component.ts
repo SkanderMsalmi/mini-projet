@@ -17,6 +17,8 @@ export class DetailEquipeComponent implements OnInit {
   public detailEquipe : DetailEquipe;
   public idDetail:number;
   public idEquipe:number=0;
+  public showModal:boolean=false;
+
   constructor(private serviceEquipe:EquipeService,private serviceDetailEquipe:DetailEquipeService,private serviceEtudiant:EtudiantService,private activatedRoute:ActivatedRoute,private router : Router) {
     this.detailEquipe = new DetailEquipe();
     this.equipe = new Equip();
@@ -65,7 +67,7 @@ export class DetailEquipeComponent implements OnInit {
   deleteEtudiantFromEquipe(e:Etudiant,idEtudiant:number,idEquipe:number){
     
     let i = this.equipe.etudiants.indexOf(e);
-    this.serviceEtudiant.unassignEtudiantFromoEquipe(idEtudiant,idEquipe).subscribe(
+    this.serviceEtudiant.unassignEtudiantFromEquipe(idEtudiant,idEquipe).subscribe(
       ()=>{
         this.equipe.etudiants.splice(i,1);
       }

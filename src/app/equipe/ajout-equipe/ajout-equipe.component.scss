@@ -8,10 +8,8 @@
 }
 
 .ng-valid.ng-touched {
-    border:none;
-    border:1px solid green;
+   
     border-radius: 5px !important;
-    background-color: white !important;
 }
 
 input.ng-invalid.ng-touched{
@@ -20,3 +18,7 @@ input.ng-invalid.ng-touched{
     border-radius: 5px !important;
 }
 
+
+form input{
+    background-color: transparent;
+}

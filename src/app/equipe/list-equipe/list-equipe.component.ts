@@ -13,13 +13,14 @@ export class ListEquipeComponent implements OnInit {
   public all : Equip[]=[];
   public list : Equip[]=[];
   public niveau:Niveau;
-  public view :string ="";
+  public  view :string ="";
   public filterText :string ="";
   public controlleurUrl:string ="ControleurEquipe/";
+  public showModal:boolean=false;
  
 
   constructor(private equipeService:CrudService,private route:ActivatedRoute) { 
-    this.view = "card"
+    this.view = "list"
   }
 
   ngOnInit(): void {
@@ -54,6 +55,7 @@ export class ListEquipeComponent implements OnInit {
           this.list.splice(i,1);
         }
       )
+      this.showModal=false;
   }
 
 

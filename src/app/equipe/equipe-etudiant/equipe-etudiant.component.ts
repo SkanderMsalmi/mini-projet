@@ -63,7 +63,7 @@ this.equipe.etudiants =[];
   deleteEtudiantFromEquipe(e:Etudiant,idEtudiant:number,idEquipe:number){
     
     let i = this.equipe.etudiants.indexOf(e);
-    this.serviceEtudiant.unassignEtudiantFromoEquipe(idEtudiant,idEquipe).subscribe(
+    this.serviceEtudiant.unassignEtudiantFromEquipe(idEtudiant,idEquipe).subscribe(
       ()=>{
         this.equipe.etudiants.splice(i,1);
       }

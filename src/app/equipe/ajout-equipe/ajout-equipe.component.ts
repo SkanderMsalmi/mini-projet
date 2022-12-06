@@ -49,13 +49,13 @@ export class AjoutEquipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      nom: new FormControl('',[Validators.required,Validators.minLength(5)]),
+      nom: new FormControl('',[Validators.required]),
       niveau : new FormControl('',[Validators.required]),
       salle: new FormControl('',[Validators.required]),
       thematique : new FormControl('',[Validators.required])
     });
-    this.form.setErrors(null);
-    this.checkName();
+      this.checkName();
+
 
   }
 
@@ -86,30 +86,33 @@ export class AjoutEquipeComponent implements OnInit {
 
 
   public checkName(){
-    this.nom?.valueChanges.pipe(
-      debounceTime(500),
-      tap(name => {
-        if(name.length != 0 && this.nom?.invalid){
-          this.nom.markAsPending();
-        }else{
-          this.nom?.setErrors({'invalid':true});
-        }
+
+      this.nom?.valueChanges.pipe(
+        debounceTime(500),
+        tap(name => {
+          if(name.length != 0 && this.nom?.invalid){
+            
+            this.nom.markAsPending();
+          }else{
+            this.nom?.setErrors({'invalid':true});
+          }
+        })
+      ).subscribe(name =>{
+        this.equipeService.checkName(name).subscribe((response)=>{
+          if(response == true){
+            this.nom?.markAsPending({onlySelf:false});
+            this.nom?.setErrors({notUnique:true});
+           
+            
+                      
+          }else{
+            this.nom?.markAsPending({onlySelf:false});
+            this.nom?.setErrors(null);
+            this.nameExist=false;
+          }
+        })
       })
-    ).subscribe(name =>{
-      this.equipeService.checkName(name).subscribe((response)=>{
-        if(response == true){
-          this.nom?.markAsPending({onlySelf:false});
-          this.nom?.setErrors({notUnique:true});
-         
-          
-                    
-        }else{
-          this.nom?.markAsPending({onlySelf:false});
-          this.nom?.setErrors(null);
-          this.nameExist=false;
-        }
-      })
-    })
-  }
+    }
+   
 
 }
