@@ -67,9 +67,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr 
+                                    
+                                    <tr  
                                         *ngFor="let uni of list | search: searchUni">
-                                        <td class="col-md-4  cursor-pointer"  [routerLink]="['/universites/departements',uni.idUniv]" id="linkname" >
+                                        
+                                        <td title=" Afficher les departements"  class="col-md-4  cursor-pointer"  [routerLink]="['/universites/departements',uni.idUniv]" id="linkname" >
                                             <div class="d-flex px-2 py-1">
 
                                                 <div class="d-flex flex-column justify-content-center">

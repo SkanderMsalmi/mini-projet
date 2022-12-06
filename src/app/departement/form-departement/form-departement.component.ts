@@ -4,7 +4,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Departement } from 'src/app/core/model/departement';
+import { Universite } from 'src/app/core/model/universite';
 import { DepartementService } from 'src/app/core/services/departement.service';
+import { UniversiteService } from 'src/app/core/services/universite.service';
 
 @Component({
   selector: 'app-form-departement',
@@ -12,6 +14,7 @@ import { DepartementService } from 'src/app/core/services/departement.service';
   styleUrls: ['./form-departement.component.scss']
 })
 export class FormDepartementComponent implements OnInit {
+  public unilist: Universite[];
   public departement:Departement;
   public  action:string  ;
   public formDE: FormGroup;
@@ -19,16 +22,28 @@ export class FormDepartementComponent implements OnInit {
 
 //[ Validators.required,Validators.pattern(this.pattern),Validators.minLength(3)]
 
-  constructor(private depService:DepartementService,private router:Router,private currentRoute: ActivatedRoute,private toastr: ToastrService) { }
+  constructor(private universiteService : UniversiteService,  private depService:DepartementService,private router:Router,private currentRoute: ActivatedRoute,private toastr: ToastrService) { }
  
   ngOnInit(): void {
     this.formDE = new FormGroup({
       'nomDepart': new FormControl('',[ Validators.required,Validators.pattern(this.pattern),Validators.minLength(3)]),
       'codeInterne': new FormControl('', [ Validators.required,Validators.minLength(3)]),
       'bloc': new FormControl('', Validators.required),
+      'universite': new FormControl('', Validators.required),
       //'chefDepart': new FormControl('', [ Validators.required,Validators.pattern(this.pattern)]),
 
     })
+
+    this.universiteService.getAllUniversite().subscribe(
+      (response: Universite[]) => { this.unilist = response ;
+         //filter
+    console.log(this.unilist)
+    
+
+      },
+      () => { console.log("error") },
+      () => { console.log("complete") },
+    );
 
 
     let id=this.currentRoute.snapshot.params['id']; 
@@ -53,7 +68,7 @@ export class FormDepartementComponent implements OnInit {
     
     if(this.action=='Add')
 
-    {     console.log("action is add");
+    {     console.log(this.departement);
 
       this.depService.addDeprement(this.departement).subscribe(
         ()=>{  this.toastr.success('Departement has been added !','Success')

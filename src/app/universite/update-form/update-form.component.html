@@ -37,8 +37,8 @@
 
             <form role="form" #f="ngForm">
 
-                <div class="col-md-12">
-                    <div class="row">
+                <div class="col-md-12  d-flex justify-content-center">
+                    
                         <div class="col-md-6  ">
                             <div>
                                 <div class="input-group input-group-dynamic mt-4 mb-0 ">
@@ -90,40 +90,24 @@
 
                                 </div>
                             </div>
-
-                        </div>
-
-                        <div class="col-md-6">
                             
-                            <div >
-                                <div class="col-md-4">
-                                    <label for="">Departements :</label>
+                            <div class=" d-flex   justify-content-end mt-4">
+                                <div class="  d-flex   justify-content-end">
+                                    <button (click)="saveUni()" type="button" class="btn  bg-gradient-primary  "
+                                        [disabled]="f.invalid">Enregistrer</button>
+                                    &nbsp;&nbsp;
+                                    <button type="button" routerLink="/universites"
+                                        class="btn btn-outline-primary   ">Annuler</button>
                                 </div>
-                              
-                                <div class="col-md-8  mx-5">
-                                    <div *ngFor="let dep of deplist">
-                                        <div><input type="checkbox" name="dep.idDepartement" value="dep.idDepartement"
-                                                (change)="onchange()" [(ngModel)]="dep.isselected"> <label
-                                                for="">{{dep.nomDepart}}</label></div>
-                                    </div>
-                                </div>
-
                             </div>
 
-                          
                         </div>
 
+                        
+                       
 
-                    </div>
-                    <div class="row  mt-4">
-                        <div class="  d-flex   justify-content-end">
-                            <button (click)="saveUni()" type="button" class="btn  bg-gradient-primary  col-md-2 "
-                                [disabled]="f.invalid">Enregistrer</button>
-                            &nbsp;&nbsp;
-                            <button type="button" routerLink="/universites"
-                                class="btn btn-outline-primary    col-md-2">Annuler</button>
-                        </div>
-                    </div>
+              
+                   
 
 
                 </div>

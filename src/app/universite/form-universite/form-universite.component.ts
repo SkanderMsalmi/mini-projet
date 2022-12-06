@@ -75,7 +75,7 @@ export class FormUniversiteComponent implements OnInit {
       return;
     }else{
       this.universiteService.addUniversite(this.universite).subscribe(
-        () => { this.router.navigate(['/universites/adddeparts']) }
+        () => { this.router.navigate(['/universites/list']) }
       )
   
     }
