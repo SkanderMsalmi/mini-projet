@@ -11,6 +11,8 @@ import autoTable, { Column } from 'jspdf-autotable';
 import * as assert from 'assert';
 import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { ClientRequest } from 'http';
+import { Etudiant } from 'src/app/core/model/etudiant';
+import { EtudiantService } from 'src/app/core/services/etudiant.service';
 
 @Component({
   selector: 'app-list-contrat',
@@ -22,16 +24,18 @@ c:contrat;
   table:string[];
   header:[['dateDebut',"datefin","archive","specialité"]];
   public all:contrat[];
+  public nomEtudiant:Etudiant;
   spec:String;
   dateD:Date;
   dateF:Date;
-  constructor(private route:ActivatedRoute, private router:Router,private contratservice:ContaratService) { }
+  constructor(private route:ActivatedRoute, private router:Router,private contratservice:ContaratService,private etudiantService:EtudiantService) { }
 
   ngOnInit(): void {
-   
+    
    
     this.contratservice.getAllContrat().subscribe((response:contrat[])=>{
-      this.all=response;},
+      this.all = response
+      },
       ()=>{console.log("error")},
             ()=>{console.log("complete")});}
     
@@ -92,6 +96,7 @@ filterDate(){
   {
     this.all= this.all.filter(contrat =>(contrat.dateDebutContrat>this.dateD)&&(contrat.dateFinContrat<this.dateF));
     this.contratservice.getAllContrat().subscribe((response:contrat[])=>{
+      
       this.all=response;},
       ()=>{console.log("error")},
             ()=>{console.log("complete")});

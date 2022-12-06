@@ -1,4 +1,5 @@
 import { Enseignant } from "./Enseignant";
+import { Universite } from "./universite";
 
 export class    Departement {
    idDepartement:number; 
@@ -6,7 +7,7 @@ export class    Departement {
 	codeInterne:string; 
 	bloc:string;
 	enseignants:Enseignant[];
-
+	universite?:Universite;
 
 
 	isselected : boolean;

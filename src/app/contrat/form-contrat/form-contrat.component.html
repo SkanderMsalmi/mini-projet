@@ -34,10 +34,10 @@
     
     <div class="form-group col-md-6">
         <label for="numEtudiant">numero Etudiant</label>
-     <select name="idEtudiant" id="idEtudiant"  [(ngModel)]="contrat.idEtudiant" class="form-control" required #d2="ngModel" >
+     <select name="idEtudiant" id="idEtudiant"  [(ngModel)]="contrat.etudiant" class="form-control" required #d2="ngModel" >
         <div class="alert alert-danger" *ngIf="d2.invalid && d2.touched">this filed is required</div>
 
-      <option *ngFor="let etudiant of all" Value="etudiant.idEtudiant">{{etudiant.idEtudiant}} {{etudiant.nomE}} {{etudiant.prenomE}}</option>
+      <option *ngFor="let etudiant of all" [ngValue]="etudiant">{{etudiant.idEtudiant}} {{etudiant.nomE}} {{etudiant.prenomE}}</option>
       </select>
     </div>
     

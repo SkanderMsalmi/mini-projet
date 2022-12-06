@@ -1,3 +1,5 @@
+import { Etudiant } from "./etudiant";
+
 export class contrat{
     idContrat:number;
     dateDebutContrat:Date;
@@ -5,5 +7,5 @@ export class contrat{
     specialite:String;
     archive:boolean;
     montantContrat:number;
-    idEtudiant:number;
+    etudiant:Etudiant;
 }

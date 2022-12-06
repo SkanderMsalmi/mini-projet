@@ -63,10 +63,10 @@
               <select [(ngModel)]="selectedOption">
 
               <option *ngFor="let o of list" value="{{o.idDepartement}}">
-                {{o.idDepartement}}
+                {{o.nomDepart}}
              </option>
           </select>
-          <button (click)="print()">Click me</button> 
+          <button (click)="print()" class="btn btn-primary" >Click me</button> 
 
           
           

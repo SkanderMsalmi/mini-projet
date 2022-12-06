@@ -47,8 +47,8 @@
 
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs font-weight-bold mb-0">Department</p>
-                                        <p class="text-xs text-secondary mb-0">Université</p>
+                                        <p class="text-xs font-weight-bold mb-0 edit" style="cursor: pointer;" [routerLink]="['/departements/detail',s.departement?.idDepartement]">{{s.departement?.nomDepart}}</p>
+                                        <p class="text-xs text-secondary mb-0">{{s.departement?.universite?.nomUniv}}</p>
                                     </td>
                                     <!-- <td class="align-middle text-center text-sm">
                                         <p class="text-xs font-weight-bold mb-0">Team</p>

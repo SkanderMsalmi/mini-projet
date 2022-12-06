@@ -35,6 +35,8 @@ export class FormContratComponent implements OnInit {
   }
   saveContrat(){
     if(this.action=='add'){
+      console.log(this.contrat);
+      
     this.serviceContrat.addContrat(this.contrat).subscribe(
       ()=>{this.router.navigate(['/contrats/list'])
     })}

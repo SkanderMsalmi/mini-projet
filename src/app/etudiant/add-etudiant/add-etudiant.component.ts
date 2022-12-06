@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Departement } from 'src/app/core/model/departement';
 import { Etudiant } from 'src/app/core/model/etudiant';
 import { fileHandler } from 'src/app/core/model/file';
+import { DepartementService } from 'src/app/core/services/departement.service';
 import { EtudiantService } from 'src/app/core/services/etudiant.service';
 
 @Component({
@@ -13,24 +14,32 @@ import { EtudiantService } from 'src/app/core/services/etudiant.service';
 })
 export class AddEtudiantComponent implements OnInit {
   public etudiant:Etudiant=new Etudiant();
-  // public listDep:Departement[]=[{idDepartement:1,nomDepart:"Info"},{idDepartement:2,nomDepart:"Business"}];
+  public listDep:Departement[]=[];
   public action:String;
 
-  constructor(private es: EtudiantService,private router: Router, private route: ActivatedRoute,private s: DomSanitizer) { }
+  constructor(private es: EtudiantService,private router: Router, private route: ActivatedRoute,private s: DomSanitizer,private departService:DepartementService) { }
 
   ngOnInit(): void {
+  
     if (    this.route.snapshot.params["id"]  ){
       this.es.getById(this.route.snapshot.params["id"]).subscribe((data: Etudiant)=>{this.etudiant= data}) ;
       this.action="Update";
     }
     else{
     this.etudiant.opt="GAMIX"
-    // this.etudiant.departement=this.listDep[0]
     this.action="Create"
     }
+    this.departService.getAllDepartement().subscribe(
+      (response)=>{
+        this.listDep = response;
+        this.etudiant.departement=this.listDep[0]
+
+      }
+    )
   }
 
   save(){
+    console.log(this.etudiant);
     let fd=this.prepareFormData(this.etudiant);
     if (    this.route.snapshot.params["id"]    )
     this.es.update(this.etudiant).subscribe(()=>    this.router.navigate(['/etudiants']));
