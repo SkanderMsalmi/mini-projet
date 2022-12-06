@@ -62,7 +62,7 @@
             <ul class="list-group">
               <select [(ngModel)]="selectedOption">
 
-              <option *ngFor="let o of list">
+              <option *ngFor="let o of list" value="{{o.idDepartement}}">
                 {{o.idDepartement}}
              </option>
           </select>

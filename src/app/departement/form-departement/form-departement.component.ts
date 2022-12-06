@@ -18,7 +18,9 @@ export class FormDepartementComponent implements OnInit {
 
 //[ Validators.required,Validators.pattern(this.pattern),Validators.minLength(3)]
 
-  constructor(private depService:DepartementService,private router:Router,private currentRoute: ActivatedRoute) { }
+  constructor(private depService:DepartementService,private router:Router,private currentRoute: ActivatedRoute) {
+    this.departement = new Departement();
+   }
  
   ngOnInit(): void {
     this.formDE = new FormGroup({

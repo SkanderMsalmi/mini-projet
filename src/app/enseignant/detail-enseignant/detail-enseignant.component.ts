@@ -24,7 +24,9 @@ export class DetailEnseignantComponent implements OnInit {
   printedOption: number;
 
 
-  constructor(private ensService:EnseignantService,private depService:DepartementService,private router:Router,private currentRoute: ActivatedRoute) { }
+  constructor(private ensService:EnseignantService,private depService:DepartementService,private router:Router,private currentRoute: ActivatedRoute) {
+    this.enseignant = new Enseignant();
+   }
 
   ngOnInit(): void {
 

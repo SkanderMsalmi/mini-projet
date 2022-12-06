@@ -11,7 +11,7 @@ import { EnseignantService } from 'src/app/core/services/enseignant.service';
   styleUrls: ['./detail-departement.component.scss']
 })
 export class DetailDepartementComponent implements OnInit { 
-  public listEns: Enseignant[];
+  public listEns: Enseignant[]=[];
   public enseignant:Enseignant;
  
   public selectedeEnseignant:Enseignant;
@@ -21,7 +21,9 @@ export class DetailDepartementComponent implements OnInit {
 
 
 
-  constructor(private depService:DepartementService,private ensService:EnseignantService, private router:Router,private currentRoute:ActivatedRoute) { }
+  constructor(private depService:DepartementService,private ensService:EnseignantService, private router:Router,private currentRoute:ActivatedRoute) {
+    this.departement = new Departement();
+   }
 
   ngOnInit(): void { 
     let  id=this.currentRoute.snapshot.params['id'];
@@ -30,8 +32,6 @@ export class DetailDepartementComponent implements OnInit {
       this.depService.getDepartementByID(id).subscribe(
         (objDep:Departement) => this.departement=objDep
         )
-        console.log(this.departement)
-        console.log(id) 
 
         this.ensService.getEnseignantByDepartmentID(id).subscribe(
           (response:Enseignant[]) => {this.listEns=response;

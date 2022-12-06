@@ -20,7 +20,7 @@ searchtext:any;
   ngOnInit(): void {
     this.depService.getAllDepartement().subscribe(
       (response:Departement[]) => { this.list = response ;
-      console.log(this.list), this.listlength=this.list.length},
+      },
       () => { console.log("error") },
       () => { console.log("complete") },
       
