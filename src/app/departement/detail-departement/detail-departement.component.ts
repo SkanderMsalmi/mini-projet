@@ -51,7 +51,8 @@ export class DetailDepartementComponent implements OnInit {
 
   removeEnsFromDepartement( departement:Departement,enseignant: Enseignant) {
     let i = departement.enseignants.indexOf(enseignant);
-    departement.enseignants.splice(i,-1);
+
+    departement.enseignants.splice(i,1);
     this.depService.updateDepartement(departement).subscribe(
       () => {}
     );

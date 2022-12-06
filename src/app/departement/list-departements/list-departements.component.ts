@@ -27,15 +27,26 @@ searchtext:any;
       
     )
   }
+
+  
+
+
+
+
+
 deleteDep(d:Departement){
   let i=this.list.indexOf(d);
+  if(confirm("Are you sure to delete "+d.nomDepart)) {
+
   this.depService.deleteDepartement(d.idDepartement).subscribe(
-    ()=>{this.list.splice(i,1), this.listlength=this.list.length},
-    ()=>{console.log("error while deleting department"),
-    this.toastr.error('something went wrong !','Error');}
-  )
-  this.toastr.success(d.nomDepart+' has been deleted successfully','Success');
-}
+    ()=>{this.list.splice(i,1), this.listlength=this.list.length,  this.toastr.success(d.nomDepart+' has been deleted successfully','Success');
+  },
+    error => (err: string) => {
+      console.log("err" + err);
+      this.toastr.error('something went wrong !', 'Error');
+    }
+  )}}
+
   getColor(departement: Departement) { 
   switch (departement.bloc) {
     case 'A':

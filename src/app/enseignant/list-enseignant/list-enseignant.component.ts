@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Enseignant } from 'src/app/core/model/Enseignant';
 import { EnseignantService } from 'src/app/core/services/enseignant.service';
 
@@ -16,7 +17,7 @@ export class ListEnseignantComponent implements OnInit {
 
   public listlength:number=0;
 
-  constructor(private ensService:EnseignantService,private route:ActivatedRoute) { }
+  constructor(private ensService:EnseignantService,private route:ActivatedRoute,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.ensService.getAllEnseignant().subscribe(
@@ -26,13 +27,23 @@ export class ListEnseignantComponent implements OnInit {
         () => {console.log("complete")},
     )
   }
+  
 
   deleteEns(e:Enseignant){
     let i=this.list.indexOf(e);
-    this.ensService.deleteEnseignant(e.idEnseignant).subscribe(
-      ()=>{this.list.splice(i,1)}
-    )
-  } 
+        if(confirm("Are you sure to delete "+e.nom+""+e.prenom)) {
+          this.ensService.deleteEnseignant(e.idEnseignant).subscribe(
+        ()=>{
+          this.list.splice(i,1)
+          ,this.listlength=this.list.length
+          ,this.toastr.success("Professor deleted successfully",'success')
+        }, error => (err: string) => {
+          console.log("err" + err);
+          this.toastr.error('something went wrong !', 'Error');
+        }
+      )
+
+  }}
 
 
 //fonction de sorting 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Enseignant } from 'src/app/core/model/Enseignant';
 import { EnseignantService } from 'src/app/core/services/enseignant.service';
 
@@ -11,7 +12,7 @@ import { EnseignantService } from 'src/app/core/services/enseignant.service';
 export class FormEnseignantComponent implements OnInit {
  public enseignant: Enseignant;
  public action:string;
-  constructor(private ensService:EnseignantService,private router:Router,private currentRoute: ActivatedRoute) { }
+  constructor(private ensService:EnseignantService,private router:Router,private currentRoute: ActivatedRoute, private toastr:ToastrService) { }
 
   ngOnInit(): void {
      let id=this.currentRoute.snapshot.params['id']; 
@@ -36,18 +37,26 @@ export class FormEnseignantComponent implements OnInit {
     {     console.log("action is add");
 
       this.ensService.addEnseignant(this.enseignant).subscribe(
-        ()=>{this.router.navigate(['/enseignants/list'])}
+        ()=>{this.toastr.success("professor"+this.enseignant.codeEns+"added successfully",'success'),this.router.navigate(['/enseignants/list'])}
       )
     }
     else {
-      console.log("we havent started yet");
+      console.log("action is updated");
 
       this.ensService.updateEnseignant(this.enseignant).subscribe(
         
-        ()=> this.router.navigate(['/enseignants/list'])
-        
+        ()=> {this.toastr.success("professor with code "+this.enseignant.codeEns+" updated successfully",'success'),this.router.navigate(['/enseignants/list'])}
+        , error => (err: string) => {
+          console.log("err" + err);
+          this.toastr.error('something went wrong !', 'Error');
+        }
       )
+        
+      
     }
+  }
+  back(){
+    this.router.navigate(['/enseignants/list'])
   }
 
 }
