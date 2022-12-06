@@ -37,6 +37,9 @@
 
                 <form role="form">
                     <div>
+                        <div *ngIf="deplist.length ==0">
+                            <button [routerLink]="['/departements/new']">Ajouter</button>
+                        </div>
                         <div *ngFor="let dep of deplist">
                             <div><input type="checkbox" name="dep.idDepartement" value="dep.idDepartement"
                                     (change)="onchange()" [(ngModel)]="dep.isselected"> <label
