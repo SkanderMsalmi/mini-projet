@@ -55,6 +55,7 @@ removeEnsFromDepartement( departement:Departement,enseignant: Enseignant) {
     this.ensService.unassingEnseignantToDepartement(enseignant.idEnseignant,departement.idDepartement).subscribe(
       ()=>{
         this.listEns.splice(i,1);
+        
       }
     )
 
