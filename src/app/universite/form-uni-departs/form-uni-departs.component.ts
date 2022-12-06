@@ -11,10 +11,10 @@ import { UniversiteService } from 'src/app/core/services/universite.service';
   styleUrls: ['./form-uni-departs.component.scss']
 })
 export class FormUniDepartsComponent implements OnInit {
-  public deplist: Departement [];
+  public deplist: Departement []=[];
   public uni : Universite;
-  public unilist : Universite[];
-  public checkedlist : number[];
+  public unilist : Universite[]=[];
+  public checkedlist : number[]=[];
 
  
    

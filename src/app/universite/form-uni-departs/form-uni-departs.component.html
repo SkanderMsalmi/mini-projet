@@ -37,17 +37,27 @@
 
                 <form role="form">
                     <div>
-                        <div *ngIf="deplist.length ==0">
-                            <button [routerLink]="['/departements/new']">Ajouter</button>
+                        <div *ngIf="deplist.length == 0">
+                             
+                            <div class="row">
+
+                                <div class="text-center">
+                                    <button (click)="assignUniDep()" [routerLink]="['/departements/new']" type="button"
+                                        class="btn btn-lg bg-gradient-primary btn-lg col-md-6 mt-4 mb-0">Ajouter departements</button>
+                                </div>
+                            </div>
                         </div>
-                        <div *ngFor="let dep of deplist">
-                            <div><input type="checkbox" name="dep.idDepartement" value="dep.idDepartement"
-                                    (change)="onchange()" [(ngModel)]="dep.isselected"> <label
-                                    for="">{{dep.nomDepart}}</label></div>
+                        <div  >
+                            <div *ngFor="let dep of deplist">
+                                <div><input type="checkbox" name="dep.idDepartement" value="dep.idDepartement"
+                                        (change)="onchange()" [(ngModel)]="dep.isselected"> <label
+                                        for="">{{dep.nomDepart}}</label></div>
+                            </div>
                         </div>
+                       
                     </div>
 
-                    <div class="row">
+                    <div class="row" *ngIf="deplist.length != 0">
 
                         <div class="text-center">
                             <button (click)="assignUniDep()" type="button"
