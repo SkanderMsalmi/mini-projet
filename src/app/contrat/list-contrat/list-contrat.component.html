@@ -8,31 +8,47 @@
             <h6 class="text-white text-capitalize ps-3">liste des contrats</h6>
           </div>
         </div>
+        <div class="form-group col-md-6">
+          <label for="name">Date de debut du contrat:</label>
+          <input type="date" class="form-control"  name="dateDebutContrat"  [(ngModel)]="dateD" required #n="ngModel">
+      </div>
+      <div class="form-group col-md-6">
+          <label for="name">Date de Fin du contrat:</label>
+          <input type="date" class="form-control" id="DateFin" name="dateFinContrat"  [(ngModel)]="dateF" >
+      </div>
+        <div class="form-group col-md-6">
+          <label for="s">specialité:</label>
+       <select name="s" id="s"  [(ngModel)]="spec" class="form-control">
+        <option value="IA">IA</option>
+        <option value="RESEAUX">RESEAUX</option>
+        <option value="CLOUD">CLOUD</option>
+        <option value="SECURITE">SECURITE</option>
+       </select>
+      </div>
+          
         <div class="card-body px-0 pb-2">
           <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
               <thead>
                 <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">date debut</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >date debut</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">date fin</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">specialité</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">archive</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">montant du Contrat</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" (click)="sort('montantContrat')">montant du Contrat&nbsp;<i class="fa fa-sort"></i></th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">option</th>
                   
                   <th class="text-secondary opacity-7"></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody *ngFor="let contrat of all | orderBy: key: reverse">
                
-          
-                <tr *ngFor="let contrat of all">
-                    <td class="text-center"> 
-                      <div class="d-flex px-2 py-1">
-                        
+               <tr *ngIf="contrat.specialite==spec || spec==null" >
+
+                    <td class="text-center" > 
+                      <div class="d-flex px-2 py-1" >
                         <div class="d-flex flex-column justify-content-center">
                             <p class="text-xs font-weight-bold mb-0">{{contrat.dateDebutContrat}}  </p>
-                         
                         </div>
                       </div>
                     </td>
@@ -59,7 +75,9 @@
                       <button class="btn btn-danger btn-sm m-auto" (click)="delete(contrat)"> delete</button>
                       
                     </td>
-                   
+                   <td >
+                    <button class="btn btn-link" (click)="generatepdf(contrat)">pdf</button>
+                   </td>
                   </tr>
                 
                    
