@@ -12,6 +12,7 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
 import autoTable from 'jspdf-autotable'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
 import jsPDF from 'jspdf';
+import { EtudiantcardComponent } from './etudiantcard/etudiantcard.component';
 
 
 
@@ -20,6 +21,7 @@ import jsPDF from 'jspdf';
     ContratComponent,
     ListContratComponent,
     FormContratComponent,
+    EtudiantcardComponent,
     
 
   ],

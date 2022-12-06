@@ -1,0 +1,35 @@
+<div class="card-box bg-blue" style="padding: 0px 10px 40px;">
+    <div class="inner">
+  <div >
+    <i class="fa-solid fa-arrow-circle-right" style="color: rgb(184, 62, 117);float: right;font-size: 20px;padding: 20px;" data-bs-toggle="modal" (click)="showModal=true" data-bs-target="#exampleModal"></i>
+
+<!-- Modal -->
+<div class="modal fade myelement" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" [ngClass]="{'show':showModal}" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p>Detail de l'etudiant num {{etud.idEtudiant}}</p>  
+      </div>
+      <div class="modal-body">
+        <p>nom : {{etud.nomE}}</p>
+      </div>
+      <div class="modal-body">
+        <p>prenom : {{etud.prenomE}}</p>
+      </div>
+      <div class="modal-body">
+        <p>option : {{etud.opt}}</p>
+      </div>
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <p> {{etud.nomE}} {{etud.prenomE}} </p>
+         
+
+    
+    
+  
+   
+</div>

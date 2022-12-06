@@ -3,41 +3,44 @@
     <div class="form-group col-md-6">
         <label for="name">Date de debut du contrat:</label>
         <input type="date" class="form-control"  name="dateDebutContrat"  [(ngModel)]="contrat.dateDebutContrat" required #n="ngModel">
+        <div class="alert alert-danger" *ngIf="n.invalid && n.touched">this filed is required</div>
     </div>
     <div class="form-group col-md-6">
         <label for="name">Date de Fin du contrat:</label>
-        <input type="date" class="form-control" id="DateFin" name="dateFinContrat"  [(ngModel)]="contrat.dateFinContrat" >
+        <input type="date" class="form-control" id="DateFin" name="dateFinContrat"  [(ngModel)]="contrat.dateFinContrat" required #n2="ngModel">
+        <div class="alert alert-danger" *ngIf="n2.invalid && n2.touched">this filed is required</div>
     </div>
 <div class="form-group col-md-6">
     <label for="specialite">specialité:</label>
  <select name="specialite" id="specialite"  [(ngModel)]="contrat.specialite" class="form-select" required #q1="ngModel">
-    <div class="alert alert-danger" *ngIf="q1.invalid && q1.touched">this filed is required</div>
+  <option value="null"></option>
   <option value="IA">IA</option>
   <option value="RESEAUX">RESEAUX</option>
   <option value="CLOUD">CLOUD</option>
   <option value="SECURITE">SECURITE</option>
+  <div class="alert alert-danger" *ngIf="q1.invalid && q1.touched">this filed is required</div>
  </select>
 </div>
 
     <fieldset class="form-control" id="radio" >
         <label>archive</label>
         <div>
-          <input type="radio" [value]="true" id="true" name="radio"   [(ngModel)]="contrat.archive">
+          <input type="radio" [value]="true" id="true" name="radio"   [(ngModel)]="contrat.archive" required #g="ngModel">
           <label for="name">Oui</label>
         </div>
         <div>
-          <input type="radio" [value]="false" id="false" name="radio"  [(ngModel)]="contrat.archive">
+          <input type="radio" [value]="false" id="false" name="radio"  [(ngModel)]="contrat.archive" required #g2="ngModel">
           
           <label for="name">Non</label>
         </div>
+        <div class="alert alert-danger" *ngIf="g.invalid && g.touched || g2.invalid && g2.touched">this filed is required</div>
         </fieldset>
     
     <div class="form-group col-md-6">
         <label for="numEtudiant">numero Etudiant</label>
-     <select name="idEtudiant" id="idEtudiant"  [(ngModel)]="contrat.idEtudiant" class="form-control" required #d2="ngModel" >
+     <select name="idEtudiant" id="idEtudiant"  [(ngModel)]="contrat.etudiant" class="form-control" required #d2="ngModel" >
         <div class="alert alert-danger" *ngIf="d2.invalid && d2.touched">this filed is required</div>
-
-      <option *ngFor="let etudiant of all" Value="etudiant.idEtudiant">{{etudiant.idEtudiant}} {{etudiant.nomE}} {{etudiant.prenomE}}</option>
+      <option *ngFor="let etudiant of all" [ngValue]="etudiant">{{etudiant.idEtudiant}} {{etudiant.nomE}} {{etudiant.prenomE}}</option>
       </select>
     </div>
     
