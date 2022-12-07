@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'contrats', loadChildren: () => import('./contrat/contrat.module').then(m => m.ContratModule) }, 
   { path: 'departements', loadChildren: () => import('./departement/departement.module').then(m => m.DepartementModule) }, 
   { path: 'equipes', loadChildren: () => import('./equipe/equipe.module').then(m => m.EquipeModule) },
- { path: 'enseignants', loadChildren: () => import('./enseignant/enseignant.module').then(m => m.EnseignantModule) }];
+  { path: 'enseignants', loadChildren: () => import('./enseignant/enseignant.module').then(m => m.EnseignantModule) },
+  { path: '**', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes),
