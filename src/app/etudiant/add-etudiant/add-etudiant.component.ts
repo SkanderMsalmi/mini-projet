@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Departement } from 'src/app/core/model/departement';
 import { Etudiant } from 'src/app/core/model/etudiant';
 import { fileHandler } from 'src/app/core/model/file';
@@ -16,7 +17,11 @@ export class AddEtudiantComponent implements OnInit {
   public listDep:Departement[]=[{idDepart:1,nomDepart:"Info"},{idDepart:2,nomDepart:"Business"}];
   public action:String;
 
+<<<<<<< Updated upstream
   constructor(private es: EtudiantService,private router: Router, private route: ActivatedRoute,private s: DomSanitizer) { }
+=======
+  constructor(private es: EtudiantService,private router: Router, private route: ActivatedRoute,private s: DomSanitizer,private departService:DepartementService, private toastr:ToastrService) { }
+>>>>>>> Stashed changes
 
   ngOnInit(): void {
     if (    this.route.snapshot.params["id"]  ){
@@ -33,9 +38,11 @@ export class AddEtudiantComponent implements OnInit {
   save(){
     let fd=this.prepareFormData(this.etudiant);
     if (    this.route.snapshot.params["id"]    )
-    this.es.update(this.etudiant).subscribe(()=>    this.router.navigate(['/etudiants']));
+    this.es.update(this.etudiant).subscribe(()=>{this.toastr.success("Student "+this.etudiant.prenomE+" "+this.etudiant.nomE+" has been updated successfully",'SUCCESS');    this.router.navigate(['/etudiants'])});
     else
-    this.es.addEtudiant(fd).subscribe(()=>this.router.navigate(['/etudiants']))
+    this.es.addEtudiant(fd).subscribe(()=>
+    {this.toastr.success("Student "+this.etudiant.prenomE+" "+this.etudiant.nomE+" has been created successfully",'SUCCESS');
+    this.router.navigate(['/etudiants'])})
   }
   prepareFormData(e:Etudiant):FormData{
     let formData = new FormData;

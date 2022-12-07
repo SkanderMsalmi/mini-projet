@@ -20,19 +20,21 @@
                                 *ngIf="n.invalid && n.touched">
                                 <div *ngIf="n.hasError('required')" class="text-sm">Name is required
                                 </div>
-                                <div *ngIf="n.hasError('minlength')" class="text-sm">Minimum length is 3 </div>
                                 <div *ngIf="n.hasError('pattern')" class="text-sm">Only alphabets are accepted</div>
+                                <div *ngIf="n.hasError('minlength')" class="text-sm">Minimum length is 3 </div>
+
                             </div>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="nome">Last name* </label>
                             <input type="text" class="form-control" name="nome" [(ngModel)]="etudiant.nomE" id="nome"
-                                placeholder="Last name" required minlength="3" #n="ngModel" pattern="[a-zA-Z]{3,12}$">
+                                placeholder="Last name" required minlength="3" #ln="ngModel" pattern="[a-zA-Z]{3,12}$">
                             <div class="alert alert-primary alert-dismissible text-white"
-                                *ngIf="n.invalid && n.touched">
-                                <div *ngIf="n.hasError('required')" class="text-sm">Name is required</div>
-                                <div *ngIf="n.hasError('minlength')" class="text-sm">Minimum length is 3</div>
-                                <div *ngIf="n.hasError('pattern')" class="text-sm">Only alphabets are accepted</div>
+                                *ngIf="ln.invalid && ln.touched">
+                                <div *ngIf="ln.hasError('required')" class="text-sm">Last name is required</div>
+                                <div *ngIf="ln.hasError('pattern')" class="text-sm">Only alphabets are accepted</div>
+                                <div *ngIf="ln.hasError('minlength')" class="text-sm">Minimum length is 3</div>
+
                             </div>
                         </div>
                         <div class="form-group col-md-6">

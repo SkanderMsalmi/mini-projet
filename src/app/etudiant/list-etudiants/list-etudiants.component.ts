@@ -11,12 +11,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ListEtudiantsComponent implements OnInit {
   public students:Etudiant[];
+  public filterOpt:string="";
+  public filterText:string="";
   constructor(private es:EtudiantService,private s: DomSanitizer) { }
 
   ngOnInit(): void {
     this.es.getAllEtudiants().subscribe(data=>{this.students=data;
       for(let s of this.students){
-        s.image=this.dataURIToBlob(s.profileImage);
+       let objectURL = URL.createObjectURL(s.profileImage);       
+       s.url = this.s.bypassSecurityTrustUrl(objectURL);
+       console.log(s);
       }
       console.log(this.students);
     })

@@ -1,3 +1,4 @@
+import { SafeUrl } from "@angular/platform-browser"
 import { Departement } from "./departement"
 import { fileHandler } from "./file"
 
@@ -8,5 +9,11 @@ export class Etudiant{
     opt: "GAMIX"|"SE"|"SIM"|"NIDS"
     departement: Departement
     image: fileHandler
+<<<<<<< Updated upstream
     profileImage: String
   }
+=======
+    profileImage: Blob
+    url: SafeUrl
+  }
+>>>>>>> Stashed changes
