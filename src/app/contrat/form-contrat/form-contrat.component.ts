@@ -3,7 +3,7 @@ import { ActivatedRoute, provideRoutes, Router } from '@angular/router';
 import { contrat } from 'src/app/core/model/Contrat';
 import { Etudiant } from 'src/app/core/model/etudiant';
 import { ContaratService } from 'src/app/core/services/contrat.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-form-contrat',
   templateUrl: './form-contrat.component.html',
@@ -15,7 +15,7 @@ export class FormContratComponent implements OnInit {
  public action:string;
  public all:Etudiant[];
  public etudiant:Etudiant;
-  constructor(private currentRoute:ActivatedRoute,private serviceContrat:ContaratService,private router:Router) { 
+  constructor(private currentRoute:ActivatedRoute,private serviceContrat:ContaratService,private router:Router,private toastr: ToastrService) { 
     this.contrat = new contrat();
   }
 
@@ -38,11 +38,11 @@ export class FormContratComponent implements OnInit {
       console.log(this.contrat);
       
     this.serviceContrat.addContrat(this.contrat).subscribe(
-      ()=>{this.router.navigate(['/contrats/list'])
+      ()=>{this.router.navigate(['/contrats/list']);this.toastr.success("Le Contrat de "+this.contrat.specialite +' ajoutee avec succés','Success');
     })}
     else{
       this.serviceContrat.updateContrat(this.contrat).subscribe(
-        ()=> this.router.navigate(['/contrats/list']) )}   
+        ()=> {this.router.navigate(['/contrats/list']);this.toastr.info("Le Contrat de "+this.contrat.specialite +' modifié avec succés','Modification');} )}   
      }
      getEtudiants(){
      }

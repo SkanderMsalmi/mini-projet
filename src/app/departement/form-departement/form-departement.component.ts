@@ -56,8 +56,8 @@ export class FormDepartementComponent implements OnInit {
     {     console.log("action is add");
 
       this.depService.addDeprement(this.departement).subscribe(
-        ()=>{  this.toastr.success('Departement has been added !','Success')
-          this.router.navigate(['/departements/list'])}
+        ()=>{  
+          this.router.navigate(['/departements/list']);this.toastr.success('Departement Ajouté Avec Succés !','Success')}
       )
     }
     else {

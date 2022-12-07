@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Equip } from 'src/app/core/model/equipe';
 import { Niveau } from 'src/app/core/model/Niveau';
 import { CrudService } from 'src/app/core/services/crud.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-list-equipe',
   templateUrl: './list-equipe.component.html',
@@ -19,7 +19,7 @@ export class ListEquipeComponent implements OnInit {
   public showModal:boolean=false;
  
 
-  constructor(private equipeService:CrudService,private route:ActivatedRoute) { 
+  constructor(private equipeService:CrudService,private route:ActivatedRoute,private toastr: ToastrService) { 
     this.view = "list"
   }
 
@@ -53,9 +53,11 @@ export class ListEquipeComponent implements OnInit {
       this.equipeService.delete(e,this.controlleurUrl+"deleteEquipe/"+e.idEquipe).subscribe(
         ()=>{
           this.list.splice(i,1);
+          this.toastr.warning("L'equipe "+e.nomEquipe +' supprimé avec succés','Suppression');
         }
       )
       this.showModal=false;
+
   }
 
 

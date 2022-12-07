@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { debounceTime, tap } from 'rxjs';
 import { Equip } from 'src/app/core/model/equipe';
 import { EquipeService } from 'src/app/core/services/equipe.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-ajout-equipe',
   templateUrl: './ajout-equipe.component.html',
@@ -42,7 +44,7 @@ export class AjoutEquipeComponent implements OnInit {
   //   })
   // }
 
-  constructor(private equipeService:EquipeService,private router:Router) {
+  constructor(private equipeService:EquipeService,private router:Router,private toastr: ToastrService) {
     this.form = new FormGroup({});
     
    }
@@ -51,7 +53,7 @@ export class AjoutEquipeComponent implements OnInit {
     this.form = new FormGroup({
       nom: new FormControl('',[Validators.required]),
       niveau : new FormControl('',[Validators.required]),
-      salle: new FormControl('',[Validators.required]),
+      salle: new FormControl('',[Validators.required,Validators.min(1)]),
       thematique : new FormControl('',[Validators.required])
     });
       this.checkName();
@@ -72,7 +74,7 @@ export class AjoutEquipeComponent implements OnInit {
     });
     }
     this.equipeService.addEquip(this.equip).subscribe(
-      ()=>{this.router.navigate(['/equipes'])}
+      ()=>{this.router.navigate(['/equipes']);this.toastr.success("L'equipe "+this.equip.nomEquipe +' ajoutee avec succés','Success');}
     )
     
   }

@@ -1,4 +1,4 @@
-<div class="card-box bg-blue" style="padding: 0px 10px 40px;">
+<div class="card-box bg-blue" style="padding: 0px 10px 40px; border-radius: 12px;">
     <div class="inner">
   <div >
     <i class="fa-solid fa-trash" style="color: red;float: right;font-size: 20px;padding: 5px;" data-bs-toggle="modal" (click)="showModal=true" data-bs-target="#exampleModal"></i>
@@ -15,7 +15,7 @@
       </div>
       <div class="modal-footer">
 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="showModal=false">Close</button>
-        <button type="button" class="btn btn-danger" (click)="deleteEquipe()">Confirmer</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteEquipe()">Confirmer</button>
       </div>
     </div>
   </div>

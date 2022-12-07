@@ -13,7 +13,7 @@ import { toBase64String } from '@angular/compiler/src/output/source_map';
 import { ClientRequest } from 'http';
 import { Etudiant } from 'src/app/core/model/etudiant';
 import { EtudiantService } from 'src/app/core/services/etudiant.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-list-contrat',
   templateUrl: './list-contrat.component.html',
@@ -28,7 +28,7 @@ c:contrat;
   spec:String;
   dateD:Date;
   dateF:Date;
-  constructor(private route:ActivatedRoute, private router:Router,private contratservice:ContaratService,private etudiantService:EtudiantService) { }
+  constructor(private route:ActivatedRoute,private toastr: ToastrService, private router:Router,private contratservice:ContaratService,private etudiantService:EtudiantService) { }
 
   ngOnInit(): void {
     
@@ -43,7 +43,7 @@ c:contrat;
     delete(c:contrat){
     let i=this.all.indexOf(c);
     this.contratservice.deleteContrat(c.idContrat).subscribe(
-      ()=>{this.all.splice(i,1);}
+      ()=>{this.all.splice(i,1);this.toastr.warning("Le contrat de  "+c.specialite+" de l'etudiant "+ c.etudiant.nomE + c.etudiant.prenomE +' supprimé avec succés','Suppression');}
   
     )
   }
@@ -66,7 +66,7 @@ c:contrat;
       tableWidth: 120,
       styles: { halign: "left" },
       margin: {left: 50, right:50,top:50},
-      body:[[ "Date Debut:  "+c.dateDebutContrat+
+      body:[["Etudiant : "+ c.etudiant.nomE + " " +c.etudiant.prenomE + "\n \n Date Debut:  "+c.dateDebutContrat+
       "\n\nDate Fin:  "+c.dateFinContrat+"\n\nArchive:  "+c.archive+"\n\nSpecilité:  "+c.specialite+"\n\nMontant Du Contrat:  "+c.montantContrat]],
       
       
@@ -74,7 +74,7 @@ c:contrat;
     doc.addImage(img,'webp',150,100,40,30)
    doc.output('dataurlnewwindow');
   doc.save('contrat'+c.idContrat+'.pdf')
-
+  this.toastr.success("Le pdf de contrat de "+c.specialite +' est pret','Success');
   }
   update(c:contrat){
     let id=this.all.indexOf(c);
@@ -106,8 +106,9 @@ filterDate(){
 }
 filterSpec(){
 
-  if(this.spec!=null)
+  if(this.spec!=null )
   {
+    
     this.all=this.all.filter((contrat)=>contrat.specialite==this.spec)
     this.contratservice.getAllContrat().subscribe((response:contrat[])=>{
       this.all=response;},

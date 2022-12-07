@@ -3,7 +3,7 @@ import { Etudiant } from 'src/app/core/model/etudiant';
 import { EtudiantService } from 'src/app/core/services/etudiant.service';
 import { fileHandler } from 'src/app/core/model/file';
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-list-etudiants',
   templateUrl: './list-etudiants.component.html',
@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ListEtudiantsComponent implements OnInit {
   public students:Etudiant[];
-  constructor(private es:EtudiantService,private s: DomSanitizer) { }
+  constructor(private es:EtudiantService,private s: DomSanitizer,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.es.getAllEtudiants().subscribe(data=>{this.students=data;
@@ -36,7 +36,7 @@ export class ListEtudiantsComponent implements OnInit {
   }
   delete(e:Etudiant){
     let i= this.students.indexOf(e);
-    this.es.delete(e.idEtudiant).subscribe(()=>this.students.splice(i,1))
+    this.es.delete(e.idEtudiant).subscribe(()=>{this.students.splice(i,1);this.toastr.warning("L'etudiant "+e.nomE +' supprimé avec succés','Supprission');})
   }
 
 }

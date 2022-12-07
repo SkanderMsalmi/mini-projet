@@ -39,7 +39,7 @@ deleteDep(d:Departement){
   if(confirm("Are you sure to delete "+d.nomDepart)) {
 
   this.depService.deleteDepartement(d.idDepartement).subscribe(
-    ()=>{this.list.splice(i,1), this.listlength=this.list.length,  this.toastr.success(d.nomDepart+' has been deleted successfully','Success');
+    ()=>{this.list.splice(i,1), this.listlength=this.list.length,  this.toastr.warning(d.nomDepart+' supprimé avec succés','Suppression');
   },
     error => (err: string) => {
       console.log("err" + err);

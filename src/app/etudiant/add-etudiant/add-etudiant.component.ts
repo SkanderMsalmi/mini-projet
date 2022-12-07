@@ -6,7 +6,7 @@ import { Etudiant } from 'src/app/core/model/etudiant';
 import { fileHandler } from 'src/app/core/model/file';
 import { DepartementService } from 'src/app/core/services/departement.service';
 import { EtudiantService } from 'src/app/core/services/etudiant.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-etudiant',
   templateUrl: './add-etudiant.component.html',
@@ -17,7 +17,7 @@ export class AddEtudiantComponent implements OnInit {
   public listDep:Departement[]=[];
   public action:String;
 
-  constructor(private es: EtudiantService,private router: Router, private route: ActivatedRoute,private s: DomSanitizer,private departService:DepartementService) { }
+  constructor(private es: EtudiantService,private router: Router, private route: ActivatedRoute,private s: DomSanitizer,private departService:DepartementService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
   
@@ -42,9 +42,9 @@ export class AddEtudiantComponent implements OnInit {
     console.log(this.etudiant);
     let fd=this.prepareFormData(this.etudiant);
     if (    this.route.snapshot.params["id"]    )
-    this.es.update(this.etudiant).subscribe(()=>    this.router.navigate(['/etudiants']));
+    this.es.update(this.etudiant).subscribe(()=> {this.toastr.success("L'etudiant "+this.etudiant.nomE +' modifie avec succés','Success');this.router.navigate(['/etudiants'])});
     else
-    this.es.addEtudiant(fd).subscribe(()=>this.router.navigate(['/etudiants']))
+    this.es.addEtudiant(fd).subscribe(()=> {this.toastr.success("L'etudiant "+this.etudiant.nomE +' ajoutee avec succés','Success');this.router.navigate(['/etudiants'])})
   }
   prepareFormData(e:Etudiant):FormData{
     let formData = new FormData;

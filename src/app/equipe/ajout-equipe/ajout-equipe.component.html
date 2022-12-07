@@ -27,7 +27,6 @@
                       </div>
                       <div class="col-md-8">
                         <div class="input-group input-group-outline  mb-4">
-                          <label class="form-label">Nom</label>
 
                           <input type="text" name="nom"   class="form-control"   formControlName="nom" >
                           
@@ -86,13 +85,13 @@
                           </div>
                           <div class="col-md-8">
                             <div class="input-group input-group-outline  mb-4">
-                          <label class="form-label">Salle</label>
 
                                 <input type="number" name="salle" class="form-control " formControlName="salle"  >
                                 
                             </div>
                             <div class="text-danger mt-0" *ngIf="salle?.errors && salle?.touched">
                                 <small class="text-danger" *ngIf="salle?.hasError('required')"> Vous devez entrer votre salle d'equipe </small>
+                                <small class="text-danger" *ngIf="salle?.hasError('min')"> Vous avez mis un signe negatif ! </small>
                             </div>
                         </div>
                      </div>
@@ -104,7 +103,6 @@
                           </div>
                           <div class="col-md-8">
                             <div class="input-group input-group-outline  mb-4">
-                          <label class="form-label">Thematique</label>
                                
                               <input type="text" name="thematique" class="form-control" formControlName="thematique"  >
                                

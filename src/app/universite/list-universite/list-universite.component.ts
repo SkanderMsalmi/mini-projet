@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Universite } from 'src/app/core/model/universite';
 import { UniversiteService } from 'src/app/core/services/universite.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-list-universite',
   templateUrl: './list-universite.component.html',
@@ -14,7 +14,7 @@ export class ListUniversiteComponent implements OnInit {
   
  // public all: Universite[];
   constructor(private universiteService: UniversiteService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.universiteService.getAllUniversite().subscribe(
@@ -32,7 +32,7 @@ export class ListUniversiteComponent implements OnInit {
   deleteUni(u:Universite){
     let i = this.list.indexOf(u);
     this.universiteService.delete(u.idUniv).subscribe(
-      ()=>{this.list.splice(i,1)}
+      ()=>{this.list.splice(i,1);this.toastr.warning("L'universite  "+u.nomUniv +' supprimé avec succés','Suppression');}
     )
   }
 

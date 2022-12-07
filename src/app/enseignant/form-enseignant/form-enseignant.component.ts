@@ -37,7 +37,7 @@ export class FormEnseignantComponent implements OnInit {
     {     console.log("action is add");
 
       this.ensService.addEnseignant(this.enseignant).subscribe(
-        ()=>{this.toastr.success("professor"+this.enseignant.codeEns+"added successfully",'success'),this.router.navigate(['/enseignants/list'])}
+        ()=>{this.toastr.success("professor"+this.enseignant.codeEns+"ajoutée avec succes",'success'),this.router.navigate(['/enseignants/list'])}
       )
     }
     else {
@@ -45,7 +45,7 @@ export class FormEnseignantComponent implements OnInit {
 
       this.ensService.updateEnseignant(this.enseignant).subscribe(
         
-        ()=> {this.toastr.success("professor with code "+this.enseignant.codeEns+" updated successfully",'success'),this.router.navigate(['/enseignants/list'])}
+        ()=> {this.toastr.info("professor with code "+this.enseignant.codeEns+" modifié avec succes",'Modification'),this.router.navigate(['/enseignants/list'])}
         , error => (err: string) => {
           console.log("err" + err);
           this.toastr.error('something went wrong !', 'Error');

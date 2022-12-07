@@ -36,7 +36,7 @@ export class ListEnseignantComponent implements OnInit {
         ()=>{
           this.list.splice(i,1)
           ,this.listlength=this.list.length
-          ,this.toastr.success("Professor deleted successfully",'success')
+          ,this.toastr.warning("Professor Supprimé avec succées",'Suppression')
         }, error => (err: string) => {
           console.log("err" + err);
           this.toastr.error('something went wrong !', 'Error');

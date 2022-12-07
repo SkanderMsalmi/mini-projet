@@ -4,7 +4,7 @@ import { Departement } from 'src/app/core/model/departement';
 import { Universite } from 'src/app/core/model/universite';
 import { DepartementService } from 'src/app/core/services/departement.service';
 import { UniversiteService } from 'src/app/core/services/universite.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-form-uni-departs',
   templateUrl: './form-uni-departs.component.html',
@@ -20,7 +20,7 @@ export class FormUniDepartsComponent implements OnInit {
    
 
   constructor(private universiteService: UniversiteService,private depService: DepartementService,
-    private router:Router) { }
+    private router:Router,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.universiteService.getAllUniversite().subscribe(
@@ -54,8 +54,8 @@ export class FormUniDepartsComponent implements OnInit {
    for(let i in this.checkedlist){
     let checked = this.checkedlist[i];
     this.universiteService.assignUniToDep(last,checked,this.uni).subscribe(
-        ()=> this.router.navigate(['/universites/list'])
-      ) 
+        ()=> {this.router.navigate(['/universites/list']);this.toastr.success("Les Departements sont  assignés avec succés pour l'universite "+ this.uni.nomUniv,'Success');})
+       
   
    }
   }
