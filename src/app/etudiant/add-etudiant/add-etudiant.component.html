@@ -53,7 +53,7 @@
                             <label for="department">Department* </label>
                             <select class="form-control" id="department" name="department"
                                 [(ngModel)]="etudiant.departement" required #c="ngModel">
-                                <option *ngFor="let d of listDep" value="{{d}}">{{d.nomDepart}}</option>
+                                <option *ngFor="let d of listDep" [ngValue]="d">{{d.nomDepart}}</option>
                             </select>
                             <div class="alert alert-primary alert-dismissible text-white text-sm"
                                 *ngIf="c.invalid && c.touched">Department is required</div>

@@ -36,7 +36,9 @@ export class AddEtudiantComponent implements OnInit {
   }
 
   save(){
+    console.log(this.etudiant);
     let fd=this.prepareFormData(this.etudiant);
+    console.log(fd);
     if (    this.route.snapshot.params["id"]    )
     this.es.update(this.etudiant).subscribe(()=>{this.toastr.success("Student "+this.etudiant.prenomE+" "+this.etudiant.nomE+" has been updated successfully",'SUCCESS');    this.router.navigate(['/etudiants'])});
     else
