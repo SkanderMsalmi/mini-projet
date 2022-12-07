@@ -51,16 +51,17 @@ export class ListUniversiteComponent implements OnInit {
         this.unideplist = response;
         if( this.unideplist.length!=0)
         { this.exist = 'yes';}
+        switch (this.exist) {
+          case 'yes':
+            return '#dee2e6';
+                   default: 
+              return '#ffffff';
+        }  
        
       },
 
     );
-    switch (this.exist) {
-      case 'yes':
-        return '#dee2e6';
-               default: 
-          return '#ffffff'
-    }     
+      
      
 
     
