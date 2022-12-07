@@ -66,10 +66,10 @@
                                         <th class="col-md-3 text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody *ngFor="let uni of list | search: searchUni"  [ngStyle]="{'background-color':getColor(uni)}">
                                     
                                     <tr  
-                                        *ngFor="let uni of list | search: searchUni">
+                                         >
                                         
                                         <td title=" Afficher les departements"  class="col-md-4  cursor-pointer"  [routerLink]="['/universites/departements',uni.idUniv]" id="linkname" >
                                             <div class="d-flex px-2 py-1">
