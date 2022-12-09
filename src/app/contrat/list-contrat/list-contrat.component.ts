@@ -57,7 +57,7 @@ c:contrat;
       logo.src = 'assets/img/logo.jpg'
       
       doc.setFillColor(135, 124,45,0);
-      doc.text("université de Tunis",150,100);
+      doc.text("université de Tunis",150,105);
       doc.addImage(logo,'jpg',2,5,40,30)
       doc.text("Contrat numero°"+c.idContrat,90,30);
       doc.text("\n\n\n\n\n\n\n\n",2,11);
@@ -71,7 +71,7 @@ c:contrat;
       
       
     })
-    doc.addImage(img,'webp',150,100,40,30)
+    doc.addImage(img,'webp',150,110,40,30)
    doc.output('dataurlnewwindow');
   doc.save('contrat'+c.idContrat+'.pdf')
   this.toastr.success("Le pdf de contrat de "+c.specialite +' est pret','Success');
