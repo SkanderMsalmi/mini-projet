@@ -30,4 +30,7 @@ public url2=environment.url+'ControleurEtudiant/';
    getidNomPrenomEtudiant(){
     return this.http.get<Etudiant[]>(this.url2+"displayStudents")
    }
+   getContratsByEtudiant(id:number){
+    return this.http.get<contrat>(this.url+'displayContratsEtudiant/'+id)
+  }
 }
