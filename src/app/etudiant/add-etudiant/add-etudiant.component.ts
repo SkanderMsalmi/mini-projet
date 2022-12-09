@@ -16,26 +16,29 @@ export class AddEtudiantComponent implements OnInit {
   public etudiant:Etudiant=new Etudiant();
   public listDep:Departement[]=[];
   public action:String;
+  public file:File;
 
   constructor(private es: EtudiantService,private router: Router, private route: ActivatedRoute,private s: DomSanitizer,private departService:DepartementService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
-  
+    this.departService.getAllDepartement().subscribe(
+      (response)=>{
+        this.listDep = response;
+        this.etudiant.departement=this.listDep[0]
+console.log(this.etudiant)
+      }
+    )
     if (    this.route.snapshot.params["id"]  ){
-      this.es.getById(this.route.snapshot.params["id"]).subscribe((data: Etudiant)=>{this.etudiant= data}) ;
+      this.es.getById(this.route.snapshot.params["id"]).subscribe((data: Etudiant)=>{this.etudiant= data; this.etudiant.departement=this.listDep.find(d=>d.idDepartement==this.etudiant.departement.idDepartement)||this.listDep[0];}) ;
       this.action="Update";
     }
     else{
     this.etudiant.opt="GAMIX"
     this.action="Create"
-    }
-    this.departService.getAllDepartement().subscribe(
-      (response)=>{
-        this.listDep = response;
-        this.etudiant.departement=this.listDep[0]
+    console.log(this.etudiant)
 
-      }
-    )
+    }
+ 
   }
 
   save(){
