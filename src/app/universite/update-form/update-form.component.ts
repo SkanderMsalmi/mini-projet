@@ -4,7 +4,7 @@ import { Departement } from 'src/app/core/model/departement';
 import { Universite } from 'src/app/core/model/universite';
 import { DepartementService } from 'src/app/core/services/departement.service';
 import { UniversiteService } from 'src/app/core/services/universite.service';
-import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-update-form',
   templateUrl: './update-form.component.html',
@@ -24,7 +24,7 @@ export class UpdateFormComponent implements OnInit {
  
 
   constructor(private universiteService: UniversiteService, private depService: DepartementService,
-    private router: Router, private currentRoute: ActivatedRoute,private toastr: ToastrService) { }
+    private router: Router, private currentRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -101,7 +101,7 @@ export class UpdateFormComponent implements OnInit {
         }
       
       this.universiteService.update(this.universite).subscribe(
-        () =>{ this.router.navigate(['/universites/']);this.toastr.info("L'universite "+this.universite.nomUniv +' modifié avec succés','Modification');}
+        () => this.router.navigate(['/universites/'])
       )
 
       

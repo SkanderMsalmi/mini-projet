@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from '../pages/not-found/not-found.component';
 import { FormUniDepartsComponent } from './form-uni-departs/form-uni-departs.component';
 import { FormUniversiteComponent } from './form-universite/form-universite.component';
 import { ListDepartementsComponent } from './list-departements/list-departements.component';
@@ -13,12 +14,10 @@ const routes: Routes =  [
   {path:'',component: UniversiteComponent,children:[
   {path:'', component: ListUniversiteComponent},
   {path:'list', component: ListUniversiteComponent},  
-  {path:'new', component: FormUniversiteComponent},
-  {path:'adddeparts', component: FormUniDepartsComponent},  
-  {path:'update/:id', component: UpdateFormComponent}, 
-  {path:'updateDeparts', component: FormUniDepartsComponent},   
+  {path:'new', component: FormUniversiteComponent}, 
+  {path:'update/:id', component: UpdateFormComponent},  
   {path:'departements/:id', component: ListDepartementsComponent},
-  
+  {path:'**', component: NotFoundComponent},
   
  ]}]
 

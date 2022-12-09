@@ -5,7 +5,6 @@ import { Departement } from 'src/app/core/model/departement';
 import { Universite } from 'src/app/core/model/universite';
 import { DepartementService } from 'src/app/core/services/departement.service';
 import { UniversiteService } from 'src/app/core/services/universite.service';
-import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-form-universite',
   templateUrl: './form-universite.component.html',
@@ -33,7 +32,7 @@ export class FormUniversiteComponent implements OnInit {
   emailPattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$";
 
   constructor(private universiteService: UniversiteService, private depService: DepartementService,
-    private router: Router, private formBuilder: FormBuilder,private toastr: ToastrService) { }
+    private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -76,7 +75,7 @@ export class FormUniversiteComponent implements OnInit {
       return;
     }else{
       this.universiteService.addUniversite(this.universite).subscribe(
-        () => { this.router.navigate(['/universites/adddeparts']);this.toastr.success("L'universite  "+this.universite.nomUniv +' ajoutee avec succés','Success'); }
+        () => { this.router.navigate(['/universites/list']) }
       )
   
     }
