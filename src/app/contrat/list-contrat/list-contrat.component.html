@@ -59,10 +59,22 @@
                <tr *ngIf="contrat.specialite==spec || spec==null" >
                 <td class="text-center" > 
                   <div class="d-flex px-2 py-1" >
-                    <div class="d-flex flex-column justify-content-center">
-                        <p class="text-xs font-weight-bold mb-0">{{contrat.etudiant.nomE}} {{contrat.etudiant.prenomE}}  </p>
-                    </div>
+                                      </div>
+                  <div class="col-12 d-flex" style="flex-wrap:wrap;">
+                  
+                    <div class="container">
+                      <div class="row">
+                          <div class="d-flex flex-column justify-content-center">
+                            <app-cardetudiant [etud]="contrat.etudiant" (showE)="afficheEtud(contrat.etudiant)" ></app-cardetudiant>
+    
+                          </div>
+                  
+                      
+                        
+                      </div>
+                   
                   </div>
+                    </div>
                 </td>
                     <td class="text-center" > 
                       <div class="d-flex px-2 py-1" >

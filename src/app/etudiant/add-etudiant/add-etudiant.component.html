@@ -50,7 +50,7 @@
                         <div class="form-group col-md-6">
                             <label for="department">Department* </label>
                             <select class="form-control" id="department" name="department"
-                                [(ngModel)]="etudiant.departement" required #c="ngModel">
+                                [(ngModel)]="etudiant.departement" >
                                 <option *ngFor="let d of listDep" [ngValue]="d">{{d.nomDepart}}</option>
                             </select>
                             <div class="alert alert-primary alert-dismissible text-white text-sm"

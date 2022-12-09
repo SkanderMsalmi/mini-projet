@@ -28,7 +28,7 @@ c:contrat;
   spec:String;
   dateD:Date;
   dateF:Date;
-  constructor(private route:ActivatedRoute,private toastr: ToastrService, private router:Router,private contratservice:ContaratService,private etudiantService:EtudiantService) { }
+  constructor(private serviceetudiant:EtudiantService,private route:ActivatedRoute,private toastr: ToastrService, private router:Router,private contratservice:ContaratService,private etudiantService:EtudiantService) { }
 
   ngOnInit(): void {
     
@@ -116,5 +116,8 @@ filterSpec(){
             ()=>{console.log("complete")});
 }
 }
+afficheEtud(e:Etudiant){
+  this.serviceetudiant.getById(e.idEtudiant).subscribe();
 
+}
 }
