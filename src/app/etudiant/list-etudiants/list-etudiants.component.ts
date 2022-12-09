@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Etudiant } from 'src/app/core/model/etudiant';
 import { EtudiantService } from 'src/app/core/services/etudiant.service';
-import { fileHandler } from 'src/app/core/model/file';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-etudiants',
@@ -13,11 +11,10 @@ export class ListEtudiantsComponent implements OnInit {
   public students:Etudiant[];
   public filterOpt:string="";
   public filterText:string="";
-  constructor(private es:EtudiantService,private s: DomSanitizer) { }
+  constructor(private es:EtudiantService) { }
 
   ngOnInit(): void {
     this.es.getAllEtudiants().subscribe(data=>{this.students=data;
-      console.log(this.students[0]);
     })
   }
   delete(e:Etudiant){

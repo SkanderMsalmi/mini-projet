@@ -1,4 +1,3 @@
-import { SafeUrl } from "@angular/platform-browser"
 import { Departement } from "./departement"
 import { fileHandler } from "./file"
 
