@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Departement } from 'src/app/core/model/departement';
 import { Universite } from 'src/app/core/model/universite';
+import { DepartementService } from 'src/app/core/services/departement.service';
 import { UniversiteService } from 'src/app/core/services/universite.service';
 
 @Component({
@@ -15,26 +16,46 @@ export class ListUniversiteComponent implements OnInit {
   public list: Universite[];
   public unideplist: Departement[];
   public rowcolor : string;
-
+  public listlength: number;
+  public arr: (number | undefined)[] = [];
 
   // public all: Universite[];
-  constructor(private universiteService: UniversiteService, private currentRoute: ActivatedRoute,
+  constructor(private universiteService: UniversiteService,private departementService: DepartementService, private currentRoute: ActivatedRoute,
     private route: ActivatedRoute,private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    
-   
 
+    
+
+
+ 
+    
     this.universiteService.getAllUniversite().subscribe(
       (response: Universite[]) => {
         this.list = response;
         //filter
         console.log(this.list)
 
+       
+
 
       },
       () => { console.log("error") },
       () => { console.log("complete") },
+    );
+
+    this.departementService.getAllDepartement().subscribe(
+      (response:Departement[]) => { this.unideplist = response ;
+        console.log(this.list), 
+        this.listlength=this.list.length ;
+
+        for (let j=0; j<this.unideplist.length; j++) {
+          this.list.filter(x => x.idUniv == Number(this.unideplist[j].universite?.idUniv)).map(x=>x.hasdep = true)
+         }
+         
+       
+        } 
+        
     );
 
     
@@ -47,30 +68,31 @@ export class ListUniversiteComponent implements OnInit {
     )
   }
 
-  getColor(u: Universite) { 
-    this.universiteService.getDeparts(u.idUniv).subscribe(
-      (response: Departement[]) => {
-        this.unideplist = response;
-        
-        if(this.unideplist.filter(x=>x.universite?.idUniv == u.idUniv)){
-         this.rowcolor = 'yes'
-        }
-        switch (this.rowcolor) {
-          case 'yes':
-            return '#dee2e6';
-                   default: 
-              return '#ffffff';
-        } 
-      },
-
-    );
-
-
-             
-             
+  getColor(u:Universite){ 
 
     
 
-    }
+        if(u.hasdep == true)  
+        { 
+         this.rowcolor = 'yes';
+       }else{
+         this.rowcolor = 'no';
+        }    
+
+        console.log(this.rowcolor)
+    
+        
+          
+        switch (this.rowcolor) {
+          case 'yes':
+            return '#E9F1FF';
+            case 'no':
+              return '#ffffff';
+                   default: 
+              return '#ffffff';
+        }  
+
+  }
+
 
 } 

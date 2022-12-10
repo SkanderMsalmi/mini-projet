@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Departement } from 'src/app/core/model/departement';
 import { Universite } from 'src/app/core/model/universite';
+import { DepartementService } from 'src/app/core/services/departement.service';
 import { UniversiteService } from 'src/app/core/services/universite.service';
 
 @Component({
@@ -14,12 +16,13 @@ export class ListDepartementsComponent implements OnInit {
   public unideplist: Departement[];
   public uniname : String;
 
-  constructor(private universiteService: UniversiteService, private currentRoute: ActivatedRoute, private router: Router) { }
+  constructor(private universiteService: UniversiteService,
+    private departementService: DepartementService,private toastr: ToastrService, private currentRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     let id = this.currentRoute.snapshot.params['id'];
 
-    this.universiteService.getDeparts(id).subscribe(
+    this.departementService.getDeparts(id).subscribe(
       (response: Departement[]) => {
         this.unideplist = response;
 
@@ -57,6 +60,19 @@ export class ListDepartementsComponent implements OnInit {
     }
 
   }
+
+  deleteDep(d:Departement){
+    let i=this.unideplist.indexOf(d);
+    if(confirm("Are you sure to delete "+d.nomDepart)) {
+  
+    this.departementService.deleteDepartement(d.idDepartement).subscribe(
+      ()=>{this.unideplist.splice(i,1),   this.toastr.success(d.nomDepart+' has been deleted successfully','Success');
+    },
+      error => (err: string) => {
+        console.log("err" + err);
+        this.toastr.error('something went wrong !', 'Error');
+      }
+    )}}
 
   
 

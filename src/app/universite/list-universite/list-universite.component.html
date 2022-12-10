@@ -34,11 +34,12 @@
 
                     <div class="col-8 d-flex   justify-content-end ">
 
-                        <div class="col-md-5"> <input type="text" name="c" [(ngModel)]="searchUni"
-                            [ngClass]="['bg-gray-200', 'px-4' ]"   class="form-control" placeholder="Search "></div>
+                        <div class="col-md-6"> <input type="text" name="c" [(ngModel)]="searchUni"
+                                [ngClass]="['bg-gray-200', 'px-4' ]" class="form-control" placeholder="Recherche "></div>
                         &nbsp;&nbsp;
                         <a [routerLink]="['/universites/new']" class="btn bg-gradient-dark mb-0"><i
-                              class="material-icons text-sm">add</i>&nbsp;&nbsp;Ajouter Universite</a>
+                                class="material-icons text-sm">add</i>&nbsp;&nbsp;Ajouter Universite</a>
+
                     </div>
                 </div>
             </div>
@@ -50,49 +51,48 @@
 
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive p-0">
-                            <table class="table align-items-center   justify-content-start mb-0">
+                            
+
+
+                            <table class="table align-items-center justify-content-start mb-0">
                                 <thead>
                                     <tr>
-                                        <th 
-                                            class="  col-md-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">
-                                            Nom</th>
                                         <th
-                                            class="  col-md-3 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            E-mail</th>
+                                            class=" col-md-3 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            NOM</th>
+                                        <th
+                                            class=" col-md-3 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            E-MAIL</th>
+                                        <th
+                                            class=" col-md-3 col-md-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            ADRESSE</th>
 
-                                            <th
-                                            class="  col-md-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Adresse</th>
-                                        <th class="col-md-3 text-secondary opacity-7"></th>
+                                        <th class=" col-md-3 text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
-                                <tbody *ngFor="let uni of list | search: searchUni"  [ngStyle]="{'background-color': getColor(uni) }">
-                                    
-                                    <tr  
-                                         >
-                                        
-                                        <td title=" Afficher les departements"  class="col-md-4  cursor-pointer"  [routerLink]="['/universites/departements',uni.idUniv]" id="linkname" >
+                                <tbody>
+                                    <tr *ngFor="let uni of list | search: searchUni"
+                                        [ngStyle]="{'background-color':getColor(uni) }">
+                                        <td title=" Afficher les departements" class="col-md-3 cursor-pointer  "
+                                            [routerLink]="['/universites/departements',uni.idUniv]" id="linkname">
                                             <div class="d-flex px-2 py-1">
 
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="ms-2 text-sm">{{uni.nomUniv}}</h6>
+                                                <div class="">
+                                                    <h6 class="mb-0 text-sm">{{uni.nomUniv}}</h6>
 
                                                 </div>
                                             </div>
                                         </td>
-                                        <td  class="col-md-3">
-                                            <p class="text-sm font-weight-bold mb-0">{{uni.mailUniv}}</p>
+                                        <td class="col-md-3">
+                                            <p class="text-xs font-weight-bold mb-0">{{uni.mailUniv}}</p>
 
                                         </td>
 
-                                        <td  class="col-md-3 w-10px   "  >
-                                            <p class="text-xs font-weight-bold mb-0">{{uni.addressUniv}}</p>
-
+                                        <td class="col-md-3  ">
+                                            <span
+                                                class="text-secondary text-xs font-weight-bold">{{uni.addressUniv}}</span>
                                         </td>
-
-                                        
-                                        <td class="  d-flex justify-content-end  ">
-
+                                        <td class="align-middle">
                                             <a [routerLink]="['/universites/update',uni.idUniv]"
                                                 class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
                                                     class="material-icons text-sm me-2">edit</i>Modifier</a>
@@ -100,7 +100,6 @@
                                                 class="btn btn-link text-danger text-gradient px-3 mb-0"
                                                 href="javascript:;"><i
                                                     class="material-icons text-sm me-2">delete</i>Supprimer</a>
-
 
                                         </td>
                                     </tr>

@@ -30,4 +30,9 @@ export class DepartementService {
   getDepartementByID(id:number){
     return this.http.get<Departement>(this.url+'DisplayDepartementById/'+id)
   }
+
+  getDeparts(id:number){
+    return this.http.get<Departement[]>(this.url+'displayUniversiteDepartements/'+id)
+  }
+  
 }

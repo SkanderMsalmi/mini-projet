@@ -48,7 +48,7 @@ export class UpdateFormComponent implements OnInit {
 
     
       /////////////////// departs of this uni 
-      this.universiteService.getDeparts(id).subscribe(
+      this.depService.getDeparts(id).subscribe(
         (response: Departement[]) => {
           this.unideplist = response;
 

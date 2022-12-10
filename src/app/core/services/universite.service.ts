@@ -11,7 +11,7 @@ export class UniversiteService {
 
   
   public url= environment.url+'ControleurUniversite/';
-  public url2= environment.url+'controllerDepartement/';
+  //public url2= environment.url+'controllerDepartement/';
 
   constructor(private http: HttpClient) { }
   getAllUniversite(){
@@ -33,9 +33,7 @@ export class UniversiteService {
   assignUniToDep(idu:number , idd:number, u:Universite){
     return this.http.post(this.url+ idu+'/assignUniversiteToDepartement/'+idd,u)
   }
-  getDeparts(id:number){
-    return this.http.get<Departement[]>(this.url2+'displayUniversiteDepartements/'+id)
-  }
+  
 
   unassignDepFromUni(idu:number , idd:number, u:Universite){
     return this.http.post(this.url+'unassignDeapartementFromUniversite/' +idu+'/'+idd,u)
