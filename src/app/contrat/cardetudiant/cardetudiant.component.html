@@ -1,0 +1,40 @@
+
+
+
+<div class="card-box bg-blue" style="padding: 0px 10px 40px; border-radius: 12px;">
+    <div class="inner">
+  <div >
+    <i class="fa-solid fa-chalkboard-user" style="color: rgb(98, 16, 99);float: right;font-size: 10px;padding: 5px;" data-bs-toggle="modal" (click)="showModal=true" data-bs-target="#exampleModal"></i>
+    <!-- Modal -->
+<div class="modal fade myelement" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" [ngClass]="{'show':showModal}" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <p>l'etudiant numero° {{etud.idEtudiant}}</p>
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <p type="button"  data-bs-dismiss="modal" aria-label="Close" (click)="showModal =false" style="color:gray"><i class="fa-solid fa-xmark"></i></p>
+      </div>
+      <div class="modal-body">
+        <div class="card">
+          <div class="add-b">
+            
+          <div>
+            <img src="png;base64,{{etud.profileImage}}"
+                class="avatar avatar-sm me-3 border-radius-lg" >
+        </div>
+          </div>
+        <p style="color:gray">nom : {{etud.nomE}}</p>
+        <p style="color:gray">prenom : {{etud.prenomE}}</p>
+        <p style="color:gray">option : {{etud.opt}}</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="showModal=false">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+<p> {{etud.nomE}} {{etud.prenomE}} </p>
+         </div>
