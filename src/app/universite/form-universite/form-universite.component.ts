@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Departement } from 'src/app/core/model/departement';
 import { Universite } from 'src/app/core/model/universite';
 import { DepartementService } from 'src/app/core/services/departement.service';
@@ -32,7 +33,7 @@ export class FormUniversiteComponent implements OnInit {
   emailPattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$";
 
   constructor(private universiteService: UniversiteService, private depService: DepartementService,
-    private router: Router, private formBuilder: FormBuilder) { }
+    private router: Router, private formBuilder: FormBuilder,private toastr: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -75,7 +76,7 @@ export class FormUniversiteComponent implements OnInit {
       return;
     }else{
       this.universiteService.addUniversite(this.universite).subscribe(
-        () => { this.router.navigate(['/universites/list']) }
+        () => { this.router.navigate(['/universites/list']);this.toastr.success("L'université "+this.universite.nomUniv+' a été ajoutée avec succés','Success'); }
       )
   
     }

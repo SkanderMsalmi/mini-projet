@@ -24,4 +24,3 @@ export class DepartementComponent implements OnInit {
  
 }
 
-
