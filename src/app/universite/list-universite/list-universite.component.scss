@@ -1,7 +1,18 @@
-tbody :hover {
-    background-color: var(--bs-gray-200);
-    
-    
+ 
+tbody tr:hover {
+ 
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.btn-outline-warning:hover {
+    background-color: #fb8c00 ;
+    color: white;
+
+
+}
+.btn-outline-danger:hover{
+    background-color: #F44335 ;
+    color: white;
 
 }
  

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Departement } from 'src/app/core/model/departement';
 import { Universite } from 'src/app/core/model/universite';
 import { DepartementService } from 'src/app/core/services/departement.service';
 import { UniversiteService } from 'src/app/core/services/universite.service';
-import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-update-form',
   templateUrl: './update-form.component.html',
@@ -47,7 +48,7 @@ export class UpdateFormComponent implements OnInit {
 
     
       /////////////////// departs of this uni 
-      this.universiteService.getDeparts(id).subscribe(
+      this.depService.getDeparts(id).subscribe(
         (response: Departement[]) => {
           this.unideplist = response;
 
@@ -91,17 +92,18 @@ export class UpdateFormComponent implements OnInit {
   
   saveUni() {     
    
-      
+      /*
         let id = this.currentRoute.snapshot.params['id'];
         this.checkedlist = this.deplist.filter(x => x.isselected == true).map(x => x.idDepartement)
         for (let i in this.checkedlist) {
           let checked = this.checkedlist[i];
           this.universiteService.assignUniToDep(id, checked, this.universite).subscribe()
     
-        }
+        }*/
       
       this.universiteService.update(this.universite).subscribe(
-        () =>{ this.router.navigate(['/universites/']);this.toastr.info("L'universite "+this.universite.nomUniv +' modifié avec succés','Modification');}
+        () => {this.router.navigate(['/universites/']);
+        this.toastr.info("L'université  "+this.universite.nomUniv+' a été modifié avec succés','Modification');}
       )
 
       
